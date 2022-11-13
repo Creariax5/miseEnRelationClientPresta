@@ -1,0 +1,27 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>relaigraph</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+<h1>mode: {{ modeFormat }}</h1>
+<p>{{ date|date:"d F Y H:i:s" }}</p>
+<a href="/client/demande"><h1>Faire une demande</h1></a>
+<a href="/client/my_demande"><h1>Mes demandes</h1></a>
+<form method="POST" class="post_form">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit" class="save_btn">
+        Enregistrer
+    </button>
+</form>
+{% for element in dataStudents %}
+    {{ element.name }}<br />
+    {{ element.email }}<br />
+    ----------------------------------<br />
+{% endfor %}
+</body>
+</html>
