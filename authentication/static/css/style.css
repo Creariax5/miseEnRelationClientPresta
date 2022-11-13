@@ -1,0 +1,13 @@
+#client {
+	width: 50%;
+	height: 100%;
+	float: left;
+	background-color: red;
+}
+
+#graph {
+	width: 50%;
+	height: 100%;
+	float: left;
+	background-color: green;
+}

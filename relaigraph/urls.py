@@ -20,8 +20,8 @@ from .views import *
 
 urlpatterns = [
     path('', index),
-    path('register/', register),
-    path('login/', login),
+    path('', include("authentication.urls")),
+    path('', include("authentication.urls")),
 
     path('client/', include("client.urls")),
     path('client/', include("client.urls")),
