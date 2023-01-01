@@ -8,5 +8,14 @@
 </head>
 <body>
 <p>register</p>
+<form method="POST" class="post_form">
+    {% csrf_token %}
+
+    {{ form.as_p }}
+
+    <button type="submit" class="save_btn">
+        Enregistrer
+    </button>
+</form>
 </body>
 </html>

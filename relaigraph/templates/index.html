@@ -4,15 +4,24 @@
 <head>
     <meta charset="UTF-8">
     <title>relaigraph</title>
-    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
 </head>
 <body>
-<h1>Choisissez votre mode</h1>
-<div id="client">
-    <a href="/client"><h1>client</h1></a>
-</div>
-<div id="graph">
-    <a href="/graph"><h1>graph</h1></a>
-</div>
+    <div id="top">
+        {% if user.is_authenticated %}
+        <a href="/logout"><h1>logout</h1></a>
+        {% else %}
+        <a href="/register"><h1>register</h1></a>
+        <a href="/login"><h1>login</h1></a>
+        {% endif %}
+    </div>
+
+    <h1>Choisissez votre mode</h1>
+    <div id="client">
+        <a href="/client"><h1>client</h1></a>
+    </div>
+    <div id="graph">
+        <a href="/graph"><h1>graph</h1></a>
+    </div>
 </body>
 </html>
