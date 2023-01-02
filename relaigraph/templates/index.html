@@ -7,6 +7,8 @@
     <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
 </head>
 <body>
+    {{ user.username }}
+    {{ id }}
     <div id="top">
         {% if user.is_authenticated %}
         <a href="/logout"><h1>logout</h1></a>
@@ -23,5 +25,8 @@
     <div id="graph">
         <a href="/graph"><h1>graph</h1></a>
     </div>
+    {% if admin %}
+        <a href="/admin"><h1>admin</h1></a>
+    {% endif %}
 </body>
 </html>
