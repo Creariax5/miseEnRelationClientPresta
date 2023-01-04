@@ -34,7 +34,7 @@ def indexClient(request):
     return render(request, "indexClient.html", context={"date": date,
                                                         "modeFormat": modeFormat,
                                                         "form": form,
-                                                        "dataStudents": Students.objects.all(),
+                                                        "Students": Students.objects.all(),
                                                         "response": my_list})
 
 
