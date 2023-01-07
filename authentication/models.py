@@ -9,7 +9,8 @@ class Profile(models.Model):
                                      related_name="followed_by",
                                      symmetrical=False,
                                      blank=True)
-    objects = models.Manager()
+    date_modified = models.DateTimeField(User, auto_now=True)
+    money = models.IntegerField()
 
     def __str__(self):
         return self.user.username

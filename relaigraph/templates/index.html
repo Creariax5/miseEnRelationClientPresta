@@ -7,11 +7,19 @@
     <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
 </head>
 <body>
-    {{ user.username }}
-    {{ id }}
-    {{ follows }}
     <div id="top">
         {% if user.is_authenticated %}
+            {{ user.username }}
+            {{ id }}
+            <br>
+            <br>
+            {% for pr in profile %}
+                Username: {{ pr }}<br>
+                money: {{ pr.money }}<br>
+                Date edit: {{ pr.date_modified }}<br>
+                <br>
+            {% endfor %}
+
         <a href="/logout"><h1>logout</h1></a>
         {% else %}
         <a href="/register"><h1>register</h1></a>
@@ -26,6 +34,12 @@
     <div id="graph">
         <a href="/graph"><h1>graph</h1></a>
     </div>
+    {% for p in profiles %}
+        Username: {{ p }}<br>
+        money: {{ p.money }}<br>
+        Date edit: {{ p.date_modified }}<br>
+        <br>
+    {% endfor %}
     {% if admin %}
         <a href="/admin"><h1>admin</h1></a>
     {% endif %}
