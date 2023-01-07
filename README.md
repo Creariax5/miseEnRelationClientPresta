@@ -1,10 +1,13 @@
 # miseEnRelationClientPresta
 website de mise En Relation entre Client et Prestataire  
+acheter des crypto avec paypal  
+collection de pokemon (NFT)  
 
 # versions
 Python 3.10.4   
 django 3.1.6  
 requests  
+django-paypal  
 
 # Install
 git tutorial : https://www.youtube.com/watch?v=gp_k0UVOYMw  
