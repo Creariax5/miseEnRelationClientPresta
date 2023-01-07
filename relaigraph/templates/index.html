@@ -44,10 +44,16 @@
         <a href="/admin"><h1>admin</h1></a>
     {% endif %}
     <a href="/payment"><h1>pay</h1></a>
-    <form method="POST" class="post_form">
+    <form method="POST" class="post_form" name="money">
         {% csrf_token %}
-        <button type="submit" class="save_btn">
+        <button type="submit" class="save_btn" name="money">
             money
+        </button>
+    </form>
+    <form method="POST" class="post_form" name="give_all">
+        {% csrf_token %}
+        <button type="submit" class="save_btn" name="give_all">
+            give all
         </button>
     </form>
 </body>
