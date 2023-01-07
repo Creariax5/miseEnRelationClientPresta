@@ -14,10 +14,17 @@ def index(request):
             admin = True
         profiles = Profile.objects.all()
         profile = Profile.objects.filter(user=current_user)
+        if request.method == "POST":
+            for pr in profiles:
+                if pr.user.username == current_user.username:
+                    pr.money += 10
+                    pr.save()
+                    print("add", current_user.username)
         return render(request, "index.html", context={"admin": admin,
                                                       "profiles": profiles,
                                                       "id": my_id,
                                                       "user": current_user,
                                                       "profile": profile})
+
     else:
         return render(request, "index.html")
