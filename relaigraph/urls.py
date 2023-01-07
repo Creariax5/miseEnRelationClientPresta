@@ -16,5 +16,7 @@ urlpatterns = [
     path('graph/', include("graph.urls")),
     path('graph/', include("graph.urls")),
 
+    path('payment/', include("payment.urls")),
+
     path('admin/', admin.site.urls),
 ]

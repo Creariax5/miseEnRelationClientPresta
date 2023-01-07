@@ -1,3 +1,9 @@
 from django.shortcuts import render
 
-# Create your views here.
+
+def store(request):
+    return render(request, "store.html")
+
+
+def pay(request):
+    return render(request, "pay.html")
