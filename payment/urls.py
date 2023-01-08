@@ -2,6 +2,6 @@ from django.urls import path
 from .views import *
 
 urlpatterns = [
-    path('pay/', pay),
+    path('pay/<int:pk>', pay),
     path('', store),
 ]

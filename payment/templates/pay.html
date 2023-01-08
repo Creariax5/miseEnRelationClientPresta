@@ -8,10 +8,47 @@
       </head>
 
       <body>
+        <p>{{ product.name }}</p>
+        <br>
+        <br>
+        <br>
         <div id="paypal-button-container"></div>
         <!-- Sample PayPal credentials (client-id) are included -->
         <script src="https://www.paypal.com/sdk/js?client-id=AfK20ZjlGPpSSoaMJtVV84eRIMTP1pWjxbcxFWXVPdAfGtqNnYtgLaSbKeN6WBvzLN2wRFN_LojTZNwF&currency=USD&intent=capture&enable-funding=venmo" data-sdk-integration-source="integrationbuilder"></script>
         <script>
+          function getCookie(name) {
+		    var cookieValue = null;
+		    if (document.cookie && document.cookie !== '') {
+		        var cookies = document.cookie.split(';');
+		        for (var i = 0; i < cookies.length; i++) {
+		            var cookie = cookies[i].trim();
+		            // Does this cookie string begin with the name we want?
+		            if (cookie.substring(0, name.length + 1) === (name + '=')) {
+		                cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+		                break;
+		            }
+		        }
+		    }
+		    return cookieValue;
+		}
+		var csrftoken = getCookie('csrftoken');
+
+	 	var total = '{{product.price}}'
+	 	var productId = '{{product.id}}'
+
+          function completeOrder(){
+	 		var url = ""
+
+	 		fetch(url, {
+	 			method:'POST',
+	 			headers:{
+	 				'Content-type':'application/json',
+	 				'X-CSRFToken':csrftoken,
+	 			},
+	 			body:JSON.stringify({'productId':productId})
+	 		})
+	 	}
+
           const paypalButtonsComponent = paypal.Buttons({
               // optional styling for buttons
               // https://developer.paypal.com/docs/checkout/standard/customize/buttons-style-guide/
@@ -43,6 +80,7 @@
                   const captureOrderHandler = (details) => {
                       const payerName = details.payer.name.given_name;
                       console.log('Transaction completed');
+                      completeOrder()
                   };
 
                   return actions.order.capture().then(captureOrderHandler);
