@@ -6,6 +6,18 @@
     <title>relaigraph</title>
     <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
 </head>
+<style>
+    .slot{
+        display: inline-block;
+        float: left;
+    }
+
+    div_slot{
+        margin: 10px;
+        background: brown;
+        border: solid;
+    }
+</style>
 <body>
 <h1>mode: {{ modeFormat }}</h1>
 <p>{{ date|date:"d F Y H:i:s" }}</p>
@@ -23,8 +35,12 @@
     {{ element.email }}<br />
     ----------------------------------<br />
 {% endfor %}
+
 {% for element in response %}
-    {{ element }}<br />
+    <div class="div_slot">
+        <a href="https://pokemondb.net/pokedex/{{ element }}" class="slot"><img src="https://img.pokemondb.net/sprites/x-y/normal/{{ element }}.png" alt="{{ element }}" class="slot"></a>
+        <p class="slot">{{ element }}</p>
+    </div>
 {% endfor %}
 </body>
 </html>

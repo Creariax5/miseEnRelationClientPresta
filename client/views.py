@@ -27,8 +27,9 @@ def indexClient(request):
     aDict = json.loads(pks)
     my_list = []
     i = 1
-    while i != 906:
-        my_list.append(aDict[str(i)]['name'])
+    while i != 722:
+        my_low = aDict[str(i)]['name'].lower()
+        my_list.append(my_low)
         i += 1
 
     return render(request, "indexClient.html", context={"date": date,
