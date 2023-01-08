@@ -8,7 +8,7 @@
       </head>
 
       <body>
-        <p>{{ product.name }}</p>
+        <p>{{ product.name }} {{ product.price }} €</p>
         <br>
         <br>
         <br>
@@ -16,6 +16,10 @@
         <!-- Sample PayPal credentials (client-id) are included -->
         <script src="https://www.paypal.com/sdk/js?client-id=AfK20ZjlGPpSSoaMJtVV84eRIMTP1pWjxbcxFWXVPdAfGtqNnYtgLaSbKeN6WBvzLN2wRFN_LojTZNwF&currency=USD&intent=capture&enable-funding=venmo" data-sdk-integration-source="integrationbuilder"></script>
         <script>
+          function remplacer_virgule_par_point(decimal) {
+	        return parseFloat((decimal+"").replace(",","."));
+          }
+
           function getCookie(name) {
 		    var cookieValue = null;
 		    if (document.cookie && document.cookie !== '') {
@@ -35,9 +39,10 @@
 
 	 	var total = '{{product.price}}'
 	 	var productId = '{{product.id}}'
+	 	total = remplacer_virgule_par_point(total)
 
-          function completeOrder(){
-	 		var url = ""
+	 	function completeOrder(){
+	 		var url = "{% url 'complete' %}"
 
 	 		fetch(url, {
 	 			method:'POST',
@@ -49,54 +54,32 @@
 	 		})
 	 	}
 
-          const paypalButtonsComponent = paypal.Buttons({
-              // optional styling for buttons
-              // https://developer.paypal.com/docs/checkout/standard/customize/buttons-style-guide/
-              style: {
-                color: "gold",
-                shape: "rect",
-                layout: "vertical"
-              },
 
-              // set up the transaction
-              createOrder: (data, actions) => {
-                  // pass in any options from the v2 orders create call:
-                  // https://developer.paypal.com/api/orders/v2/#orders-create-request-body
-                  const createOrderPayload = {
-                      purchase_units: [
-                          {
-                              amount: {
-                                  value: "88.44"
-                              }
-                          }
-                      ]
-                  };
+        // Render the PayPal button into #paypal-button-container
+        paypal.Buttons({
 
-                  return actions.order.create(createOrderPayload);
-              },
+            // Set up the transaction
+            createOrder: function(data, actions) {
+                return actions.order.create({
+                    purchase_units: [{
+                        amount: {
+                            value: total
+                        }
+                    }]
+                });
+            },
 
-              // finalize the transaction
-              onApprove: (data, actions) => {
-                  const captureOrderHandler = (details) => {
-                      const payerName = details.payer.name.given_name;
-                      console.log('Transaction completed');
-                      completeOrder()
-                  };
+            // Finalize the transaction
+            onApprove: function(data, actions) {
+                return actions.order.capture().then(function(details) {
+                    // Show a success message to the buyer
+                    completeOrder()
+                    alert('Transaction completed by ' + details.payer.name.given_name + '!');
+                });
+            }
 
-                  return actions.order.capture().then(captureOrderHandler);
-              },
 
-              // handle unrecoverable errors
-              onError: (err) => {
-                  console.error('An error prevented the buyer from checking out with PayPal');
-              }
-          });
-
-          paypalButtonsComponent
-              .render("#paypal-button-container")
-              .catch((err) => {
-                  console.error('PayPal Buttons failed to render');
-              });
+        }).render('#paypal-button-container');
         </script>
       </body>
     </html>

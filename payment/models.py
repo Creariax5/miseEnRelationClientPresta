@@ -5,7 +5,7 @@ from django.contrib import admin
 
 class Product(models.Model):
     name = models.CharField(max_length=20)
-    price = models.FloatField()
+    price = models.FloatField(null=True, blank=True)
     img = models.CharField(max_length=200)
 
     def __str__(self):
