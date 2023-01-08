@@ -7,15 +7,36 @@
     <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
 </head>
 <style>
-    .slot{
-        display: inline-block;
-        float: left;
+    body{
+
+        background: black;
+
     }
 
-    div_slot{
-        margin: 10px;
-        background: brown;
+    .div_slot{
+        display: inline-block;
+        margin: 30px;
+        background: #F2EDE1;
         border: solid;
+        height: 200px;
+        width: 150px;
+    }
+
+    .pp{
+
+        text-align: center;
+    }
+
+    .img{
+        height: 150px;
+        width: 150px;
+        filter: contrast(0);
+    }
+
+    .img:hover{
+        height: 150px;
+        width: 150px;
+        filter: contrast(1);
     }
 </style>
 <body>
@@ -38,8 +59,8 @@
 
 {% for element in response %}
     <div class="div_slot">
-        <a href="https://pokemondb.net/pokedex/{{ element }}" class="slot"><img src="https://img.pokemondb.net/sprites/x-y/normal/{{ element }}.png" alt="{{ element }}" class="slot"></a>
-        <p class="slot">{{ element }}</p>
+        <a href="https://pokemondb.net/pokedex/{{ element }}" class="slot"><img src="https://img.pokemondb.net/sprites/x-y/normal/{{ element }}.png" alt="{{ element }}" class="img"></a>
+        <p class="pp">{{ element }}</p>
     </div>
 {% endfor %}
 </body>
