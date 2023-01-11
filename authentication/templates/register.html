@@ -1,12 +1,5 @@
-{% load static %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>relaigraph</title>
-    <link rel="stylesheet" href="{% static 'css/style.css' %}">
-</head>
-<body>
+{% extends 'navbar.html' %}
+{% block nav %}
 <p>register</p>
 <form method="POST" class="post_form">
     {% csrf_token %}
@@ -17,5 +10,4 @@
         Enregistrer
     </button>
 </form>
-</body>
-</html>
+{% endblock %}

@@ -1,57 +1,6 @@
-{% load static %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>relaigraph</title>
-    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
-</head>
-<style>
-    body{
-        background-color: #4158D0;
-        background-image: linear-gradient(43deg, #4158D0 0%, #C850C0 46%, #FFCC70 100%);
-    }
-
-    .slot{
-        height: 150px;
-        width: 150px;
-
-    }
-
-    .div_slot{
-        position: relative;
-        display: inline-block;
-        margin: 30px;
-        background: #F2EDE1;
-        border: 1px solid;
-        border-radius: 10px;
-        height: 200px;
-        width: 150px;
-    }
-
-    .div_slot:hover{
-        top: -25px;
-        filter: drop-shadow(0px 0px 10px gold)
-    }
-
-    .pp{
-
-        text-align: center;
-    }
-
-    .img{
-        height: 150px;
-        width: 150px;
-        filter: contrast(1);
-    }
-
-    .img:hover{
-        height: 150px;
-        width: 150px;
-        filter: contrast(1);
-    }
-</style>
-<body>
+{% extends 'navbar.html' %}
+{% block nav %}
+<div class="poke">
 <h1>mode: {{ modeFormat }}</h1>
 <p>{{ date|date:"d F Y H:i:s" }}</p>
 <a href="/client/demande"><h1>Faire une demande</h1></a>
@@ -75,5 +24,5 @@
         <p class="pp">{{ element }}</p>
     </div>
 {% endfor %}
-</body>
-</html>
+</div>
+{% endblock %}

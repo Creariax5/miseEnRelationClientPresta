@@ -10,6 +10,13 @@
 body {
     margin: 0px;
 }
+
+.pkb {
+    width: 300px;
+	height: 300px;
+	margin: 50px;
+}
+
 header {
     background-color: black;
     position: fixed;
@@ -19,6 +26,7 @@ header {
     height: 30px;
     display: flex;
     align-items: center;
+    z-index: 1;
 }
 header * {
     display: inline;
@@ -56,6 +64,58 @@ footer li a {
     text-decoration: none;
 }
 
+content {
+    margin: 3px;
+}
+
+/* ______Pokedex______ */
+
+    .poke{
+        background-color: #4158D0;
+        background-image: linear-gradient(43deg, #4158D0 0%, #C850C0 46%, #FFCC70 100%);
+        position: absolute;
+    }
+
+    .slot{
+        height: 150px;
+        width: 150px;
+
+    }
+
+    .div_slot{
+        position: relative;
+        display: inline-block;
+        margin: 30px;
+        background: #F2EDE1;
+        border: 1px solid;
+        border-radius: 10px;
+        height: 200px;
+        width: 150px;
+    }
+
+    .div_slot:hover{
+        top: -25px;
+        filter: drop-shadow(0px 0px 10px gold)
+    }
+
+    .pp{
+
+        text-align: center;
+    }
+
+    .img{
+        height: 150px;
+        width: 150px;
+        filter: contrast(1);
+        text-align:center;
+        margin:auto;
+        display: flex;
+    }
+
+    .img:hover{
+        filter: contrast(1);
+    }
+
 </style>
 <body>
 <header>
@@ -78,10 +138,15 @@ footer li a {
         </ul>
     </nav>
 </header>
+<br>
 
+<content>
 {% block nav %}
 
 {% endblock %}
+</content>
+
+<!--
 
 <br>
 <br>
@@ -107,3 +172,4 @@ footer li a {
 </footer>
 </body>
 </html>
+-->

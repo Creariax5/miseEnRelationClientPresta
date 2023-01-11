@@ -1,23 +1,7 @@
-{% load static %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>relaigraph</title>
-    <link rel="stylesheet" href="{% static 'css/style.css' %}">
-</head>
-<style>
-    .pkb {
-	    width: 300px;
-	    height: 300px;
-	    margin: 50px;
-    }
-</style>
-<body>
+{% extends 'navbar.html' %}
+{% block nav %}
 <p>store</p>
 {% for p in product %}
     <a href="/payment/pay/{{ p.id }}"><img class="pkb" src="{{ p.img }}" />{{ p.name }} {{ p.price }} €</a>
 {% endfor %}
-
-</body>
-</html>
+{% endblock %}

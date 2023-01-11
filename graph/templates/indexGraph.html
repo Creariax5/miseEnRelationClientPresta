@@ -1,15 +1,7 @@
-{% load static %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>relaigraph</title>
-    <link rel="stylesheet" href="{% static 'css/style.css' %}">
-</head>
-<body>
+{% extends 'navbar.html' %}
+{% block nav %}
 <h1>mode: {{ modeFormat }}</h1>
 <p>{{ date|date:"d F Y H:i:s" }}</p>
 <a href="/graph/work"><h1>Trouver du travail</h1></a>
 <a href="/graph/my_work"><h1>Mon travail en cour</h1></a>
-</body>
-</html>
+{% endblock %}
