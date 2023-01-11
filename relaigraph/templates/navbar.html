@@ -1,0 +1,63 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>relaigraph</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+</head>
+{% block nav %}
+<style>
+body {
+    height: 125vh;
+    margin-top: 80px;
+    padding: 30px;
+    background-size: cover;
+    font-family: sans-serif;
+}
+header {
+    background-color: orange;
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+}
+header * {
+    display: inline;
+}
+
+header li {
+    margin: 20px;
+}
+
+header li a {
+    color: blue;
+    text-decoration: none;
+}
+</style>
+    <Body>
+        <header>
+            <nav>
+                <ul>
+                    </li>
+                    <li>
+                        <a href="#"> Home </a>
+                    <li>
+                        <a href="#"> About </a>
+                    </li>
+                    <li>
+                        <a href="#"> Contact </a>
+                    </li>
+                    <li> <a href="#"> Terms of use </a>
+                    </li>
+                    <li>
+                        <a href="#"> Join Us </a>
+                    </li>
+                </ul>
+            </nav>
+        </header>
+
+{% endblock %}

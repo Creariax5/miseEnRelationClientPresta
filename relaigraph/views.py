@@ -33,3 +33,7 @@ def index(request):
 
     else:
         return render(request, "index.html")
+
+
+def navbar(request):
+    return render(request, "navbar.html")

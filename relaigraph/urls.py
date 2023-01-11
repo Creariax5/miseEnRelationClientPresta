@@ -5,6 +5,7 @@ from .views import *
 
 urlpatterns = [
     path('', index),
+    path('nav/', navbar),
     path('', include("authentication.urls")),
     path('', include("django.contrib.auth.urls")),
 
