@@ -6,17 +6,12 @@
     <title>relaigraph</title>
     <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
 </head>
-{% block nav %}
 <style>
 body {
-    height: 125vh;
-    margin-top: 80px;
-    padding: 30px;
-    background-size: cover;
-    font-family: sans-serif;
+    margin: 0px;
 }
 header {
-    background-color: orange;
+    background-color: black;
     position: fixed;
     left: 0;
     right: 0;
@@ -34,30 +29,81 @@ header li {
 }
 
 header li a {
-    color: blue;
+    color: white;
     text-decoration: none;
 }
+
+footer {
+    background-color: black;
+    left: 0;
+    right: 0;
+    bottom: 0px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+}
+
+footer * {
+    display: inline;
+}
+
+footer li {
+    margin: 20px;
+}
+
+footer li a {
+    color: white;
+    text-decoration: none;
+}
+
 </style>
-    <Body>
-        <header>
-            <nav>
-                <ul>
-                    </li>
-                    <li>
-                        <a href="#"> Home </a>
-                    <li>
-                        <a href="#"> About </a>
-                    </li>
-                    <li>
-                        <a href="#"> Contact </a>
-                    </li>
-                    <li> <a href="#"> Terms of use </a>
-                    </li>
-                    <li>
-                        <a href="#"> Join Us </a>
-                    </li>
-                </ul>
-            </nav>
-        </header>
+<body>
+<header>
+    <nav>
+        <ul>
+            </li>
+            <li>
+                <a href="#"> Home </a>
+            <li>
+            <a href="#"> About </a>
+        </li>
+            <li>
+                <a href="#"> Contact </a>
+            </li>
+            <li> <a href="#"> Terms of use </a>
+            </li>
+            <li>
+                <a href="#"> Join Us </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+
+{% block nav %}
 
 {% endblock %}
+
+<br>
+<br>
+<footer>
+    <nav>
+        <ul>
+            </li>
+            <li>
+                <a href="#"> Home </a>
+            <li>
+            <a href="#"> About </a>
+        </li>
+            <li>
+                <a href="#"> Contact </a>
+            </li>
+            <li> <a href="#"> Terms of use </a>
+            </li>
+            <li>
+                <a href="#"> Join Us </a>
+            </li>
+        </ul>
+    </nav>
+</footer>
+</body>
+</html>
