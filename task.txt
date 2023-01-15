@@ -8,3 +8,6 @@
 #8 add a field in a database to know which user owns which pokemon ❌
 #9 in pokedex if the connected user don't own the pokemon his image will be gray ❌
 #10 add navbar ❌
+
+
+/imagine prompt:Pokemon monster creature NFT, vibrant --ar 3:2 --v 4 --stylize 500 --q 2

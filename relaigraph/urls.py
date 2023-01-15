@@ -10,11 +10,7 @@ urlpatterns = [
     path('', include("django.contrib.auth.urls")),
 
     path('client/', include("client.urls")),
-    path('client/', include("client.urls")),
-    path('client/', include("client.urls")),
 
-    path('graph/', include("graph.urls")),
-    path('graph/', include("graph.urls")),
     path('graph/', include("graph.urls")),
 
     path('payment/', include("payment.urls")),

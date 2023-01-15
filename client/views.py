@@ -39,6 +39,10 @@ def indexClient(request):
                                                         "response": my_list})
 
 
+def backpack(request):
+    return render(request, "backpack.html")
+
+
 def demande(request):
     return render(request, "demande.html")
 

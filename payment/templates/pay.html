@@ -1,6 +1,6 @@
 {% extends 'navbar.html' %}
 {% block nav %}
-        <p>{{ product.name }} {{ product.price }} €</p>
+        <p>{{ product.name }} {{ product.price }} € * {{ nb }}</p>
         <br>
         <br>
         <br>
@@ -29,7 +29,12 @@
 		}
 		var csrftoken = getCookie('csrftoken');
 
-	 	var total = '{{product.price}}'
+	 	var price = '{{product.price}}'
+	 	price = remplacer_virgule_par_point(price);
+	 	var number = '{{nb}}';
+	 	var total = price * number;
+	 	total = total.toString();
+	 	console.log(total);
 	 	var productId = '{{product.id}}'
 	 	total = remplacer_virgule_par_point(total)
 
@@ -42,7 +47,7 @@
 	 				'Content-type':'application/json',
 	 				'X-CSRFToken':csrftoken,
 	 			},
-	 			body:JSON.stringify({'productId':productId})
+	 			body:JSON.stringify({'productId':productId, 'number':number})
 	 		})
 	 	}
 
