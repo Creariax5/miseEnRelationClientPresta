@@ -50,15 +50,31 @@ def backpack(request):
     my_objects = []
     if current_user.is_authenticated:
         profile = Profile.objects.filter(user=current_user)
-        for pr in profile:
-            my_objects = pr.my_objects
+        for u in profile:
+            my_objects = u.my_objects
         for x in range(len(my_objects)):
             my_objects = my_objects.replace("[", "")
             my_objects = my_objects.replace("]", "")
         my_objects = list(my_objects.split(", "))
-        print(my_objects)
+        i = 0
+        product_list = []
 
-    return render(request, "backpack.html", context={"product": product,
+        for pr in product:
+            d = dict()
+            if len(my_objects) <= i:
+                d['nb'] = 1
+            else:
+                d['nb'] = my_objects[i]
+
+            d['name'] = pr.name
+            print(pr.name)
+            d['img'] = pr.img
+            product_list.append(d,)
+
+            i += 1
+        print(product_list)
+
+    return render(request, "backpack.html", context={"product_list": product_list,
                                                      "my_objects": my_objects,
                                                      "profile": profile})
 

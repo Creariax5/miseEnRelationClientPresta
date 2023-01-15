@@ -2,8 +2,8 @@
 {% block nav %}
 <p>backpack</p>
 
-{% for p in product %}
-    {% if my_objects > 0 %}
+{% for p in product_list %}
+    {% if p.nb > 0 %}
         <img class="pkb" src="{{ p.img }}" />
         <p>{{ p.name }}</p>
         <br>
@@ -11,7 +11,7 @@
         <br>
         <br>
     {% endif %}
-
+    <br>
 {% endfor %}
 
 {% for pr in profile %}
