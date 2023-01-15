@@ -36,10 +36,12 @@ def paymentComplete(request):
     )
     profiles = Profile.objects.all()
     nb = body['number']
-    for pr in profiles:
-        if pr.user.username == current_user.username:
-            pr.money += 100 * int(nb)
-            pr.save()
-            print("add", current_user.username)
+    productId = int(body['productId'])
+    if productId == 4:
+        for pr in profiles:
+            if pr.user.username == current_user.username:
+                pr.money += 100 * int(nb)
+                pr.save()
+                print("add", current_user.username)
 
     return JsonResponse('Payment completed!', safe=False)

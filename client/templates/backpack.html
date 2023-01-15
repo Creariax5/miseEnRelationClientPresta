@@ -1,4 +1,23 @@
 {% extends 'navbar.html' %}
 {% block nav %}
 <p>backpack</p>
+
+{% for p in product %}
+    {% if my_objects > 0 %}
+        <img class="pkb" src="{{ p.img }}" />
+        <p>{{ p.name }}</p>
+        <br>
+        <p>___________________________________________________________________________</p>
+        <br>
+        <br>
+    {% endif %}
+
+{% endfor %}
+
+{% for pr in profile %}
+    money: {{ pr.money }}<br>
+    my objects: {{ pr.my_objects }}<br>
+    <br>
+{% endfor %}
+
 {% endblock %}

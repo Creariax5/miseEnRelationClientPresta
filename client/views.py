@@ -3,6 +3,11 @@ import json
 from django.shortcuts import render, redirect
 from _datetime import datetime
 from .formulaire import Students_from, Students
+import sys
+
+sys.path[:0] = ['../']
+from authentication.models import Profile
+from payment.models import Product
 
 
 def indexClient(request):
@@ -40,7 +45,22 @@ def indexClient(request):
 
 
 def backpack(request):
-    return render(request, "backpack.html")
+    product = Product.objects.all()
+    current_user = request.user
+    my_objects = []
+    if current_user.is_authenticated:
+        profile = Profile.objects.filter(user=current_user)
+        for pr in profile:
+            my_objects = pr.my_objects
+        for x in range(len(my_objects)):
+            my_objects = my_objects.replace("[", "")
+            my_objects = my_objects.replace("]", "")
+        my_objects = list(my_objects.split(", "))
+        print(my_objects)
+
+    return render(request, "backpack.html", context={"product": product,
+                                                     "my_objects": my_objects,
+                                                     "profile": profile})
 
 
 def demande(request):
