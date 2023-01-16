@@ -11,7 +11,7 @@ class Profile(models.Model):
                                      blank=True)
     date_modified = models.DateTimeField(User, auto_now=True)
     money = models.IntegerField(default=100)
-    my_objects = models.CharField(default=[0, 0, 0], max_length=40)
+    my_objects = models.CharField(default=[0, 0, 0, 0], max_length=40)
 
     def __str__(self):
         return self.user.username

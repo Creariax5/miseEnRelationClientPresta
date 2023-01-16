@@ -64,7 +64,7 @@ def backpack(request):
             if len(my_objects) <= i:
                 d['nb'] = 1
             else:
-                d['nb'] = my_objects[i]
+                d['nb'] = int(my_objects[i])
 
             d['name'] = pr.name
             print(pr.name)

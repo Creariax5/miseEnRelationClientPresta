@@ -37,6 +37,8 @@ def paymentComplete(request):
     profiles = Profile.objects.all()
     nb = body['number']
     productId = int(body['productId'])
+    if productId > 0:
+        print("add")
     if productId == 4:
         for pr in profiles:
             if pr.user.username == current_user.username:
