@@ -1,13 +1,18 @@
 #1 setup paypal payment ✔️
-#2 link payment to profile.money ❌
+#2 link payment to profile.money ✔️
 #3 find a new pokemon API with FR language and pokemon img ✔️
 #4 create a pokedex with pokemon image and name ✔️
 #5 add pokemon description when clic on it in pokedex ✔️
-#6 add a page where we can buy a pokeball with unknow pokemon inside with self.profile.money ❌
+#6 add pokeball buy with pokeball inside with user money ❌
 #7 limited number of pokeball each day with a system of bid ❌
 #8 add a field in a database to know which user owns which pokemon ❌
 #9 in pokedex if the connected user don't own the pokemon his image will be gray ❌
 #10 add navbar ❌
+#11 add opening system for pokeball ❌
+#12 add authenticate to access to the site ❌
+
+
+
 
 
 /imagine prompt:Pokemon monster creature NFT, vibrant --ar 3:2 --v 4 --stylize 500 --q 2

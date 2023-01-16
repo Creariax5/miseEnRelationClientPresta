@@ -31,3 +31,23 @@ def object_list_to_context(product, my_objects):
 
         i += 1
     return product_list
+
+
+def give_money(profiles, current_user, nb):
+    for pr in profiles:
+        if pr.user.username == current_user.username:
+            pr.money += 100 * int(nb)
+            pr.save()
+            print("add", current_user.username)
+
+
+def give_object(profiles, current_user, nb, productId, profile):
+    for pr in profiles:
+        if pr.user.username == current_user.username:
+            my_objects = object_str_to_list(profile, current_user)
+            my_object_id = int(my_objects[productId - 1]) + int(nb)
+            my_objects[productId - 1] = my_object_id
+            pr.my_objects = my_objects
+            pr.save()
+
+            print("add ", nb, " ", productId)

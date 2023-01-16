@@ -6,7 +6,7 @@ import sys
 
 sys.path[:0] = ['../']
 from authentication.models import Profile
-from client.tests import object_str_to_list
+from client.tests import object_str_to_list, give_object
 
 
 def store(request):
@@ -29,32 +29,17 @@ def paymentComplete(request):
     current_user = request.user
     profile = Profile.objects.filter(user=current_user)
     body = json.loads(request.body)
-    print('BODY:', body)
+
     product = Product.objects.get(id=body['productId'])
     Order.objects.create(
         product=product,
         buyer=current_user.username
     )
+
     profiles = Profile.objects.all()
     nb = body['number']
     productId = int(body['productId'])
 
-    for pr in profiles:
-        if pr.user.username == current_user.username:
-            my_objects = object_str_to_list(profile, current_user)
-            my_object_id = int(my_objects[productId-1])
-            my_object_id = int(my_object_id) + 1 * int(nb)
-            my_objects[productId-1] = my_object_id
-            pr.my_objects = my_objects
-            pr.save()
-
-            print("add ", nb, " ", productId)
-
-    if productId == 4:
-        for pr in profiles:
-            if pr.user.username == current_user.username:
-                pr.money += 100 * int(nb)
-                pr.save()
-                print("add", current_user.username)
+    give_object(profiles, current_user, nb, productId, profile)
 
     return JsonResponse('Payment completed!', safe=False)
