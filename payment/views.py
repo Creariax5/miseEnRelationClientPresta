@@ -6,6 +6,7 @@ import sys
 
 sys.path[:0] = ['../']
 from authentication.models import Profile
+from client.tests import object_str_to_list
 
 
 def store(request):
@@ -26,19 +27,35 @@ def pay(request, pk, nb):
 
 def paymentComplete(request):
     current_user = request.user
+    profile = Profile.objects.filter(user=current_user)
     body = json.loads(request.body)
     print('BODY:', body)
-    user = request.user
     product = Product.objects.get(id=body['productId'])
     Order.objects.create(
         product=product,
-        buyer=user.username
+        buyer=current_user.username
     )
     profiles = Profile.objects.all()
     nb = body['number']
     productId = int(body['productId'])
-    if productId > 0:
-        print("add")
+
+    for pr in profiles:
+        if pr.user.username == current_user.username:
+            my_objects = object_str_to_list(profile, current_user)
+            print("______________________________________")
+            print("")
+            print("my_objects: ", my_objects)
+            my_objects[productId] += 1 * int(nb)
+            print("my_objects: ", my_objects)
+
+            print("pr.my_objects: ", pr.my_objects)
+            pr.my_objects = my_objects
+            pr.save()
+            print("pr.my_objects: ", pr.my_objects)
+            print("______________________________________")
+
+            print("add ", nb, " ", productId)
+
     if productId == 4:
         for pr in profiles:
             if pr.user.username == current_user.username:

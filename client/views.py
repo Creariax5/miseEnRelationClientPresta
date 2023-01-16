@@ -4,6 +4,7 @@ from django.shortcuts import render, redirect
 from _datetime import datetime
 from .formulaire import Students_from, Students
 import sys
+from .tests import object_str_to_list, object_list_to_context
 
 sys.path[:0] = ['../']
 from authentication.models import Profile
@@ -47,32 +48,10 @@ def indexClient(request):
 def backpack(request):
     product = Product.objects.all()
     current_user = request.user
-    my_objects = []
-    if current_user.is_authenticated:
-        profile = Profile.objects.filter(user=current_user)
-        for u in profile:
-            my_objects = u.my_objects
-        for x in range(len(my_objects)):
-            my_objects = my_objects.replace("[", "")
-            my_objects = my_objects.replace("]", "")
-        my_objects = list(my_objects.split(", "))
-        i = 0
-        product_list = []
+    profile = Profile.objects.filter(user=current_user)
 
-        for pr in product:
-            d = dict()
-            if len(my_objects) <= i:
-                d['nb'] = 1
-            else:
-                d['nb'] = int(my_objects[i])
-
-            d['name'] = pr.name
-            print(pr.name)
-            d['img'] = pr.img
-            product_list.append(d,)
-
-            i += 1
-        print(product_list)
+    my_objects = object_str_to_list(profile, current_user)
+    product_list = object_list_to_context(product, my_objects)
 
     return render(request, "backpack.html", context={"product_list": product_list,
                                                      "my_objects": my_objects,
