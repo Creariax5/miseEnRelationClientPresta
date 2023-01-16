@@ -42,17 +42,11 @@ def paymentComplete(request):
     for pr in profiles:
         if pr.user.username == current_user.username:
             my_objects = object_str_to_list(profile, current_user)
-            print("______________________________________")
-            print("")
-            print("my_objects: ", my_objects)
-            my_objects[productId] += 1 * int(nb)
-            print("my_objects: ", my_objects)
-
-            print("pr.my_objects: ", pr.my_objects)
+            my_object_id = int(my_objects[productId-1])
+            my_object_id = int(my_object_id) + 1 * int(nb)
+            my_objects[productId-1] = my_object_id
             pr.my_objects = my_objects
             pr.save()
-            print("pr.my_objects: ", pr.my_objects)
-            print("______________________________________")
 
             print("add ", nb, " ", productId)
 
