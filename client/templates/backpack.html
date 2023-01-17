@@ -6,11 +6,35 @@
     {% if p.nb > 0 %}
         <img class="pkb" src="{{ p.img }}" />
         <p>{{ p.nb }}  {{ p.name }}</p>
+        <form method="POST" class="post_form">
+            {% csrf_token %}
+            <button type="submit" class="save_btn" id="this_id" name="this_id" value="{{ p.id }}">
+                open
+            </button>
+        </form>
         <p>___________________________________________________________________________</p>
         <br>
     {% endif %}
     <br>
 {% endfor %}
+
+{% if open_obj %}
+    <style>
+        body {
+                overflow:hidden;
+        }
+    </style>
+    <div class="gray">
+        <div class="open_box">
+            <form method="POST" class="post_form">
+            {% csrf_token %}
+                <button type="submit" class="claim_box" name="this_id" value="1">
+                    claim
+                </button>
+            </form>
+        </div>
+    </div>
+{% endif %}
 
 {% for pr in profile %}
     money: {{ pr.money }}<br>

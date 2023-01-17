@@ -46,12 +46,30 @@ def indexClient(request):
 
 
 def backpack(request):
+    open_obj = False
     product = Product.objects.all()
     current_user = request.user
     profile = Profile.objects.filter(user=current_user)
 
     my_objects = object_str_to_list(profile, current_user)
     product_list = object_list_to_context(product, my_objects)
+
+    if request.method == "POST":
+        claim = "0"
+        claim = request.POST['this_id']
+        if claim == "1":
+            return render(request, "backpack.html", context={"product_list": product_list,
+                                                             "my_objects": my_objects,
+                                                             "profile": profile})
+
+    if request.method == "POST":
+        this_id = request.POST['this_id']
+        open_obj = True
+        return render(request, "backpack.html", context={"product_list": product_list,
+                                                         "my_objects": my_objects,
+                                                         "profile": profile,
+                                                         "this_id": this_id,
+                                                         "open_obj": open_obj})
 
     return render(request, "backpack.html", context={"product_list": product_list,
                                                      "my_objects": my_objects,
