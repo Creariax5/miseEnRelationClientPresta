@@ -2,7 +2,6 @@ import requests
 import json
 from django.shortcuts import render, redirect
 from _datetime import datetime
-from .formulaire import Students_from, Students
 import sys
 from .tests import object_str_to_list, object_list_to_context
 
@@ -12,11 +11,6 @@ from payment.models import Product
 
 
 def indexClient(request):
-    if request.method == "POST":
-        form = Students_from(request.POST).save()
-        return redirect('/client')
-    else:
-        form = Students_from
     modeFormat = "client"
     date = datetime.today()
 
@@ -40,8 +34,6 @@ def indexClient(request):
 
     return render(request, "indexClient.html", context={"date": date,
                                                         "modeFormat": modeFormat,
-                                                        "form": form,
-                                                        "Students": Students.objects.all(),
                                                         "response": my_list})
 
 

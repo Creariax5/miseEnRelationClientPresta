@@ -7,6 +7,7 @@ class Product(models.Model):
     name = models.CharField(max_length=20)
     price = models.FloatField(null=True, blank=True)
     img = models.CharField(max_length=200)
+    category = models.CharField(max_length=20, default="none")
 
     def __str__(self):
         return self.name
@@ -22,8 +23,8 @@ class Order(models.Model):
 
 
 class ProductAdmin(admin.ModelAdmin):
-    list_display = ('name', 'price')
-    list_filter = ('name', 'price')
+    list_display = ('name', 'price', 'category')
+    list_filter = ('category', 'price')
     search_fields = ('name',)
 
 

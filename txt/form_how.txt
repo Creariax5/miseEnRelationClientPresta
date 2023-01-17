@@ -1,0 +1,12 @@
+<form method="POST" class="post_form">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit" class="save_btn">
+        Enregistrer
+    </button>
+</form>
+{% for element in Students %}
+    {{ element.name }}<br />
+    {{ element.email }}<br />
+    ----------------------------------<br />
+{% endfor %}

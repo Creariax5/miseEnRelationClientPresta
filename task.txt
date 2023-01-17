@@ -11,9 +11,16 @@
 #11 add opening system for pokeball ❌
 #12 add authenticate to access to the site ❌
 #13 add categories for the objects ❌
+#14 add pokemon in database ❌
 
 
 
 
 
 /imagine prompt:Pokemon monster creature NFT, vibrant --ar 3:2 --v 4 --stylize 500 --q 2
+
+
+product/object type list/category {
+    -none
+    -pokeball
+}
