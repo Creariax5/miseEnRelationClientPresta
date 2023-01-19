@@ -1,9 +1,9 @@
 import requests
 import json
 from django.shortcuts import render, redirect
-from _datetime import datetime
 import sys
 from .give_object import object_str_to_list, object_list_to_context
+from .give_pokemon import pkm_str_to_list, pkm_list_to_context
 
 sys.path[:0] = ['../']
 from authentication.models import Profile
@@ -68,4 +68,30 @@ def demande(request):
 
 
 def my_pokemons(request):
-    return render(request, "my_pokemons.html")
+    url = "https://pokemon-go1.p.rapidapi.com/pokemon_names.json"
+
+    headers = {
+        "X-RapidAPI-Key": "2791ff7022mshc7cf931913ff7d6p16c6eejsna69458bab2e5",
+        "X-RapidAPI-Host": "pokemon-go1.p.rapidapi.com"
+    }
+
+    response = requests.request("GET", url, headers=headers)
+
+    pks = response.text
+    aDict = json.loads(pks)
+    my_list = []
+    i = 1
+    while i != 722:
+        my_low = aDict[str(i)]['name'].lower()
+        my_list.append(my_low)
+        i += 1
+
+    current_user = request.user
+    profile = Profile.objects.filter(user=current_user)
+
+    my_pokemon = pkm_str_to_list(profile, current_user)
+    pokemon_list = pkm_list_to_context(my_list, my_pokemon)
+
+    return render(request, "my_pokemons.html", context={"pokemon_list": pokemon_list,
+                                                        "my_pokemon": my_pokemon,
+                                                        "profile": profile})

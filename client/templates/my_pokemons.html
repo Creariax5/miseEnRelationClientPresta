@@ -1,4 +1,13 @@
 {% extends 'navbar.html' %}
 {% block nav %}
-<p>my_demande</p>
+<div class="poke">
+<h1 class="pp">My pokemons</h1>
+
+{% for pokemon in pokemon_list %}
+    <div class="div_slot">
+        <div class="slot"><a href="https://pokemondb.net/pokedex/{{ pokemon }}"><img src="https://img.pokemondb.net/sprites/x-y/normal/{{ pokemon }}.png" alt="{{ pokemon }}" class="img"></a></div>
+        <p class="pp">{{ pokemon }}</p>
+    </div>
+{% endfor %}
+</div>
 {% endblock %}

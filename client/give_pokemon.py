@@ -17,23 +17,17 @@ def pkm_str_to_list(profile, current_user):
     return my_pokemons
 
 
-def pkm_list_to_context(product, my_pokemons):
+def pkm_list_to_context(my_list, my_pokemons):
     i = 0
-    product_list = []
-    for pr in product:
-        d = dict()
-        if len(my_pokemons) <= i:
-            d['nb'] = 1
-        else:
-            d['nb'] = int(my_pokemons[i])
-
-        d['name'] = pr.name
-        print(pr.name)
-        d['img'] = pr.img
-        product_list.append(d, )
+    print(my_list)
+    pokemon_list = []
+    for pr in my_list:
+        if my_pokemons[i] > 0:
+            pokemon_list.append(pr)
 
         i += 1
-    return product_list
+
+    return pokemon_list
 
 
 def give_pkm(profiles, current_user, nb, productId, profile):
