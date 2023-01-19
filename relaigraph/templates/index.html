@@ -1,6 +1,9 @@
 {% extends 'navbar.html' %}
 {% block nav %}
-    <div id="top">
+
+    <div id="cote">
+        <p>menu</p>
+        <div id="top">
         {% if user.is_authenticated %}
             <p>{{ user.username }}
             {{ id }}</p>
@@ -19,13 +22,12 @@
         <a href="/login"><h2>login</h2></a>
         {% endif %}
     </div>
-
-    <h1>Choisissez votre mode</h1>
-    <div id="client">
-        <a href="/client"><h2>client</h2></a>
     </div>
-    <div id="graph">
-        <a href="/graph"><h2>graph</h2></a>
+    <div id="content">
+        <p>content</p>
+        <div id="img">
+            <img class="imgs" src="https://media.discordapp.net/attachments/786291487801081876/1065606624053579877/IAorARTIST_Pokemon_monster_NFT_collection_bcd5d804-e52f-4b14-a586-23de7cd7b40c-removebg-preview.png" alt="presentation"/>
+        </div>
     </div>
 
     {% if admin %}

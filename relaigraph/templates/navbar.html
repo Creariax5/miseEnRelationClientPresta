@@ -36,7 +36,7 @@ header {
     left: 0;
     right: 0;
     top: 0px;
-    height: 30px;
+    height: 60px;
     display: flex;
     align-items: center;
     z-index: 1;
@@ -46,7 +46,8 @@ header * {
 }
 
 header li {
-    margin: 20px;
+    margin: 30px;
+    font-size: 30px;
 }
 
 header li a {
@@ -107,6 +108,31 @@ content {
 
     /* Doesn't allow to select the content inside */
     user-select: none;
+}
+
+#cote {
+    position: fixed;
+    margin: auto;
+    background: hsla(0, 0%, 10%, 0.75);
+    height: 100%;
+    width: 250px;
+}
+
+.imgs{
+    position: absolute;
+    width : 500px;
+    height : 500px;
+    top: 0px;
+    right: 250px;
+}
+
+#content {
+    position: fixed;
+    margin: auto;
+    /*background: hsla(0, 40%, 10%, 0.75);*/
+    height: 100%;
+    width: 100%;
+    left: 250px;
 }
 
 /* ______Pokedex______ */
@@ -274,6 +300,9 @@ content {
     </nav>
 </header>
 <br>
+<br>
+<br>
+
 
 <content>
 {% block nav %}
