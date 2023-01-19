@@ -12,6 +12,7 @@
 #12 add authenticate to access to the site ❌
 #13 add categories for the objects ❌
 #14 add pokemon in database ❌
+#15 add trading room/swap hall ❌
 
 
 

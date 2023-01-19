@@ -8,12 +8,11 @@ urlpatterns = [
     path('nav/', navbar),
     path('', include("authentication.urls")),
     path('', include("django.contrib.auth.urls")),
-
     path('client/', include("client.urls")),
-
     path('graph/', include("graph.urls")),
-
     path('payment/', include("payment.urls")),
+
+    path('split/', split),
 
     path('admin/', admin.site.urls),
 ]

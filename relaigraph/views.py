@@ -25,11 +25,18 @@ def index(request):
                 pr.money += 10
                 pr.save()
                 print("add", current_user.username)
-        return render(request, "index.html", context={"admin": admin,
-                                                      "profiles": profiles,
-                                                      "id": my_id,
-                                                      "user": current_user,
-                                                      "profile": profile})
+        if admin:
+            return render(request, "admin.html", context={"admin": admin,
+                                                          "profiles": profiles,
+                                                          "id": my_id,
+                                                          "user": current_user,
+                                                          "profile": profile})
+        else:
+            return render(request, "admin.html", context={"admin": admin,
+                                                          "profiles": profiles,
+                                                          "id": my_id,
+                                                          "user": current_user,
+                                                          "profile": profile})
 
     else:
         return render(request, "index.html")
@@ -37,3 +44,7 @@ def index(request):
 
 def navbar(request):
     return render(request, "navbar.html")
+
+
+def split(request):
+    return render(request, "split.html")

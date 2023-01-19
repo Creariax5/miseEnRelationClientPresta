@@ -1,0 +1,37 @@
+{% extends 'index.html' %}
+{% block admin %}
+    <div class="draggable" id="admin">
+                <a href="/admin"><h1>admin</h1></a>
+                <form method="POST" class="post_form">
+                    {% csrf_token %}
+                    {{ form.as_p }}
+                    <button type="submit" class="save_btn">
+                        refresh pokemon data in database
+                    </button>
+                </form>
+    
+                <br>
+    
+                <a href="/payment"><h1>pay</h1></a>
+                <form method="POST" class="post_form" name="money">
+                    {% csrf_token %}
+                    <button type="submit" class="save_btn" name="money">
+                        money
+                    </button>
+                </form>
+                <form method="POST" class="post_form" name="give_all">
+                    {% csrf_token %}
+                    <button type="submit" class="save_btn" name="give_all">
+                        give all
+                    </button>
+                </form>
+                <br>
+                <br>
+                {% for p in profiles %}
+                    Username: {{ p }}<br>
+                    money: {{ p.money }}<br>
+                    Date edit: {{ p.date_modified }}<br>
+                    <br>
+                {% endfor %}
+            </div>
+{% endblock %}
