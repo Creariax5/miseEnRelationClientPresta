@@ -2,18 +2,16 @@
 {% block nav %}
 <p>store</p>
 {% for p in product %}
-    <img class="pkb" src="{{ p.img }}" />
-    <p>{{ p.name }} {{ p.price }} €</p>
-    <form method="POST" class="post_form">
-        {% csrf_token %}
-        <input type="number" id="nb" name="nb" value="1" min="1" max="10000">
-        <button type="submit" class="save_btn" id="this_id" name="this_id" value="{{ p.id }}">
-            buy
-        </button>
-    </form>
-    <br>
-    <p>___________________________________________________________________________</p>
-    <br>
-    <br>
+    <div class="obj_slot">
+        <img class="pkb" src="{{ p.img }}" />
+        <p>{{ p.name }} {{ p.price }} €</p>
+        <form method="POST" class="post_form">
+            {% csrf_token %}
+            <input type="number" id="nb" name="nb" value="1" min="1" max="10000">
+            <button type="submit" class="save_btn" id="this_id" name="this_id" value="{{ p.id }}">
+                buy
+            </button>
+        </form>
+    </div>
 {% endfor %}
 {% endblock %}

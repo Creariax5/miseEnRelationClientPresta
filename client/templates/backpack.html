@@ -4,6 +4,7 @@
 
 {% for p in product_list %}
     {% if p.nb > 0 %}
+    <div class="obj_slot">
         <img class="pkb" src="{{ p.img }}" />
         <p>{{ p.nb }}  {{ p.name }}</p>
         <form method="POST" class="post_form">
@@ -12,10 +13,8 @@
                 open
             </button>
         </form>
-        <p>___________________________________________________________________________</p>
-        <br>
+    </div>
     {% endif %}
-    <br>
 {% endfor %}
 
 {% if open_obj %}
@@ -37,8 +36,8 @@
 {% endif %}
 
 {% for pr in profile %}
-    money: {{ pr.money }}<br>
-    my objects: {{ pr.my_objects }}<br>
+    <p>money: {{ pr.money }}</p>
+    <p>my objects: {{ pr.my_objects }}</p>
     <br>
 {% endfor %}
 

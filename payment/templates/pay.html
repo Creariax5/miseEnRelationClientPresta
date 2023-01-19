@@ -1,7 +1,7 @@
 {% extends 'navbar.html' %}
 {% block nav %}
-        <p>{{ product.name }} {{ product.price }} € * {{ nb }}</p>
-        <br>
+    <div class="obj_slot">
+        <h2 class="pp"><p>{{ product.name }} {{ product.price }} € * {{ nb }}</p></h2>
         <br>
         <br>
         <br>
@@ -11,6 +11,7 @@
         <br>
         <br>
         <div id="paypal-button-container"></div>
+    </div>
 
         <!-- Sample PayPal credentials (client-id) are included -->
         <script src="https://www.paypal.com/sdk/js?client-id=AfK20ZjlGPpSSoaMJtVV84eRIMTP1pWjxbcxFWXVPdAfGtqNnYtgLaSbKeN6WBvzLN2wRFN_LojTZNwF&currency=USD&intent=capture&enable-funding=venmo" data-sdk-integration-source="integrationbuilder"></script>
