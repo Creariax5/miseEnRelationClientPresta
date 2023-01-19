@@ -27,6 +27,15 @@
                 </form>
                 <br>
                 <br>
+                <form method="POST" class="post_form" name="add_pokemon">
+                    {% csrf_token %}
+                    <h2><label>pokemon id: </label>
+                    <input type="text" name="pkm_id" id="pkm_id" value="0" required></h2>
+                    <button type="submit" class="save_btn" name="add_pokemon">
+                        give pokemon
+                    </button>
+                <br>
+                <br>
                 {% for p in profiles %}
                     Username: {{ p }}<br>
                     money: {{ p.money }}<br>

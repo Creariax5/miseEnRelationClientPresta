@@ -2,8 +2,8 @@ from django.urls import path
 from .views import *
 
 urlpatterns = [
-    path('', indexClient),
+    path('', pokedex),
     path('backpack/', backpack),
     path('demande/', demande),
-    path('my_demande/', my_demande),
+    path('my_pokemons/', my_pokemons),
 ]

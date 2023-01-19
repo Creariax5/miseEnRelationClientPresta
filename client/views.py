@@ -3,17 +3,14 @@ import json
 from django.shortcuts import render, redirect
 from _datetime import datetime
 import sys
-from .tests import object_str_to_list, object_list_to_context
+from .give_object import object_str_to_list, object_list_to_context
 
 sys.path[:0] = ['../']
 from authentication.models import Profile
 from payment.models import Product
 
 
-def indexClient(request):
-    modeFormat = "client"
-    date = datetime.today()
-
+def pokedex(request):
     url = "https://pokemon-go1.p.rapidapi.com/pokemon_names.json"
 
     headers = {
@@ -32,9 +29,7 @@ def indexClient(request):
         my_list.append(my_low)
         i += 1
 
-    return render(request, "indexClient.html", context={"date": date,
-                                                        "modeFormat": modeFormat,
-                                                        "response": my_list})
+    return render(request, "pokedex.html", context={"response": my_list})
 
 
 def backpack(request):
@@ -72,5 +67,5 @@ def demande(request):
     return render(request, "demande.html")
 
 
-def my_demande(request):
-    return render(request, "my_demande.html")
+def my_pokemons(request):
+    return render(request, "my_pokemons.html")

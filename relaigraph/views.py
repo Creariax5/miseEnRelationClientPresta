@@ -3,6 +3,7 @@ import sys
 
 sys.path[:0] = ['../']
 from authentication.models import Profile
+from client.give_pokemon import give_pkm
 
 
 def index(request):
@@ -25,6 +26,12 @@ def index(request):
                 pr.money += 10
                 pr.save()
                 print("add", current_user.username)
+
+        elif 'add_pokemon' in request.POST:
+            pokemon_id = request.POST['pkm_id']
+
+            give_pkm(profiles, current_user, 1, pokemon_id, profile)
+
         if admin:
             return render(request, "admin.html", context={"admin": admin,
                                                           "profiles": profiles,

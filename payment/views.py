@@ -6,7 +6,7 @@ import sys
 
 sys.path[:0] = ['../']
 from authentication.models import Profile
-from client.tests import object_str_to_list, give_object
+from client.give_object import object_str_to_list, give_object
 
 
 def store(request):
