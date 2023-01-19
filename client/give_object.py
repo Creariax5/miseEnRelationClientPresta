@@ -21,8 +21,8 @@ def object_list_to_context(product, my_objects):
     product_list = []
     for pr in product:
         d = dict()
-        if len(my_objects) <= 0:
-            d['nb'] = 1
+        if len(my_objects) <= i:
+            d['nb'] = 0
         else:
             d['nb'] = int(my_objects[i])
 

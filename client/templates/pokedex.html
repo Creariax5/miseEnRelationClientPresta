@@ -2,11 +2,15 @@
 {% block nav %}
 <div class="poke">
 <h1 class="pp">Pokedex</h1>
-
-{% for element in response %}
+{% for p in pokemon_list %}
     <div class="div_slot">
-        <div class="slot"><a href="https://pokemondb.net/pokedex/{{ element }}"><img src="https://img.pokemondb.net/sprites/x-y/normal/{{ element }}.png" alt="{{ element }}" class="img"></a></div>
-        <p class="pp">{{ element }}</p>
+        {% if p.nb > 0 %}
+            <div class="slot"><a href="https://pokemondb.net/pokedex/{{ p.name }}"><img src="https://img.pokemondb.net/sprites/x-y/normal/{{ p.name }}.png" alt="{{ p.name }}" class="img"></a></div>
+            <p class="pp">{{ p.name }}</p>
+        {% else %}
+            <div class="slot"><a href="https://pokemondb.net/pokedex/{{ p.name }}"><img src="https://img.pokemondb.net/sprites/x-y/normal/{{ p.name }}.png" alt="{{ p.name }}" class="img_none"></a></div>
+            <p class="pp">{{ p.name }}</p>
+        {% endif %}
     </div>
 {% endfor %}
 </div>

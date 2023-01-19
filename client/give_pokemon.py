@@ -19,7 +19,6 @@ def pkm_str_to_list(profile, current_user):
 
 def pkm_list_to_context(my_list, my_pokemons):
     i = 0
-    print(my_list)
     pokemon_list = []
     for pr in my_list:
         if my_pokemons[i] > 0:
@@ -27,6 +26,26 @@ def pkm_list_to_context(my_list, my_pokemons):
 
         i += 1
 
+    return pokemon_list
+
+
+def pkm_list_by_nb(pokemons, my_pokemons):
+    i = 0
+    pokemon_list = []
+    print(my_pokemons)
+    for pr in pokemons:
+        d = dict()
+        if len(my_pokemons) <= i:
+            d['nb'] = 0
+        else:
+            d['nb'] = int(my_pokemons[i])
+
+        d['name'] = pokemons[i]
+        print(pokemons[i])
+        print(d)
+        pokemon_list.append(d, )
+
+        i += 1
     return pokemon_list
 
 

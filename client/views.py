@@ -3,7 +3,7 @@ import json
 from django.shortcuts import render, redirect
 import sys
 from .give_object import object_str_to_list, object_list_to_context
-from .give_pokemon import pkm_str_to_list, pkm_list_to_context
+from .give_pokemon import pkm_str_to_list, pkm_list_to_context, pkm_list_by_nb
 
 sys.path[:0] = ['../']
 from authentication.models import Profile
@@ -29,7 +29,17 @@ def pokedex(request):
         my_list.append(my_low)
         i += 1
 
-    return render(request, "pokedex.html", context={"response": my_list})
+    current_user = request.user
+    profile = Profile.objects.filter(user=current_user)
+
+    my_pokemon = pkm_str_to_list(profile, current_user)
+    pokemon_list = pkm_list_by_nb(my_list, my_pokemon)
+
+    print(pokemon_list[1])
+    print(pokemon_list[1]["name"])
+
+    return render(request, "pokedex.html", context={"pokemon_list": pokemon_list,
+                                                        "profile": profile})
 
 
 def backpack(request):
@@ -40,6 +50,9 @@ def backpack(request):
 
     my_objects = object_str_to_list(profile, current_user)
     product_list = object_list_to_context(product, my_objects)
+
+    print(product_list[1])
+    print(product_list[1]["name"])
 
     if request.method == "POST":
         claim = "0"

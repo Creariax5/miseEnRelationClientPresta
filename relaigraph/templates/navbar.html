@@ -178,10 +178,26 @@ content {
         text-align:center;
         margin:auto;
         display: flex;
+        image-rendering: pixelated;
     }
 
     .img:hover{
         filter: contrast(1);
+    }
+
+.img_none{
+        height: 150px;
+        width: 150px;
+        filter: contrast(1);
+        text-align:center;
+        margin:auto;
+        display: flex;
+        image-rendering: pixelated;
+        filter: contrast(0);
+    }
+
+    .img_none:hover{
+        filter: contrast(0);
     }
 
 /* ______BACKPACK______ */
