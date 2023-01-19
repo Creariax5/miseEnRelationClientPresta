@@ -14,6 +14,7 @@ def pkm_str_to_list(profile, current_user):
             for j in range(722-len(my_pokemons)):
                 my_pokemons.append(0)
         print(my_pokemons)
+    print("give_pokemon.pkm_str_to_list")
     return my_pokemons
 
 
@@ -25,14 +26,13 @@ def pkm_list_to_context(my_list, my_pokemons):
             pokemon_list.append(pr)
 
         i += 1
-
+    print("give_pokemon.pkm_list_to_context")
     return pokemon_list
 
 
 def pkm_list_by_nb(pokemons, my_pokemons):
     i = 0
     pokemon_list = []
-    print(my_pokemons)
     for pr in pokemons:
         d = dict()
         if len(my_pokemons) <= i:
@@ -41,11 +41,9 @@ def pkm_list_by_nb(pokemons, my_pokemons):
             d['nb'] = int(my_pokemons[i])
 
         d['name'] = pokemons[i]
-        print(pokemons[i])
-        print(d)
         pokemon_list.append(d, )
-
         i += 1
+    print("give_pokemon.pkm_list_by_nb")
     return pokemon_list
 
 
@@ -61,3 +59,4 @@ def give_pkm(profiles, current_user, nb, productId, profile):
             pr.save()
 
             print("add ", nb, " ", productId)
+    print("give_pokemon.give_pkm")

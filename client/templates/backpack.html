@@ -20,11 +20,13 @@
 {% if open_obj %}
     <style>
         body {
-                overflow:hidden;
+            overflow: hidden;
         }
     </style>
     <div class="gray">
         <div class="open_box">
+
+            <img src="https://cdn.discordapp.com/attachments/786291487801081876/1065729502791090347/pokeball-pokemon.gif"/>
             <form method="POST" class="post_form">
             {% csrf_token %}
                 <button type="submit" class="claim_box" name="this_id" value="1">

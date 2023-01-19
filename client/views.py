@@ -35,9 +35,6 @@ def pokedex(request):
     my_pokemon = pkm_str_to_list(profile, current_user)
     pokemon_list = pkm_list_by_nb(my_list, my_pokemon)
 
-    print(pokemon_list[1])
-    print(pokemon_list[1]["name"])
-
     return render(request, "pokedex.html", context={"pokemon_list": pokemon_list,
                                                         "profile": profile})
 
@@ -51,19 +48,18 @@ def backpack(request):
     my_objects = object_str_to_list(profile, current_user)
     product_list = object_list_to_context(product, my_objects)
 
-    print(product_list[1])
-    print(product_list[1]["name"])
-
     if request.method == "POST":
         claim = "0"
         claim = request.POST['this_id']
         if claim == "1":
             return render(request, "backpack.html", context={"product_list": product_list,
                                                              "my_objects": my_objects,
-                                                             "profile": profile})
+                                                             "profile": profile,
+                                                             "claim": claim})
 
     if request.method == "POST":
         this_id = request.POST['this_id']
+        print(this_id)
         open_obj = True
         return render(request, "backpack.html", context={"product_list": product_list,
                                                          "my_objects": my_objects,

@@ -13,6 +13,7 @@ def object_str_to_list(profile, current_user):
             my_objects = my_objects.replace("'", "")
             my_objects = my_objects.replace("]", "")
         my_objects = list(my_objects.split(", "))
+    print("give_object.object_str_to_list")
     return my_objects
 
 
@@ -27,11 +28,11 @@ def object_list_to_context(product, my_objects):
             d['nb'] = int(my_objects[i])
 
         d['name'] = pr.name
-        print(pr.name)
         d['img'] = pr.img
         product_list.append(d, )
 
         i += 1
+    print("give_object.object_list_to_context")
     return product_list
 
 
@@ -45,6 +46,7 @@ def give_object(profiles, current_user, nb, productId, profile):
             pr.save()
 
             print("add ", nb, " ", productId)
+    print("give_object.give_object")
 
 
 def give_money(profiles, current_user, nb):
@@ -53,3 +55,4 @@ def give_money(profiles, current_user, nb):
             pr.money += 100 * int(nb)
             pr.save()
             print("add", current_user.username)
+    print("give_object.give_money")
