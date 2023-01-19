@@ -1,20 +1,25 @@
 {% extends 'navbar.html' %}
 {% block nav %}
 <p>login</p>
+
+<div class="login">
 <form method="POST" class="post_form">
     {% csrf_token %}
 
     <div class="form-example">
-        <label for="username">username: </label>
-        <input type="text" name="username" id="username" required>
+        <h2><label for="username">username: </label>
+        <input type="text" name="username" id="username" required></h2>
     </div>
     <div class="form-example">
-        <label for="password">password: </label>
-        <input type="password" name="password" id="password" required>
+        <h2><label for="password">password: </label>
+        <input type="password" name="password" id="password" required></h2>
     </div>
 
     <button type="submit" class="save_btn">
         Enregistrer
     </button>
 </form>
+<br>
+<p>if you don't have an account yet: <a href="/register">register</a></p>
+</div>
 {% endblock %}

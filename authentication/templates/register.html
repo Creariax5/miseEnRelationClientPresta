@@ -1,13 +1,17 @@
 {% extends 'navbar.html' %}
 {% block nav %}
 <p>register</p>
+<div class="register">
 <form method="POST" class="post_form">
     {% csrf_token %}
 
-    {{ form.as_p }}
+    <p class="bl">{{ form.as_p }}</p>
 
     <button type="submit" class="save_btn">
         Enregistrer
     </button>
 </form>
+<br>
+<p>if you already have an account: <a href="/login">login</a></p>
+</div>
 {% endblock %}
