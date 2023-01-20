@@ -30,7 +30,7 @@ def paymentComplete(request):
     profile = Profile.objects.filter(user=current_user)
     body = json.loads(request.body)
 
-    product = Product.objects.get(id=body['productId'])
+    product = Product.objects.get(id=str(int(body['productId'])-1))
     Order.objects.create(
         product=product,
         buyer=current_user.username
@@ -38,7 +38,7 @@ def paymentComplete(request):
 
     profiles = Profile.objects.all()
     nb = body['number']
-    productId = int(body['productId'])
+    productId = int(body['productId'])-1
 
     give_object(profiles, current_user, nb, productId, profile)
 

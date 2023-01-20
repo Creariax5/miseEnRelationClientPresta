@@ -59,15 +59,15 @@ def backpack(request):
                                                              "claim": claim})
 
     if request.method == "POST":
-        this_id = request.POST['this_id']
-        print('this_id ', this_id)
+        this_id = int(request.POST['this_id'])
+        this_id -= 1
         too_many = open_pkb(this_id, profiles, current_user, profile)
         open_obj = True
         return render(request, "backpack.html", context={"product_list": product_list,
-                                                             "my_objects": my_objects,
-                                                             "profile": profile,
-                                                             "this_id": this_id,
-                                                             "open_obj": open_obj})
+                                                         "my_objects": my_objects,
+                                                         "profile": profile,
+                                                         "this_id": this_id,
+                                                         "open_obj": open_obj})
 
     return render(request, "backpack.html", context={"product_list": product_list,
                                                      "my_objects": my_objects,
