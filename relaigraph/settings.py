@@ -32,6 +32,7 @@ INSTALLED_APPS = [
     'payment',
     'letschat',
     'trade',
+    'games',
 ]
 
 MIDDLEWARE = [

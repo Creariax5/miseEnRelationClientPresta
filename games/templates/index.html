@@ -1,0 +1,37 @@
+{% extends 'navbar.html' %}
+{% block nav %}
+
+    <div id="cote">
+        <p>menu</p>
+        <div id="top">
+        {% if user.is_authenticated %}
+            <p>{{ user.username }}
+            {{ id }}</p>
+            <br>
+            <br>
+            {% for pr in profile %}
+                <p>Username: {{ pr }}</p>
+                <p>money: {{ pr.money }}</p>
+                <p>Date edit: {{ pr.date_modified }}</p>
+                <br>
+            {% endfor %}
+
+        <a href="/logout"><h2>logout</h2></a>
+        {% else %}
+        <a href="/register"><h2>register</h2></a>
+        <a href="/login"><h2>login</h2></a>
+        {% endif %}
+    </div>
+    </div>
+    <div id="content">
+        <p>content</p>
+        <div id="img">
+            <img class="imgs" src="https://media.discordapp.net/attachments/786291487801081876/1065606624053579877/IAorARTIST_Pokemon_monster_NFT_collection_bcd5d804-e52f-4b14-a586-23de7cd7b40c-removebg-preview.png" alt="presentation"/>
+        </div>
+    </div>
+
+    {% if admin %}
+        {% block admin %}
+        {% endblock %}
+    {% endif %}
+{% endblock %}
