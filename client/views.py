@@ -8,6 +8,7 @@ from .give_pokemon import pkm_str_to_list, pkm_list_to_context, pkm_list_by_nb
 sys.path[:0] = ['../']
 from authentication.models import Profile
 from payment.models import Product
+from client.give_pokemon import open_pkb
 
 
 def pokedex(request):
@@ -36,7 +37,7 @@ def pokedex(request):
     pokemon_list = pkm_list_by_nb(my_list, my_pokemon)
 
     return render(request, "pokedex.html", context={"pokemon_list": pokemon_list,
-                                                        "profile": profile})
+                                                    "profile": profile})
 
 
 def backpack(request):
@@ -44,12 +45,12 @@ def backpack(request):
     product = Product.objects.all()
     current_user = request.user
     profile = Profile.objects.filter(user=current_user)
+    profiles = Profile.objects.all()
 
     my_objects = object_str_to_list(profile, current_user)
     product_list = object_list_to_context(product, my_objects)
 
     if request.method == "POST":
-        claim = "0"
         claim = request.POST['this_id']
         if claim == "1":
             return render(request, "backpack.html", context={"product_list": product_list,
@@ -59,13 +60,14 @@ def backpack(request):
 
     if request.method == "POST":
         this_id = request.POST['this_id']
-        print(this_id)
+        print('this_id ', this_id)
+        too_many = open_pkb(this_id, profiles, current_user, profile)
         open_obj = True
         return render(request, "backpack.html", context={"product_list": product_list,
-                                                         "my_objects": my_objects,
-                                                         "profile": profile,
-                                                         "this_id": this_id,
-                                                         "open_obj": open_obj})
+                                                             "my_objects": my_objects,
+                                                             "profile": profile,
+                                                             "this_id": this_id,
+                                                             "open_obj": open_obj})
 
     return render(request, "backpack.html", context={"product_list": product_list,
                                                      "my_objects": my_objects,

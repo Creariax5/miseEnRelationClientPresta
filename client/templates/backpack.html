@@ -9,8 +9,9 @@
         <p>{{ p.nb }}  {{ p.name }}</p>
         <form method="POST" class="post_form">
             {% csrf_token %}
+
             <button type="submit" class="save_btn" id="this_id" name="this_id" value="{{ p.id }}">
-                open
+                open {{ p.id }}
             </button>
         </form>
     </div>
