@@ -1,0 +1,11 @@
+.trade_room {
+    position: relative;
+    display: inline-block;
+    margin: 30px;
+
+    border: 1px solid;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 4px 2px 2px black;
+    background-color: #333333;
+}

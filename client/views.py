@@ -3,13 +3,11 @@ import json
 from django.shortcuts import render, redirect
 import sys
 from .give_object import object_str_to_list, object_list_to_context
-from .give_pokemon import pkm_str_to_list, pkm_list_to_context, pkm_list_by_nb
+from .give_pokemon import pkm_str_to_list, pkm_list_to_context, pkm_list_by_nb, open_pkb
 
 sys.path[:0] = ['../']
 from authentication.models import Profile
 from payment.models import Product
-from client.give_pokemon import open_pkb
-
 
 def pokedex(request):
     url = "https://pokemon-go1.p.rapidapi.com/pokemon_names.json"

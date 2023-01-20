@@ -1,0 +1,72 @@
+{% extends 'navbar.html' %}
+{% block nav %}
+<style>
+#content {
+    position: fixed;
+    margin: auto;
+    /*background: hsla(0, 40%, 10%, 0.75);*/
+    height: 100%;
+    width: 100%;
+    left: 0px;
+}
+
+.trade_room {
+    position: relative;
+    display: inline-block;
+    margin: 60px;
+
+    border: 1px solid;
+    border-radius: 20px;
+    padding: 40px;
+    box-shadow: 4px 2px 2px black;
+    background-color: #333333;
+    height: 500px;
+    width: 500px;
+    float: left;
+
+}
+
+.fleche {
+    position: relative;
+    margin: 60px;
+    float: left;
+    top: 50px;
+    font-size: 75px;
+}
+
+#red{
+    background-color : red;
+}
+
+#blue{
+    background-color : blue;
+}
+
+</style>
+    <div id="content">
+        <p>trade panel</p>
+        <div class="trade_room">
+            <h1>ME: {{ current_user }}</h1>
+            {% if value == 1 %}
+                <form method="POST" class="post_form">
+                    <div id="blue" type="submit" class="trade_enter" value="2">connect</div>
+                </form>
+            {% elif value == 2 %}
+                <form method="POST" class="post_form">
+                    <div id="red" type="submit" class="trade_enter" value="3">validate</div>
+                </form>
+            {% else %}
+                <form method="POST" class="post_form">
+                    <div id="green" type="submit" class="trade_enter" value="4">confirm trade</div>
+                </form>
+            {% endif %}
+        </div>
+        <div class="fleche">
+            <h1>⇋</h1>
+        </div>
+        <div class="trade_room">
+            <h1>other player</h1>
+            <div id="." class="trade_enter" value="1">validate</div>
+        </div>
+    </div>
+{% endblock %}

@@ -12,6 +12,7 @@ urlpatterns = [
     path('graph/', include("graph.urls")),
     path('payment/', include("payment.urls")),
     path('chat/', include("letschat.urls")),
+    path('trade/', include("trade.urls")),
 
     path('split/', split),
 

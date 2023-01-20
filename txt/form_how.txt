@@ -5,6 +5,8 @@
         Enregistrer
     </button>
 </form>
+
+
 {% for element in Students %}
     {{ element.name }}<br />
     {{ element.email }}<br />
