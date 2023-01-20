@@ -11,6 +11,7 @@ urlpatterns = [
     path('client/', include("client.urls")),
     path('graph/', include("graph.urls")),
     path('payment/', include("payment.urls")),
+    path('chat/', include("letschat.urls")),
 
     path('split/', split),
 

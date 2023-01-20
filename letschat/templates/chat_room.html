@@ -1,0 +1,14 @@
+{% extends 'navbar.html' %}
+{% block nav %}
+<div class="container">
+    <h1>What chat room would you like to enter?</h1><br>
+    <input id="roomname" type="text" size="100"><br><br>
+    <input id="submit" type="button" value="Enter">
+</div>
+<script>
+document.querySelector('#submit').onclick= function(e) {
+    var myRoom = document.querySelector('#roomname').value;
+    window.location.pathname = 'chat/room/' + myRoom + '/';
+};
+</script>
+{% endblock %}

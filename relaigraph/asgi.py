@@ -8,9 +8,21 @@ https://docs.djangoproject.com/en/4.1/howto/deployment/asgi/
 """
 
 import os
-
+from channels.routing import ProtocolTypeRouter
 from django.core.asgi import get_asgi_application
 
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'relaigraph.settings')
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'letschat.settings')
+application = ProtocolTypeRouter({
+    "http": get_asgi_application()
+})
 
-application = get_asgi_application()
+from channels.auth import AuthMiddlewareStack
+import letschat.routing
+application = ProtocolTypeRouter({
+    "http": get_asgi_application(),
+    "websocket": AuthMiddlewareStack(
+        URLRouter(
+            letschat.routing.websocket_urlpatterns
+        )
+    ),
+})

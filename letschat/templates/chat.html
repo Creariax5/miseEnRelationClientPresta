@@ -1,0 +1,32 @@
+{% extends 'navbar.html' %}
+{% block nav %}
+<div class="container2">
+  <p>Chats Log</p>
+  <textarea id="log" cols="100" rows="20"></textarea><br>
+  <p>Enter your chats here</p>
+  <input id="mssg" type="text" size="100" placeholder="Your message goes here..."><br><br> <input id="submit" type="button" value="Send">
+</div>
+{{ room_name|json_script:"roomname" }}
+<script>
+const roomName = JSON.parse(document.getElementById('roomname').textContent);
+const chatSocket = new WebSocket(
+  'ws://'
+  + window.location.host
+  + '/ws/chat/'
+  + roomName
+  + '/'
+  )
+  chatSocket.onmessage = function(e) {
+    const data = JSON.parse(e.data);
+    document.querySelector('#log').value += (data.message + '\n');
+  };
+  chatSocket.onclose = function(e) {
+    console.error('Ooops! Chats closed.');
+  };
+  document.querySelector('#submit').onclick= function(e) {
+    const messageDom = document.querySelector('#mssg');
+    const message = messageDom.value;
+    chatSocket.send(JSON.stringify({ 'message': message }))
+  };
+</script>
+{% endblock %}

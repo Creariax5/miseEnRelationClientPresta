@@ -5,15 +5,15 @@
 #5 add pokemon description when clic on it in pokedex ✔️
 #6 pokeball buy with user money ❌
 #7 limited number of pokeball each day with a system of bid ❌
-#8 add a field in a database to know which user owns which pokemon ❌
-#9 in pokedex if the connected user don't own the pokemon his image will be gray ❌
-#10 add navbar ❌
-#11 add opening system for pokeball ❌
+#8 add a field in a database to know which user owns which pokemon ✔️
+#9 in pokedex if the connected user don't own the pokemon his image will be gray ✔️
+#10 add navbar ✔️
+#11 add opening system for pokeball ✔️
 #12 add authenticate to access to the site ❌
 #13 add categories for the objects ❌
-#14 add pokemon in database ❌
+#14 add pokemon in database ➖
 #15 add trading room/swap hall ❌
-
+#16 add animation when open a pokeball ❌
 
 
 
