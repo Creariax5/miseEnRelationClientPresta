@@ -29,5 +29,4 @@ def send(request):
 
 def getMessages(request, room):
     messages = Message.objects.filter(room=room)
-    print(list(messages.values()))
     return JsonResponse({"messages": list(messages.values())})

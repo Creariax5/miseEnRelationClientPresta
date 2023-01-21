@@ -2,14 +2,40 @@
 {% block nav %}
 <script   src="https://code.jquery.com/jquery-3.1.1.min.js"   integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="   crossorigin="anonymous"></script>
 
+<style>
+  #display {
+    position: relative;
+    display: inline-block;
+    margin: 30px;
+
+    border: 1px solid;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 4px 2px 2px black;
+    background-color: #888888;
+    height: 600px;
+    width: 400px;
+    overflow: auto;
+    resize: both;
+}
+
+#msg {
+    position: relative;
+    display: inline-block;
+    margin: 10px;
+
+    border: 1px solid;
+    border-radius: 10px;
+    padding: 8px;
+    box-shadow: 4px 2px 2px black;
+    background-color: #555555;
+}
+
+</style>
+
 <p>room: {{ room_name }}</p>
 
 <div id="display">
-
-<!-- <div class="container darker">
-  <b>Tom</b><p>Hello Everyone, How Are You Guys Doing?</p>
-  <span class="time-left">20th, April 2021</span>
-</div> -->
 
 </div>
 
@@ -25,7 +51,7 @@ setInterval(function(){
             $("#display").empty();
             for (var key in response.messages)
             {
-                var temp="<div class='container darker'><b>"+response.messages[key].user+"</b><p>"+response.messages[key].value+"</p><span class='time-left'>"+response.messages[key].date+"</span></div>";
+                var temp="<div id='msg'>"+response.messages[key].user+"<p>"+response.messages[key].value+"</p><span class='time-left'>"+response.messages[key].date+"</span></div><br>";
                 $("#display").append(temp);
             }
         },
@@ -33,7 +59,9 @@ setInterval(function(){
             alert('An error occured')
         }
     });
-},1000);
+    element = document.getElementById('display');
+    element.scrollTop = element.scrollHeight;
+},100);
 })
 </script>
 
