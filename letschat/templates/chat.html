@@ -1,32 +1,69 @@
 {% extends 'navbar.html' %}
 {% block nav %}
-<div class="container2">
-  <p>Chats Log</p>
-  <textarea id="log" cols="100" rows="20"></textarea><br>
-  <p>Enter your chats here</p>
-  <input id="mssg" type="text" size="100" placeholder="Your message goes here..."><br><br> <input id="submit" type="button" value="Send">
+<script   src="https://code.jquery.com/jquery-3.1.1.min.js"   integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="   crossorigin="anonymous"></script>
+
+<p>room: {{ room_name }}</p>
+
+<div id="display">
+
+<!-- <div class="container darker">
+  <b>Tom</b><p>Hello Everyone, How Are You Guys Doing?</p>
+  <span class="time-left">20th, April 2021</span>
+</div> -->
+
 </div>
-{{ room_name|json_script:"roomname" }}
+
 <script>
-const roomName = JSON.parse(document.getElementById('roomname').textContent);
-const chatSocket = new WebSocket(
-  'ws://'
-  + window.location.host
-  + '/ws/chat/'
-  + roomName
-  + '/'
-  )
-  chatSocket.onmessage = function(e) {
-    const data = JSON.parse(e.data);
-    document.querySelector('#log').value += (data.message + '\n');
-  };
-  chatSocket.onclose = function(e) {
-    console.error('Ooops! Chats closed.');
-  };
-  document.querySelector('#submit').onclick= function(e) {
-    const messageDom = document.querySelector('#mssg');
-    const message = messageDom.value;
-    chatSocket.send(JSON.stringify({ 'message': message }))
-  };
+$(document).ready(function(){
+
+setInterval(function(){
+    $.ajax({
+        type: 'GET',
+        url : "/chat/getMessages/{{room}}/",
+        success: function(response){
+            console.log(response);
+            $("#display").empty();
+            for (var key in response.messages)
+            {
+                var temp="<div class='container darker'><b>"+response.messages[key].user+"</b><p>"+response.messages[key].value+"</p><span class='time-left'>"+response.messages[key].date+"</span></div>";
+                $("#display").append(temp);
+            }
+        },
+        error: function(response){
+            alert('An error occured')
+        }
+    });
+},1000);
+})
+</script>
+
+<form id="post-form">
+  {% csrf_token %}
+  <input type="hidden" name="username" id="username" value="{{username}}"/>
+  <input type="hidden" name="room_id" id="room_id" value="{{room_details}}"/>
+  <input type="text" name="message" id="message" width="100px" />
+  <input type="submit" value="Send">
+</form>
+
+
+<script type="text/javascript">
+  $(document).on('submit','#post-form',function(e){
+    e.preventDefault();
+
+    $.ajax({
+      type:'POST',
+      url:'/chat/send',
+      data:{
+          username:$('#username').val(),
+          room_id:$('#room_id').val(),
+          message:$('#message').val(),
+        csrfmiddlewaretoken:$('input[name=csrfmiddlewaretoken]').val(),
+      },
+      success: function(data){
+         //alert(data)
+      }
+    });
+    document.getElementById('message').value = ''
+  });
 </script>
 {% endblock %}

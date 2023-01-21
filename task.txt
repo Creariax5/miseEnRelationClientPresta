@@ -1,5 +1,5 @@
 #1 setup paypal payment ✔️
-#2 link payment to profile.money ✔️
+#2 link payment to profile.Money ✔️
 #3 find a new pokemon API with FR language and pokemon img ✔️
 #4 create a pokedex with pokemon image and name ✔️
 #5 add pokemon description when clic on it in pokedex ✔️
@@ -14,6 +14,16 @@
 #14 add pokemon in database ➖
 #15 add trading room/swap hall ❌
 #16 add animation when open a pokeball ❌
+#17 realtime chat ❌
+#18 realtime games:
+    #1 chest ❌
+    #2 Carcassonne ❌
+
+
+
+________________ B U G S _________________
+
+#1 can't buy basic pokeball ❌
 
 
 

@@ -4,5 +4,7 @@ from .views import *
 app_name = 'letschat_app'
 urlpatterns = [
     path('chatroom/', letschat),
-    path('room/<str:name>/', room_name)
+    path('<str:room>/', room),
+    path('send', send, name='send'),
+    path('getMessages/<str:room>/', getMessages, name='getMessages'),
 ]
