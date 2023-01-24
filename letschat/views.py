@@ -28,5 +28,9 @@ def send(request):
 
 
 def getMessages(request, room):
+    current_user = request.user
     messages = Message.objects.filter(room=room)
-    return JsonResponse({"messages": list(messages.values())})
+    current = "my_msg"
+
+    return JsonResponse({"messages": list(messages.values()),
+                         "current_user": current})
