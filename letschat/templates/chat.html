@@ -75,7 +75,7 @@ setInterval(function(){
             $("#display").empty();
             for (var key in response.messages) {
                 console.log(response.messages[key].user);
-            	if (response.messages[key].user == "admin") {
+            	if (response.messages[key].user == "{{username}}") {
                 	var temp="<div id='my_msg'>"+response.messages[key].user+"<p>"+response.messages[key].value+"</p><span class='time_left'>"+response.messages[key].date+"</span></div><br>";
               	} else {
 					var temp="<div id='your_msg'>"+response.messages[key].user+"<p>"+response.messages[key].value+"</p><span class='time_left'>"+response.messages[key].date+"</span></div><br>";
