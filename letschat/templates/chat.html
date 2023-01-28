@@ -3,7 +3,7 @@
 <script   src="https://code.jquery.com/jquery-3.1.1.min.js"   integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="   crossorigin="anonymous"></script>
 
 <style>
-  #display {
+  #messages {
     position: relative;
     display: inline-block;
     margin: 30px;
@@ -51,55 +51,11 @@
 
 }
 
-.time_left {
-  display: none;
-}
 
 </style>
 
 <p>room: {{ room_name }}</p>
 
-<div id="display">
-
-</div>
-
-<script>
-$(document).ready(function(){
-
-setInterval(function(){
-    $.ajax({
-        type: 'GET',
-        url : "/chat/getMessages/{{room}}/",
-        success: function(response){
-            console.log(response);
-            // $("#display").empty();
-            for (var key in response.messages) {
-                console.log(response.messages[key].user);
-            	if (response.messages[key].user == "{{username}}") {
-                	var temp="<div id='my_msg'>"+response.messages[key].user+"<p>"+response.messages[key].value+"</p><span class='time_left'>"+response.messages[key].date+"</span></div><br>";
-              	} else {
-					var temp="<div id='your_msg'>"+response.messages[key].user+"<p>"+response.messages[key].value+"</p><span class='time_left'>"+response.messages[key].date+"</span></div><br>";
-              	}
-				$("#display").append(temp);
-            }
-        },
-        error: function(response){
-            alert('An error occured')
-        }
-    });
-    element = document.getElementById('display');
-    // element.scrollTop = element.scrollHeight;
-},100000);
-})
-</script>
-
-<form id="post-form">
-  {% csrf_token %}
-  <input type="hidden" name="username" id="username" value="{{username}}"/>
-  <input type="hidden" name="room_id" id="room_id" value="{{room_details}}"/>
-  <input type="text" name="message" id="message" width="100px" maxlength="500" required/>
-  <input type="submit" value="Send">
-</form>
 
 <form id="form">
         <input type="text" name="message"/>
@@ -122,7 +78,7 @@ chatSocket.onmessage = function(e){
     if(data.type === 'chat'){
         let messages = document.getElementById('messages')
 
-        messages.insertAdjacentHTML('beforeend', `<div>
+        messages.insertAdjacentHTML('beforeend', `<div id="my_msg">
                                     <p>${data.message}</p>
                                 </div>`)
     }
@@ -138,27 +94,5 @@ form.addEventListener('submit', (e)=> {
     form.reset()
 })
 
-
-
-
-
-  $(document).on('submit','#post-form',function(e){
-    e.preventDefault();
-
-    $.ajax({
-      type:'POST',
-      url:'/chat/send',
-      data:{
-          username:$('#username').val(),
-          room_id:$('#room_id').val(),
-          message:$('#message').val(),
-        csrfmiddlewaretoken:$('input[name=csrfmiddlewaretoken]').val(),
-      },
-      success: function(data){
-         //alert(data)
-      }
-    });
-    document.getElementById('message').value = ''
-  });
 </script>
 {% endblock %}
