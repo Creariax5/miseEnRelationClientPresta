@@ -30,7 +30,10 @@ def paymentComplete(request):
     profile = Profile.objects.filter(user=current_user)
     body = json.loads(request.body)
 
-    product = Product.objects.get(id=str(int(body['productId'])-1))
+    if int(body['productId']) == 2:
+        product = Product.objects.get(id=str(int(body['productId'])))
+    else:
+        product = Product.objects.get(id=str(int(body['productId'])-1))
     Order.objects.create(
         product=product,
         buyer=current_user.username

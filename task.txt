@@ -24,8 +24,8 @@
 
 ________________ B U G S _________________
 
-#1 can't buy basic pokeball ❌
-#2 when open pokeball 2 it open 1 ❌
+#1 can't buy basic pokeball ✔️
+#2 when open pokeball 2 it open 1 ✔️
 #3 don't send error when fail to login ❌
 
 

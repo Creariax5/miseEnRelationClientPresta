@@ -72,7 +72,7 @@ setInterval(function(){
         url : "/chat/getMessages/{{room}}/",
         success: function(response){
             console.log(response);
-            $("#display").empty();
+            // $("#display").empty();
             for (var key in response.messages) {
                 console.log(response.messages[key].user);
             	if (response.messages[key].user == "{{username}}") {
@@ -88,8 +88,8 @@ setInterval(function(){
         }
     });
     element = document.getElementById('display');
-    element.scrollTop = element.scrollHeight;
-},100);
+    // element.scrollTop = element.scrollHeight;
+},500);
 })
 </script>
 

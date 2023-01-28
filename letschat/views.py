@@ -28,9 +28,12 @@ def send(request):
 
 
 def getMessages(request, room):
-    current_user = request.user
-    messages = Message.objects.filter(room=room)
-    current = "my_msg"
+    messages = Message.objects.filter(room=room, last=0)
 
-    return JsonResponse({"messages": list(messages.values()),
-                         "current_user": current})
+    last_messages = Message.objects.all()
+
+    for m in last_messages:
+        m.last = 1
+        m.save()
+
+    return JsonResponse({"messages": list(messages.values())})
