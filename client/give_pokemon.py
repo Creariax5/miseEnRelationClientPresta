@@ -66,13 +66,13 @@ def give_pkm(profiles, current_user, nb, pokemon_id, profile):
 def open_pkb(this_id, profiles, current_user, profile):
     too_many = give_object(profiles, current_user, -1, this_id, profile)
     if too_many:
-        if int(this_id)+1 == 1:
+        if int(this_id) == 1:
             rnd = random.randint(1, 722)
             give_pkm(profiles, current_user, 1, rnd, profile)
-        elif int(this_id)+1 == 2:
+        elif int(this_id) == 2:
             rnd = random.randint(1, 722)
             give_pkm(profiles, current_user, 1, rnd, profile)
-        elif int(this_id)+1 == 3:
+        elif int(this_id) == 3:
             rnd = random.randint(1, 722)
             give_pkm(profiles, current_user, 1, rnd, profile)
     else:
