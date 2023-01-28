@@ -1,3 +1,5 @@
+import time
+
 from django.shortcuts import render, redirect
 from .models import Message
 from django.http import HttpResponse, JsonResponse
@@ -28,12 +30,12 @@ def send(request):
 
 
 def getMessages(request, room):
-    messages = Message.objects.filter(room=room, last=0)
+    last_messages = Message.objects.all().filter(room=room, last=0)
+    my_list = list(last_messages.values())
+    print(my_list)
+    if last_messages:
+        for m in last_messages:
+            m.last = 1
+            m.save()
 
-    last_messages = Message.objects.all()
-
-    for m in last_messages:
-        m.last = 1
-        m.save()
-
-    return JsonResponse({"messages": list(messages.values())})
+    return JsonResponse({"messages": my_list})

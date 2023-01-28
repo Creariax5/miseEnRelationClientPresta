@@ -14,7 +14,7 @@
 #14 add pokemon in database ➖
 #15 add trading room/swap hall ❌
 #16 add animation when open a pokeball ❌
-#17 realtime chat ❌
+#17 realtime chat ✔️
 #18 realtime games:
     #1 chest ❌
     #2 Carcassonne ❌
@@ -37,3 +37,5 @@ product/object type list/category {
     -none
     -pokeball
 }
+
+☑️
