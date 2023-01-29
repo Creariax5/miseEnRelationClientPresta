@@ -58,10 +58,11 @@
 
 
 <form id="form">
-        <input type="text" name="message"/>
-    </form>
+    <input type="hidden" name="user" value="{{ username }}"/>
+    <input type="text" name="message" maxlength="500" required/>
+</form>
 
-    <div id="messages"></div>
+<div id="messages"></div>
 
 
 <script type="text/javascript">
@@ -78,9 +79,17 @@ chatSocket.onmessage = function(e){
     if(data.type === 'chat'){
         let messages = document.getElementById('messages')
 
-        messages.insertAdjacentHTML('beforeend', `<div id="my_msg">
-                                    <p>${data.message}</p>
-                                </div>`)
+        if(`${data.user}` === '{{username}}'){
+            messages.insertAdjacentHTML('beforeend', `<div id="my_msg">
+                                        ${data.user}
+                                        <p>${data.message}</p>
+                                        </div>`)
+        } else {
+            messages.insertAdjacentHTML('beforeend', `<div id="your_msg">
+                                        ${data.user}
+                                        <p>${data.message}</p>
+                                        </div>`)
+        }
     }
 }
 
@@ -88,8 +97,10 @@ let form = document.getElementById('form')
 form.addEventListener('submit', (e)=> {
     e.preventDefault()
     let message = e.target.message.value
+    let user = e.target.user.value
     chatSocket.send(JSON.stringify({
-        'message':message
+        'message': message,
+        'user': user
     }))
     form.reset()
 })
