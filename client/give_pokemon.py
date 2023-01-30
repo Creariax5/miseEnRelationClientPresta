@@ -1,4 +1,5 @@
-import random
+import requests
+import json
 from .give_object import give_object
 
 
@@ -63,19 +64,35 @@ def give_pkm(profiles, current_user, nb, pokemon_id, profile):
     print("give_pokemon.give_pkm")
 
 
-def open_pkb(this_id, profiles, current_user, profile):
+def open_pkb(this_id, profiles, current_user, profile, rnd):
     too_many = give_object(profiles, current_user, -1, this_id, profile)
     if too_many:
         if int(this_id) == 1:
-            rnd = random.randint(1, 722)
             give_pkm(profiles, current_user, 1, rnd, profile)
         elif int(this_id) == 2:
-            rnd = random.randint(1, 722)
             give_pkm(profiles, current_user, 1, rnd, profile)
         elif int(this_id) == 3:
-            rnd = random.randint(1, 722)
             give_pkm(profiles, current_user, 1, rnd, profile)
     else:
         print("not enough object")
         return too_many
     print("give_pokemon.open_pkb")
+
+
+def pkm_info(my_id):
+    url = "https://pokemon-go1.p.rapidapi.com/pokemon_names.json"
+
+    headers = {
+        "X-RapidAPI-Key": "2791ff7022mshc7cf931913ff7d6p16c6eejsna69458bab2e5",
+        "X-RapidAPI-Host": "pokemon-go1.p.rapidapi.com"
+    }
+
+    response = requests.request("GET", url, headers=headers)
+
+    pks = response.text
+    aDict = json.loads(pks)
+    my_pkm = aDict[str(my_id)]['name'].lower()
+    print(my_pkm)
+
+    print("give_pokemon.pkm_info")
+    return my_pkm

@@ -1,13 +1,16 @@
+import random
+
 import requests
 import json
 from django.shortcuts import render, redirect
 import sys
 from .give_object import object_str_to_list, object_list_to_context
-from .give_pokemon import pkm_str_to_list, pkm_list_to_context, pkm_list_by_nb, open_pkb
+from .give_pokemon import pkm_str_to_list, pkm_list_to_context, pkm_list_by_nb, open_pkb, pkm_info
 
 sys.path[:0] = ['../']
 from authentication.models import Profile
 from payment.models import Product
+
 
 def pokedex(request):
     url = "https://pokemon-go1.p.rapidapi.com/pokemon_names.json"
@@ -59,12 +62,16 @@ def backpack(request):
     if request.method == "POST":
         this_id = int(request.POST['this_id'])
         this_id -= 1
-        too_many = open_pkb(this_id, profiles, current_user, profile)
+        rnd = random.randint(1, 722)
+        pkm = pkm_info(rnd)
+
+        too_many = open_pkb(this_id, profiles, current_user, profile, rnd)
         open_obj = True
         return render(request, "backpack.html", context={"product_list": product_list,
                                                          "my_objects": my_objects,
                                                          "profile": profile,
                                                          "this_id": this_id,
+                                                         "pkm": pkm,
                                                          "open_obj": open_obj})
 
     return render(request, "backpack.html", context={"product_list": product_list,

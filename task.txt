@@ -32,6 +32,8 @@ ________________ B U G S _________________
 
 /imagine prompt:Pokemon monster creature NFT, vibrant --ar 3:2 --v 4 --stylize 500 --q 2
 
+paralax
+
 
 product/object type list/category {
     -none

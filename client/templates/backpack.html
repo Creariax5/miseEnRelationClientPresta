@@ -28,6 +28,12 @@
         <div class="open_box">
 
             <img src="https://cdn.discordapp.com/attachments/786291487801081876/1065729502791090347/pokeball-pokemon.gif"/>
+            <div class="centered-element">
+                <div class="div_slot">
+                    <div class="slot"><a href="https://pokemondb.net/pokedex/{{ pkm }}"><img src="https://img.pokemondb.net/sprites/x-y/normal/{{ pkm }}.png" onerror="this.src='https://assets.stickpng.com/images/60fe96343d6240000487129f.png'" alt="{{ pkm }}" class="img"></a></div>
+                    <p class="pp">{{ pkm }}</p>
+                </div>
+            </div>
             <form method="POST" class="post_form">
             {% csrf_token %}
                 <button type="submit" class="claim_box" name="this_id" value="1">
