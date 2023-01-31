@@ -25,6 +25,31 @@
 #20 sorting system in pokedex ❌
 #21 in chat room section show rooms where peoples are connected ❌
 #22 add room modifiers like public or private ❌
+#23 add coin logo instead of "coin" ❌
+
+write somthing on the home page
+on the home page set a mask over an image to stylize
+make admin panel resizable
+link to the pokedex when card is clicked and not only when img is clicked
+make all the pokemons have their image
+add sorting sys to pokemon in pokedex
+separate pokemon by category / gen
+sys of rarity for pokemons
+add profile page where we can edit our profile
+add a page where we can follow other peoples
+add at the top the connected user and his money
+
+in store "pay with coin" button it displaying at the location where paypal button should be during its loading
+find better colors for buttons
+paypal pop up blocked (make the popup don't display)
+in pay make better the display of the price, the name, the number of article.s
+make the page don't reload when "pay with coin" button is clicked
+do that for payment recap "bit.ly/3RmHG3B"
+when en article is bought send a confirm message and redirect user to backpack
+
+
+
+make a mind map to visualize all the imports between files
 
 
 
@@ -37,6 +62,7 @@ ________________ B U G S _________________
 #4 mega pkb don't give pokemon ✔️
 #5 make room name input accept only char and int ❌
 #6 static files ❌
+#7 can't have negative money ❌
 
 
 
