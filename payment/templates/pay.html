@@ -14,14 +14,21 @@
         <p>or</p>
         <form method="POST" class="post_form">
             {% csrf_token %}
-            <button type="submit" class="buy_coin" id="this_id" name="this_id" value="{{ panel }}">
+            <button type="submit" class="buy_coin" name="this_id" value="{{ panel }}">
                 coin
             </button>
         </form>
     </div>
     {% if panel %}
         <div class="panel">
-            <p>cc</p>
+            <h2 class="pp"><p>You buy {{ nb }} {{ product.name }} pokeball for {{ coin }} coins each </p></h2>
+            <h2 class="pp"><p>Final price: {{ coin }} * {{ nb }} = {{ final }} coins</p></h2>
+            <form method="POST" class="post_form">
+            {% csrf_token %}
+            <button type="submit" class="buy_coin" name="this_id" value="{{ panel }}">
+                buy
+            </button>
+        </form>
         </div>
     {% endif %}
 

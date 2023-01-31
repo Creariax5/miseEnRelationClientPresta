@@ -21,6 +21,10 @@ def store(request):
 
 def pay(request, pk, nb):
     product = Product.objects.get(id=pk)
+
+    coin = int(product.price) * 100 / 2.5
+    final = coin * nb
+
     if request.method == "POST":
         panel = request.POST['this_id']
         if panel == "True":
@@ -30,7 +34,9 @@ def pay(request, pk, nb):
 
     return render(request, "pay.html", context={"product": product,
                                                 "nb": nb,
-                                                "panel": panel})
+                                                "panel": panel,
+                                                "coin": coin,
+                                                "final": final,})
 
 
 def paymentComplete(request):
