@@ -18,19 +18,17 @@ def room(request, nb):
     product = Product.objects.all()
     current_user = request.user
     profile = Profile.objects.filter(user=current_user)
+    username = request.user.username
     my_list = []
 
     my_objects = object_str_to_list(profile, current_user)
     product_list = object_list_to_context(product, my_objects)
 
     if request.method == "POST":
-        pkm_id = request.POST['nb']
+        pkm_id = request.POST['pkm_id']
         print(pkm_id)
         my_list.append(pkm_info(pkm_id))
         print(my_list)
-
-
-
 
     value = 2
     '''
@@ -45,4 +43,5 @@ def room(request, nb):
                                                  "profile": profile,
                                                  "current_user": current_user,
                                                  "value": value,
+                                                 'username': username,
                                                  "list": my_list})

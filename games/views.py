@@ -2,4 +2,8 @@ from django.shortcuts import render
 
 
 def games(request):
-    return render(request, "navbar.html")
+    return render(request, "games.html")
+
+
+def chess(request):
+    return render(request, "chess.html")

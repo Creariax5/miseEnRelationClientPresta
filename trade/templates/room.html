@@ -51,7 +51,8 @@
             <p>Pokemon ID</p>
             <form method="POST" class="post_form">
                 {% csrf_token %}
-                <input type="number" id="nb" name="nb" value="1" min="1" max="722">
+                <input type="hidden" name="user" value="{{ username }}"/>
+                <input type="number" id="nb" name="pkm_id" value="1" min="1" max="722">
                 <button type="submit" class="save_btn" id="this_id" name="this_id" value="hi">
                     add
                 </button>
@@ -86,5 +87,48 @@
             <h1>other player</h1>
             <div id="." class="trade_enter" value="1">validate</div>
         </div>
+        <div id="pkm_id"><h1>hello</h1></div>
     </div>
+<script type="text/javascript">
+let path = '{{ request.get_full_path }}'
+let url = `ws://${window.location.host}/ws/socket-server/`
+
+console.log(url);
+
+const chatSocket = new WebSocket(url)
+
+chatSocket.onmessage = function(e){
+    let data = JSON.parse(e.data)
+    console.log('Data:', data)
+
+    if(data.type === 'chat'){
+        let pkm_id = document.getElementById('pkm_id')
+
+        if(`${data.user}` === '{{username}}'){
+            messages.insertAdjacentHTML('beforeend', `<div id="my_msg">
+                                        ${data.user}
+                                        <p>${data.pkm_id}</p>
+                                        </div>`)
+        } else {
+            messages.insertAdjacentHTML('beforeend', `<div id="your_msg">
+                                        ${data.user}
+                                        <p>${data.pkm_id}</p>
+                                        </div>`)
+        }
+    }
+}
+
+let form = document.getElementById('form')
+form.addEventListener('submit', (e)=> {
+    e.preventDefault()
+    let pkm_id = e.target.pkm_id.value
+    let user = e.target.user.value
+    chatSocket.send(JSON.stringify({
+        'pkm_id': pkm_id,
+        'user': user
+    }))
+    form.reset()
+})
+
+</script>
 {% endblock %}

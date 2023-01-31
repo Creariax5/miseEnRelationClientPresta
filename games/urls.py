@@ -5,4 +5,5 @@ from .views import *
 
 urlpatterns = [
     path('', games),
+    path('chess/', chess),
 ]
