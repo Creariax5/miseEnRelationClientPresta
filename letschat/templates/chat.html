@@ -56,7 +56,6 @@
 
 <p>room: {{ room_name }}</p>
 
-
 <form id="form">
     <input type="hidden" name="user" value="{{ username }}"/>
     <input type="text" name="message" maxlength="500" required/>
@@ -66,6 +65,7 @@
 
 
 <script type="text/javascript">
+let path = '{{ request.get_full_path }}'
 let url = `ws://${window.location.host}/ws/socket-server/`
 
 console.log(url);

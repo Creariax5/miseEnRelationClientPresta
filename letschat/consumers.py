@@ -1,11 +1,13 @@
 import json
 from channels.generic.websocket import WebsocketConsumer
 from asgiref.sync import async_to_sync
+from .models import LastRoom
 
 
 class ChatConsumer(WebsocketConsumer):
     def connect(self):
-        self.room_group_name = 'test'
+        room = (LastRoom.objects.last()).room_name
+        self.room_group_name = room
 
         async_to_sync(self.channel_layer.group_add)(
             self.room_group_name,

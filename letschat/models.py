@@ -9,3 +9,7 @@ class Message(models.Model):
     user = models.CharField(max_length=1000000)
     room = models.CharField(max_length=1000000)
     last = models.IntegerField(default=0)
+
+
+class LastRoom(models.Model):
+    room_name = models.CharField(max_length=1000000)

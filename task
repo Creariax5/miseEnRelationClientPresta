@@ -1,3 +1,5 @@
+________________ T A S K _________________
+
 #1 setup paypal payment ✔️
 #2 link payment to profile.Money ✔️
 #3 find a new pokemon API with FR language and pokemon img ✔️
@@ -13,12 +15,13 @@
 #13 add categories for the objects ❌
 #14 add pokemon in database ➖
 #15 add trading room/swap hall ❌
-#16 add animation when open a pokeball ❌
+#16 add animation when open a pokeball 🚧
 #17 realtime chat ✔️
 #18 realtime games:
     #1 chest ❌
     #2 Carcassonne ❌
 #19 make the website responsive ❌
+
 
 
 
@@ -30,14 +33,25 @@ ________________ B U G S _________________
 #4 mega pkb don'tgive pokemon ✔️
 
 
-/imagine prompt:Pokemon monster creature NFT, vibrant --ar 3:2 --v 4 --stylize 500 --q 2
 
-paralax
 
+________________ D A T A _________________
+
+2,5 € = 100 coins
 
 product/object type list/category {
     -none
     -pokeball
 }
+
+
+
+
+________________ O T H E R _________________
+
+/imagine prompt:Pokemon monster creature NFT, vibrant --ar 3:2 --v 4 --stylize 500 --q 2
+
+paralax
+
 
 ☑️

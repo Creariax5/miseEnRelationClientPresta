@@ -1,0 +1,1 @@
+room = (LastRoom.objects.last()).room_name
