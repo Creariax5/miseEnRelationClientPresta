@@ -1,3 +1,5 @@
+import django
+import requests
 from django.shortcuts import render, redirect
 from .models import Product, Order
 from django.http import JsonResponse
@@ -6,7 +8,7 @@ import sys
 
 sys.path[:0] = ['../']
 from authentication.models import Profile
-from client.give_object import object_str_to_list, give_object
+from client.give_object import object_str_to_list, give_object, coin_pay, coin_payment_complete
 
 
 def store(request):
@@ -20,7 +22,13 @@ def store(request):
 
 
 def pay(request, pk, nb):
+    current_user = request.user
+    profiles = Profile.objects.all()
+
     product = Product.objects.get(id=pk)
+
+    buy = ""
+    panel = False
 
     coin = int(product.price) * 100 / 2.5
     final = coin * nb
@@ -31,6 +39,12 @@ def pay(request, pk, nb):
             panel = False
         else:
             panel = True
+
+    if request.method == "POST":
+        buy = request.POST.get('my_buy', False)
+        if buy == "buy":
+            coin_pay(final, profiles, current_user)
+            coin_payment_complete(request, pk, nb)
 
     return render(request, "pay.html", context={"product": product,
                                                 "nb": nb,

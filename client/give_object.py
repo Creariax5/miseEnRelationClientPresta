@@ -1,6 +1,10 @@
-import random
+import sys
 
-from django.test import TestCase
+from django.http import JsonResponse
+
+sys.path[:0] = ['../']
+from payment.models import Product, Order
+from authentication.models import Profile
 
 
 def object_str_to_list(profile, current_user):
@@ -68,3 +72,33 @@ def give_money(profiles, current_user, nb):
             pr.save()
             print("add", current_user.username)
     print("give_object.give_money")
+
+
+def coin_pay(final, profiles, current_user):
+    for pr in profiles:
+        if pr.user.username == current_user.username:
+            pr.money -= int(final)
+            pr.save()
+            print("add", current_user.username)
+    print("give_object.give_money")
+
+
+def coin_payment_complete(request, productId, nb):
+    current_user = request.user
+    profile = Profile.objects.filter(user=current_user)
+
+    if productId == 2:
+        product = Product.objects.get(id=str(productId))
+    else:
+        product = Product.objects.get(id=str(productId - 1))
+    Order.objects.create(
+        product=product,
+        buyer=current_user.username
+    )
+
+    profiles = Profile.objects.all()
+    productId = productId - 1
+
+    give_object(profiles, current_user, nb, productId, profile)
+
+    return JsonResponse('Payment completed!', safe=False)

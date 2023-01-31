@@ -25,8 +25,9 @@
             <h2 class="pp"><p>Final price: {{ coin }} * {{ nb }} = {{ final }} coins</p></h2>
             <form method="POST" class="post_form">
             {% csrf_token %}
-            <button type="submit" class="buy_coin" name="this_id" value="{{ panel }}">
-                buy
+            <input name="my_buy" type="hidden" value="buy">
+            <button type="submit" class="buy" name="this_id" value="{{ panel }}">
+                <h2 class="pp"><p>buy</p></h2>
             </button>
         </form>
         </div>
