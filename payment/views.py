@@ -21,8 +21,16 @@ def store(request):
 
 def pay(request, pk, nb):
     product = Product.objects.get(id=pk)
+    if request.method == "POST":
+        panel = request.POST['this_id']
+        if panel == "True":
+            panel = False
+        else:
+            panel = True
+
     return render(request, "pay.html", context={"product": product,
-                                                "nb": nb})
+                                                "nb": nb,
+                                                "panel": panel})
 
 
 def paymentComplete(request):
@@ -33,7 +41,7 @@ def paymentComplete(request):
     if int(body['productId']) == 2:
         product = Product.objects.get(id=str(int(body['productId'])))
     else:
-        product = Product.objects.get(id=str(int(body['productId'])-1))
+        product = Product.objects.get(id=str(int(body['productId']) - 1))
     Order.objects.create(
         product=product,
         buyer=current_user.username
@@ -41,7 +49,7 @@ def paymentComplete(request):
 
     profiles = Profile.objects.all()
     nb = body['number']
-    productId = int(body['productId'])-1
+    productId = int(body['productId']) - 1
 
     give_object(profiles, current_user, nb, productId, profile)
 

@@ -11,9 +11,21 @@
         <br>
         <br>
         <div id="paypal-button-container"></div>
+        <p>or</p>
+        <form method="POST" class="post_form">
+            {% csrf_token %}
+            <button type="submit" class="buy_coin" id="this_id" name="this_id" value="{{ panel }}">
+                coin
+            </button>
+        </form>
     </div>
+    {% if panel %}
+        <div class="panel">
+            <p>cc</p>
+        </div>
+    {% endif %}
 
-        <!-- Sample PayPal credentials (client-id) are included -->
+<!-- Sample PayPal credentials (client-id) are included -->
         <script src="https://www.paypal.com/sdk/js?client-id=AfK20ZjlGPpSSoaMJtVV84eRIMTP1pWjxbcxFWXVPdAfGtqNnYtgLaSbKeN6WBvzLN2wRFN_LojTZNwF&currency=USD&intent=capture&enable-funding=venmo" data-sdk-integration-source="integrationbuilder"></script>
         <script>
           function remplacer_virgule_par_point(decimal) {
