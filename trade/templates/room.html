@@ -47,6 +47,24 @@
         <p>trade panel</p>
         <div class="trade_room">
             <h1>ME: {{ current_user }}</h1>
+
+            <p>Pokemon ID</p>
+            <form method="POST" class="post_form">
+                {% csrf_token %}
+                <input type="number" id="nb" name="nb" value="1" min="1" max="722">
+                <button type="submit" class="save_btn" id="this_id" name="this_id" value="hi">
+                    add
+                </button>
+            </form>
+            {% if list %}
+                {% for p in list %}
+                    <div class="div_slot">
+                        <div class="slot"><a href="https://pokemondb.net/pokedex/{{ p }}"><img src="https://img.pokemondb.net/sprites/x-y/normal/{{ p }}.png" onerror="this.src='https://assets.stickpng.com/images/60fe96343d6240000487129f.png'" alt="{{ p }}" class="img"></a></div>
+                        <p class="pp">{{ p }}</p>
+                    </div>
+                {% endfor %}
+            {% endif %}
+
             {% if value == 1 %}
                 <form method="POST" class="post_form">
                     <div id="blue" type="submit" class="trade_enter" value="2">connect</div>
