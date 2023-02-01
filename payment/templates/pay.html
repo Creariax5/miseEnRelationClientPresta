@@ -15,14 +15,14 @@
         <form method="POST" class="post_form">
             {% csrf_token %}
             <button type="submit" class="buy_coin" name="this_id" value="{{ panel }}">
-                coin
+                coin <img class="coin" src="https://media.discordapp.net/attachments/786291487801081876/1070339444286160936/coin.png" alt="coin">
             </button>
         </form>
     </div>
     {% if panel %}
         <div class="panel">
             <h2 class="pp"><p>You buy {{ nb }} {{ product.name }} pokeball for {{ coin }} coins each </p></h2>
-            <h2 class="pp"><p>Final price: {{ coin }} * {{ nb }} = {{ final }} coins</p></h2>
+            <h2 class="pp"><p>Final price: {{ coin }} * {{ nb }} = {{ final }} coins </p></h2>
             <form method="POST" class="post_form">
             {% csrf_token %}
             <input name="my_buy" type="hidden" value="buy">

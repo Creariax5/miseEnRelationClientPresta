@@ -3,16 +3,22 @@
 <div class="poke">
 <h1 class="pp">Pokedex</h1>
 {% for p in pokemon_list %}
-    <div class="div_slot">
-        {% if p.nb > 0 %}
-            <p class="indice">* {{ p.nb }}</p>
-            <div class="slot"><a href="https://pokemondb.net/pokedex/{{ p.name }}"><img src="https://img.pokemondb.net/sprites/x-y/normal/{{ p.name }}.png" onerror="this.src='https://assets.stickpng.com/images/60fe96343d6240000487129f.png'" alt="{{ p.name }}" class="img"></a></div>
-            <p class="pp">{{ p.name }}</p>
-        {% else %}
-            <div class="slot"><a href="https://pokemondb.net/pokedex/{{ p.name }}"><img src="https://img.pokemondb.net/sprites/x-y/normal/{{ p.name }}.png" onerror="this.src='https://assets.stickpng.com/images/60fe96343d6240000487129f.png'" alt="{{ p.name }}" class="img_none"></a></div>
-            <p class="pp">{{ p.name }}</p>
-        {% endif %}
-    </div>
+    <a class="card" href="https://pokemondb.net/pokedex/{{ p.name }}">
+        <div class="div_slot">
+            {% if p.nb > 0 %}
+                <p class="indice">* {{ p.nb }}</p>
+                <div class="slot">
+                    <img src="https://img.pokemondb.net/sprites/x-y/normal/{{ p.name }}.png" onerror="this.src='https://assets.stickpng.com/images/60fe96343d6240000487129f.png'" alt="{{ p.name }}" class="img">
+                </div>
+                <p class="pp">{{ p.name }}</p>
+            {% else %}
+                <div class="slot">
+                    <img src="https://img.pokemondb.net/sprites/x-y/normal/{{ p.name }}.png" onerror="this.src='https://assets.stickpng.com/images/60fe96343d6240000487129f.png'" alt="{{ p.name }}" class="img_none">
+                </div>
+                <p class="pp">{{ p.name }}</p>
+            {% endif %}
+        </div>
+    </a>
 {% endfor %}
 </div>
 {% endblock %}

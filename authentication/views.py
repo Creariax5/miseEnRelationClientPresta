@@ -7,6 +7,7 @@ from .models import Profile
 
 
 def register_user(request):
+    my_login = True
     if request.method == "POST":
         form = UserCreationForm(request.POST)
         if form.is_valid():
@@ -18,10 +19,12 @@ def register_user(request):
             return redirect("/")
     else:
         form = UserCreationForm(request.POST)
-    return render(request, "register.html", context={"form": form})
+    return render(request, "register.html", context={"form": form,
+                                                     "login": my_login})
 
 
 def login_user(request):
+    my_login = True
     if request.method == "POST":
         username = request.POST['username']
         password = request.POST['password']
@@ -33,9 +36,9 @@ def login_user(request):
         else:
             # Return an 'invalid login' error message.
             messages.success(request, "Try again")
-            return render(request, "login.html")
+            return render(request, "login.html", context={"login": my_login})
     else:
-        return render(request, "login.html")
+        return render(request, "login.html", context={"login": my_login})
 
 
 def logout_user(request):

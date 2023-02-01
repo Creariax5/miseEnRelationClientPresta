@@ -1,4 +1,5 @@
-                  ________________ T A S K _________________
+
+________________ T A S K _________________
 
 #1 setup paypal payment ✔️
 #2 link payment to profile.Money ✔️
@@ -11,26 +12,28 @@
 #9 in pokedex if the connected user don't own the pokemon his image will be gray ✔️
 #10 add navbar ✔️
 #11 add opening system for pokeball ✔️
-#12 add authenticate to access to the site ❌
-#13 add categories for the objects ❌
+#12 add authenticate to access to the site ✔️
+#13 add categories for the objects 🚧
 #14 add pokemon in database ➖
-#15 add trading room/swap hall ❌
+#15 add trading room/swap hall 🚧
 #16 add animation when open a pokeball 🚧
 #17 realtime chat ✔️
 #18 realtime games:
-    #1 chest ❌
+    #1 chest 🚧
     #2 Carcassonne ❌
     #3 Puissance 4 ❌
-#19 make the website responsive ❌
+#19 make the website responsive 🚧
 #20 sorting system in pokedex ❌
 #21 in chat room section show rooms where peoples are connected ❌
 #22 add room modifiers like public or private ❌
-#23 add coin logo instead of "coin" ❌
+#23 add coin logo instead of "coin" ✔️
+
+
 
 write somthing on the home page
 on the home page set a mask over an image to stylize
-make admin panel resizable
-link to the pokedex when card is clicked and not only when img is clicked
+# 1.1 make admin panel resizable ✔️
+# 1.2 link to the pokedex when card is clicked and not only when img is clicked ✔️
 make all the pokemons have their image
 add sorting sys to pokemon in pokedex
 separate pokemon by category / gen
@@ -41,7 +44,7 @@ add at the top the connected user and his money
 
 in store "pay with coin" button it displaying at the location where paypal button should be during its loading
 find better colors for buttons
-paypal pop up blocked (make the popup don't display)
+paypal pop up blocked (make the popup don't display) ➖
 in pay make better the display of the price, the name, the number of article.s
 make the page don't reload when "pay with coin" button is clicked
 do that for payment recap "bit.ly/3RmHG3B"

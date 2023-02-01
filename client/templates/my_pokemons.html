@@ -4,10 +4,14 @@
 <h1 class="pp">My pokemons</h1>
 
 {% for pokemon in pokemon_list %}
-    <div class="div_slot">
-        <div class="slot"><a href="https://pokemondb.net/pokedex/{{ pokemon }}"><img src="https://img.pokemondb.net/sprites/x-y/normal/{{ pokemon }}.png" alt="{{ pokemon }}" onerror="this.src='https://assets.stickpng.com/images/60fe96343d6240000487129f.png'" class="img"></a></div>
-        <p class="pp">{{ pokemon }}</p>
-    </div>
+    <a class="card" href="https://pokemondb.net/pokedex/{{ pokemon }}">
+        <div class="div_slot">
+            <div class="slot">
+                <img src="https://img.pokemondb.net/sprites/x-y/normal/{{ pokemon }}.png" alt="{{ pokemon }}" onerror="this.src='https://assets.stickpng.com/images/60fe96343d6240000487129f.png'" class="img">
+            </div>
+            <p class="pp">{{ pokemon }}</p>
+        </div>
+    </a>
 {% endfor %}
 </div>
 {% endblock %}

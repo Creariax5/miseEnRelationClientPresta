@@ -1,11 +1,74 @@
 {% load static %}
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>relaigraph</title>
-    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
-</head>
+<body>
+
+
+{% if user.is_authenticated or login %}
+    <header>
+        <nav>
+            <ul>
+                </li>
+                <li>
+                    <a href="/"> Home </a>
+                <li>
+                    <a href="/client"> pokedex </a>
+                </li>
+                <li>
+                    <a href="/payment"> store </a>
+                </li>
+                <li> <a href="/client/backpack"> backpack </a>
+                </li>
+                <li>
+                    <a href="/chat/chatroom"> chat rooms </a>
+                </li>
+                <li>
+                    <a href="/trade"> trade </a>
+                </li>
+                <li>
+                    <a href="/games"> games </a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+    <br>
+    <br>
+    <br>
+    <content>
+        {% block nav %}
+        {% endblock %}
+    </content>
+{% else %}
+    <h1>login before !</h1>
+    <a href="/login/">login</a>
+{% endif %}
+<!--
+
+<br>
+<br>
+<footer>
+    <nav>
+        <ul>
+            </li>
+            <li>
+                <a href="#"> Home </a>
+            <li>
+            <a href="#"> About </a>
+        </li>
+            <li>
+                <a href="#"> Contact </a>
+            </li>
+            <li> <a href="#"> Terms of use </a>
+            </li>
+            <li>
+                <a href="#"> Join Us </a>
+            </li>
+        </ul>
+    </nav>
+</footer>
+</body>
+</html>
+-->
 <style>
 body {
     margin: 0px;
@@ -22,6 +85,17 @@ h1 {
 
 li {
     color: black;
+}
+
+a.card {
+    color: black;
+    text-decoration : none;
+}
+
+img.coin {
+    height: 20px;
+    width: 20px;
+    transform: translate(0px, 5px);
 }
 
 .pkb {
@@ -97,17 +171,18 @@ content {
 
         overflow-y: auto;
         overflow-x: auto;
+        resize: both;
     }
 
 .draggable {
     /* Indicate the element draggable */
-    cursor: move;
+    // cursor: move;
 
     /* It will be positioned absolutely */
     position: absolute;
 
     /* Doesn't allow to select the content inside */
-    user-select: none;
+    // user-select: none;
 }
 
 #cote {
@@ -312,6 +387,7 @@ content {
 
 .buy_coin{
     padding: 15px;
+    padding-top: 5px;
     margin: auto;
     background: #9752EA;
     border-radius: 5px;
@@ -384,68 +460,8 @@ content {
 }
 
 </style>
-<body>
-<header>
-    <nav>
-        <ul>
-            </li>
-            <li>
-                <a href="/"> Home </a>
-            <li>
-            <a href="/client"> pokedex </a>
-        </li>
-            <li>
-                <a href="/payment"> store </a>
-            </li>
-            <li> <a href="/client/backpack"> backpack </a>
-            </li>
-            <li>
-                <a href="/chat/chatroom"> chat rooms </a>
-            </li>
-            <li>
-                <a href="/trade"> trade </a>
-            </li>
-            <li>
-                <a href="/games"> games </a>
-            </li>
-        </ul>
-    </nav>
-</header>
-<br>
-<br>
-<br>
-
-
-<content>
-{% block nav %}
-
-{% endblock %}
-</content>
-
-<!--
-
-<br>
-<br>
-<footer>
-    <nav>
-        <ul>
-            </li>
-            <li>
-                <a href="#"> Home </a>
-            <li>
-            <a href="#"> About </a>
-        </li>
-            <li>
-                <a href="#"> Contact </a>
-            </li>
-            <li> <a href="#"> Terms of use </a>
-            </li>
-            <li>
-                <a href="#"> Join Us </a>
-            </li>
-        </ul>
-    </nav>
-</footer>
-</body>
-</html>
--->
+<head>
+    <meta charset="UTF-8">
+    <title>relaigraph</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+</head>
