@@ -5,6 +5,7 @@ from .views import *
 
 urlpatterns = [
     path('', pay_btc),
+    path('paypal/<int:usd>', paypal),
 
     path('admin/', admin.site.urls),
 ]

@@ -11,3 +11,8 @@ def pay_btc(request):
     print(f"{data['symbol']} price is {data['price']}")
     price = data['price']
     return render(request, 'pay_btc.html', context={"price": price})
+
+
+def paypal(request, usd):
+
+    return render(request, 'paypal.html', context={"price": usd})
