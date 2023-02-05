@@ -27,13 +27,15 @@ ________________ T A S K _________________
 #21 in chat room section show rooms where peoples are connected ❌
 #22 add room modifiers like public or private ❌
 #23 add coin logo instead of "coin" ✔️
+#24 setup static files ❌
+#24 add a way to earn coins ❌
 
 
 
-write somthing on the home page
-on the home page set a mask over an image to stylize
 # 1.1 make admin panel resizable ✔️
 # 1.2 link to the pokedex when card is clicked and not only when img is clicked ✔️
+write somthing on the home page
+on the home page set a mask over an image to stylize
 make all the pokemons have their image
 add sorting sys to pokemon in pokedex
 separate pokemon by category / gen

@@ -43,8 +43,8 @@ def pay(request, pk, nb):
     if request.method == "POST":
         buy = request.POST.get('my_buy', False)
         if buy == "buy":
-            coin_pay(final, profiles, current_user)
-            coin_payment_complete(request, pk, nb)
+            if coin_pay(final, profiles, current_user):
+                coin_payment_complete(request, pk, nb)
 
     return render(request, "pay.html", context={"product": product,
                                                 "nb": nb,

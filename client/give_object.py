@@ -77,9 +77,14 @@ def give_money(profiles, current_user, nb):
 def coin_pay(final, profiles, current_user):
     for pr in profiles:
         if pr.user.username == current_user.username:
-            pr.money -= int(final)
-            pr.save()
-            print("add", current_user.username)
+            if pr.money >= final:
+                pr.money -= int(final)
+                pr.save()
+                print("add", current_user.username)
+                return True
+            else:
+                print("not enough money")
+                return False
     print("give_object.give_money")
 
 

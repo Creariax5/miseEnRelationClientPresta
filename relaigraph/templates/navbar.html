@@ -1,74 +1,11 @@
 {% load static %}
 <!DOCTYPE html>
 <html lang="en">
-<body>
-
-
-{% if user.is_authenticated or login %}
-    <header>
-        <nav>
-            <ul>
-                </li>
-                <li>
-                    <a href="/"> Home </a>
-                <li>
-                    <a href="/client"> pokedex </a>
-                </li>
-                <li>
-                    <a href="/payment"> store </a>
-                </li>
-                <li> <a href="/client/backpack"> backpack </a>
-                </li>
-                <li>
-                    <a href="/chat/chatroom"> chat rooms </a>
-                </li>
-                <li>
-                    <a href="/trade"> trade </a>
-                </li>
-                <li>
-                    <a href="/games"> games </a>
-                </li>
-            </ul>
-        </nav>
-    </header>
-    <br>
-    <br>
-    <br>
-    <content>
-        {% block nav %}
-        {% endblock %}
-    </content>
-{% else %}
-    <h1>login before !</h1>
-    <a href="/login/">login</a>
-{% endif %}
-<!--
-
-<br>
-<br>
-<footer>
-    <nav>
-        <ul>
-            </li>
-            <li>
-                <a href="#"> Home </a>
-            <li>
-            <a href="#"> About </a>
-        </li>
-            <li>
-                <a href="#"> Contact </a>
-            </li>
-            <li> <a href="#"> Terms of use </a>
-            </li>
-            <li>
-                <a href="#"> Join Us </a>
-            </li>
-        </ul>
-    </nav>
-</footer>
-</body>
-</html>
--->
+<head>
+    <meta charset="UTF-8">
+    <title>relaigraph</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+</head>
 <style>
 body {
     margin: 0px;
@@ -460,8 +397,73 @@ content {
 }
 
 </style>
-<head>
-    <meta charset="UTF-8">
-    <title>relaigraph</title>
-    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
-</head>
+<body>
+
+
+{% if user.is_authenticated or login %}
+    <header>
+        <nav>
+            <ul>
+                <li>
+                    <a href="/"> Home </a>
+                <li>
+                    <a href="/client"> pokedex </a>
+                </li>
+                <li>
+                    <a href="/payment"> store </a>
+                </li>
+                <li> <a href="/client/backpack"> backpack </a>
+                </li>
+                <li>
+                    <a href="/chat/chatroom"> chat rooms </a>
+                </li>
+                <li>
+                    <a href="/trade"> trade </a>
+                </li>
+                <li>
+                    <a href="/games"> games </a>
+                </li>
+                <li>
+                    <a href="/pay_btc"> Paypal to BTC </a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+    <br>
+    <br>
+    <br>
+    <content>
+        {% block nav %}
+        {% endblock %}
+    </content>
+{% else %}
+    <h1>login before !</h1>
+    <a href="/login/">login</a>
+{% endif %}
+<!--
+
+<br>
+<br>
+<footer>
+    <nav>
+        <ul>
+            </li>
+            <li>
+                <a href="#"> Home </a>
+            <li>
+            <a href="#"> About </a>
+        </li>
+            <li>
+                <a href="#"> Contact </a>
+            </li>
+            <li> <a href="#"> Terms of use </a>
+            </li>
+            <li>
+                <a href="#"> Join Us </a>
+            </li>
+        </ul>
+    </nav>
+</footer>
+</body>
+</html>
+-->

@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     'letschat',
     'trade',
     'games',
+    'payBTC',
 ]
 
 ASGI_APPLICATION = 'relaigraph.asgi.application'

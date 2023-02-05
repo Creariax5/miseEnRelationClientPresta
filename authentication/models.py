@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 from django.db.models.signals import post_save
+from django.contrib import admin
 
 
 class Profile(models.Model):
@@ -27,3 +28,12 @@ def create_profile(sender, instance, created, **kwargs):
 
 
 post_save.connect(create_profile, sender=User)
+
+
+class nav_settings(models.Model):
+    name = models.CharField(default="none", max_length=40)
+    display = models.BooleanField(default=False)
+
+
+class nav_settingsAdmin(admin.ModelAdmin):
+    list_display = ('name', 'display')
