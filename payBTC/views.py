@@ -1,5 +1,10 @@
+import json
+
+from django.http import JsonResponse
 from django.shortcuts import render
 import requests
+from .models import Trade
+from .tests import give_btc
 
 
 def pay_btc(request):
@@ -14,5 +19,23 @@ def pay_btc(request):
 
 
 def paypal(request, usd):
-
+    usd = usd / 100
+    print(usd)
     return render(request, 'paypal.html', context={"price": usd})
+
+
+def compal(request):
+    current_user = request.user
+    body = json.loads(request.body)
+    nb = body['nb']
+    address = body['address']
+
+    Trade.objects.create(
+        nb=nb,
+        buyer=current_user.username,
+        buy_usd=False
+    )
+
+    give_btc(nb, address)
+
+    return JsonResponse('Payment completed!', safe=False)

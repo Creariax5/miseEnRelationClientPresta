@@ -320,7 +320,7 @@ function paypal_redirect() {
     let usd = document.getElementById("usd_price").value;
     var inp = document.querySelector("#p_mod").value;
     if(inp == "paypal"){
-        window.location.href = 'paypal/' + usd;
+        window.location.href = 'paypal/' + usd*100;
     }
 }
 </script>

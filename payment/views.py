@@ -50,7 +50,7 @@ def pay(request, pk, nb):
                                                 "nb": nb,
                                                 "panel": panel,
                                                 "coin": coin,
-                                                "final": final,})
+                                                "final": final})
 
 
 def paymentComplete(request):
