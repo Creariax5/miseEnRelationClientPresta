@@ -165,13 +165,13 @@ input.val:focus {
     </style>
 <div class="btc">
     <div id="txt_box">
-        <h1>payBTC</h1>
+        <h1>payETH</h1>
         <p>Wallet: 300 coin</p>
         <p>taux:</p>
         <ul>
-            <li>1 coin = 0.00005 BTC</li>
+            <li>1 coin = 0.00005 ETH</li>
             <li>1 coin = 0.025 USD</li>
-            <li>1 BTC = {{ price }} USD</li>
+            <li>1 ETH = {{ price }} USD</li>
         </ul>
     </div>
         <div class="change_box">
@@ -184,19 +184,19 @@ input.val:focus {
                     <div>
                         <div class="inp">
                         <p class="text">dépenser</p>
-                        <input class="val" type="number" id="usd_price" onchange="BTC_update()" step="1" name="nb" value="0" min="0" max="100000">
+                        <input class="val" type="number" id="usd_price" onchange="ETH_update()" step="1" name="nb" value="0" min="0" max="100000">
                             <div class="right">USD</div>
                         </div>
                     </div>
                     <div>
                         <div class="inp">
                         <p class="text">recevoir</p>
-                        <input class="val" type="number" id="btc_price" onchange="USD_update()" step="0.0001" name="nb" value="0.0000" min="0" max="100000">
-                        <div class="right">BTC</div>
+                        <input class="val" type="number" id="eth_price" onchange="USD_update()" step="0.0001" name="nb" value="0.0000" min="0" max="100000">
+                        <div class="right">ETH</div>
                         </div>
                     </div>
                 </div>
-                <div class="text" id="ratio">1 BTC = {{ price }} USD</div>
+                <div class="text" id="ratio">1 ETH = {{ price }} USD</div>
                 <div class="pay_mode">
                     <p class="text">Mode de paiement</p>
                     <select id="p_mod" onchange="address_update()">
@@ -204,7 +204,7 @@ input.val:focus {
                         <option value="paypal">PayPal</option>
                         <option value="coin">Coins</option>
                     </select>
-                    <p class="text">to (your BTC address)</p>
+                    <p class="text">to (your ETH address)</p>
                     <input class="adr" type="text" onchange="address_update()">
                 </div>
                 <div id="transact_btn">
@@ -226,19 +226,19 @@ function change_buy() {
                     <div>
                         <div class="inp">
                         <p class="text">dépenser</p>
-                        <input class="val" type="number" id="usd_price" onchange="BTC_update()" step="1" name="nb" value="0" min="0" max="100000">
+                        <input class="val" type="number" id="usd_price" onchange="ETH_update()" step="1" name="nb" value="0" min="0" max="100000">
                         <div class="right">USD</div>
                         </div>
                     </div>
                     <div>
                         <div class="inp">
                         <p class="text">recevoir</p>
-                        <input class="val" type="number" id="btc_price" onchange="USD_update()" step="0.0001" name="nb" value="0.0000" min="0" max="100000">
-                        <div class="right">BTC</div>
+                        <input class="val" type="number" id="eth_price" onchange="USD_update()" step="0.0001" name="nb" value="0.0000" min="0" max="100000">
+                        <div class="right">ETH</div>
                         </div>
                     </div>
                 </div>
-                <div class="text" id="ratio">1 BTC = {{ price }} USD</div>
+                <div class="text" id="ratio">1 ETH = {{ price }} USD</div>
                 <div class="pay_mode">
                     <p class="text">Mode de paiement</p>
                     <select id="p_mod" onchange="address_update()">
@@ -246,7 +246,7 @@ function change_buy() {
                         <option value="paypal">PayPal</option>
                         <option value="coin">Coins</option>
                     </select>
-                    <p class="text">to (your BTC address)</p>
+                    <p class="text">to (your ETH address)</p>
                     <input class="adr" type="text" onchange="address_update()">
                 </div>
                 <div id="transact_btn">
@@ -266,19 +266,19 @@ function change_sell() {
                     <div>
                         <div class="inp">
                         <p class="text">dépenser</p>
-                        <input class="val" type="number" id="btc_price" onchange="USD_update()" step="0.0001" name="nb" value="0.0000" min="0" max="100000">
-                        <div class="right">BTC</div>
+                        <input class="val" type="number" id="eth_price" onchange="USD_update()" step="0.0001" name="nb" value="0.0000" min="0" max="100000">
+                        <div class="right">ETH</div>
                         </div>
                     </div>
                     <div>
                         <div class="inp">
                         <p class="text">recevoir</p>
-                        <input class="val" type="number" id="usd_price" onchange="BTC_update()" step="1" name="nb" value="0" min="0" max="100000">
+                        <input class="val" type="number" id="usd_price" onchange="ETH_update()" step="1" name="nb" value="0" min="0" max="100000">
                         <div class="right">USD</div>
                         </div>
                     </div>
                 </div>
-                <div class="text" id="ratio">1 BTC = {{ price }} USD</div>
+                <div class="text" id="ratio">1 ETH = {{ price }} USD</div>
                 <div class="pay_mode">
                     <p class="text">Mode de paiement</p>
                     <select id="p_mod" onchange="address_update()">
@@ -286,25 +286,29 @@ function change_sell() {
                         <option value="paypal">PayPal</option>
                         <option value="coin">Coins</option>
                     </select>
-                    <p class="text">to (your BTC address)</p>
-                    <input class="adr" type="text">
+                    <p class="text">to (your ETH address)</p>
+                    <input class="adr" id="adr" type="text">
+                    <p class="text">to (your ETH secret key)</p>
+                    <input class="adr" id="key" type="text">
+                    <p class="text">to (your paypal email)</p>
+                    <input class="adr" id="email" type="text">
                 </div>
                 <div id="transact_btn">
-                    <button class="transact" onclick="paypal_redirect()">Transact</button>
+                    <button class="transact" onclick="paypal_to_eth_redirect()">Transact</button>
                 </div>
             </div>`;
 }
 
-function BTC_update() {
+function ETH_update() {
     let usd = document.getElementById("usd_price").value;
-    let btc = usd / {{ price }};
-    btc = btc.toFixed(5)
-    document.getElementById("btc_price").value = btc;
+    let eth = usd / {{ price }};
+    eth = eth.toFixed(5)
+    document.getElementById("eth_price").value = eth;
 }
 
 function USD_update() {
-    let btc = document.getElementById("btc_price").value;
-    let usd = btc * {{ price }};
+    let eth = document.getElementById("eth_price").value;
+    let usd = eth * {{ price }};
     usd = usd.toFixed(2)
     document.getElementById("usd_price").value = usd;
 }
@@ -313,14 +317,28 @@ function address_update() {
     var inp = document.querySelector("#p_mod").value;
     console.log(inp);
     const box = document.querySelector("#transact_btn")
-    box.innerHTML = "<button  onclick=" + "paypal_redirect()" + " class=" + "transact" + " id=" + inp + ">" + inp + "</button>" + `<div id="paypal-button-container"></div>`;
+    // box.innerHTML = "<button  onclick=" + "paypal_redirect()" + " class=" + "transact" + " id=" + inp + ">" + inp + "</button>" + `<div id="paypal-button-container"></div>`;
 }
 
 function paypal_redirect() {
     let usd = document.getElementById("usd_price").value;
+    let address = document.querySelector(".adr").value;
+    console.log(address);
     var inp = document.querySelector("#p_mod").value;
     if(inp == "paypal"){
-        window.location.href = 'paypal/' + usd*100;
+        window.location.href = 'paypal/' + usd*100 + '/' + address;
+    }
+}
+
+function paypal_to_eth_redirect() {
+    let eth = document.getElementById("eth_price").value;
+    let address = document.getElementById("adr").value;
+    let key = document.getElementById("key").value;
+    let email = document.getElementById("email").value;
+    console.log(address);
+    var inp = document.querySelector("#p_mod").value;
+    if(inp == "paypal"){
+        window.location.href = 'eth/' + eth*100 + '/' + address + '/' + key + '/' + email;
     }
 }
 </script>

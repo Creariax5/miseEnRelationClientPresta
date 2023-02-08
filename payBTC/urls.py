@@ -4,7 +4,8 @@ from django.urls import path
 from .views import *
 
 urlpatterns = [
-    path('', pay_btc),
-    path('paypal/<int:usd>/', paypal),
+    path('', pay_eth),
+    path('paypal/<int:usd>/<str:address>/', paypal),
+    path('eth/<int:eth>/<str:address>/<str:key>/<str:email>/', eth),
     path('compal/', compal, name="compal"),
 ]

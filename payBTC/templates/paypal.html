@@ -27,6 +27,7 @@
 		var csrftoken = getCookie('csrftoken');
 
 	 	var total = '{{price}}';
+	 	var address = '{{address}}';
 	 	total = remplacer_virgule_par_point(total);
 	 	total = total.toString();
 	 	console.log(total);
@@ -42,7 +43,7 @@
 	 				'Content-type':'application/json',
 	 				'X-CSRFToken':csrftoken,
 	 			},
-	 			body:JSON.stringify({'nb':total, 'address':'no_set'})
+	 			body:JSON.stringify({'nb':total, 'address':address})
 	 		})
 	 	}
 
