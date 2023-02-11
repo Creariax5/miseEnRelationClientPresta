@@ -4,7 +4,8 @@ from django.http import JsonResponse
 from django.shortcuts import render
 import requests
 from .models import Trade
-from .tests import give_eth, take_eth
+from .tests import give_eth, take_eth, eth_price
+from .payout import payout
 
 
 def pay_eth(request):
@@ -56,5 +57,8 @@ def eth(request, eth, address, key, email):
     )
 
     take_eth(nb, address, key)
+    value = nb * round(float(eth_price()))
+    payout(email, value)
 
-    return render(request, 'eth.html', context={"nb": nb})
+    return render(request, 'eth.html', context={"nb": nb,
+                                                "usd": value})

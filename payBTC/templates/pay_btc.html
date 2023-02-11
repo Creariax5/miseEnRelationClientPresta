@@ -9,11 +9,18 @@
             font-size: 16px;
             margin: 0px;
             color: #555555;
+
+        }
+
+        p.text.w {
+            font-size: 16px;
+            margin: 0px;
+            color: #FFFFFF;
         }
 
         #ratio {
             font-size: 14px;
-            margin: 20px;
+            margin: 25px;
             margin-top: -10px;
             color: red;
         }
@@ -82,7 +89,7 @@
         .inp{
             position: relative;
             display: inline-block;
-            margin: 20px;
+            margin: 25px;
             background: #222222;
             border-radius: 10px;
             padding: 20px;
@@ -132,29 +139,32 @@ input.val:focus {
 }
 
         select{
-            margin: 20px;
-            padding: 20px;
+            margin: 25px;
+            margin-top: 0px;
+            padding: 10px;
             width: 340px;
             border-radius: 10px;
         }
 
         input.adr{
-            margin: 20px;
-            padding: 20px;
-            width: 300px;
+            margin: 25px;
+            margin-top: 0px;
+            padding: 10px;
+            width: 316px;
             border-radius: 10px;
         }
 
 
         .transact{
-            margin: 20px;
-            padding: 20px;
+            margin: 25px;
+            padding: 10px;
             width: 340px;
             border-radius: 10px;
+            background: #f7a600;
         }
 
         .transact:hover{
-            background: #AAAAAA;
+            background: #f9b833;
         }
 
 
@@ -184,7 +194,7 @@ input.val:focus {
                     <div>
                         <div class="inp">
                         <p class="text">dépenser</p>
-                        <input class="val" type="number" id="usd_price" onchange="ETH_update()" step="1" name="nb" value="0" min="0" max="100000">
+                        <input class="val" type="number" id="usd_price" onchange="ETH_update()" step="1" name="nb" value="10" min="0" max="100000">
                             <div class="right">USD</div>
                         </div>
                     </div>
@@ -198,14 +208,14 @@ input.val:focus {
                 </div>
                 <div class="text" id="ratio">1 ETH = {{ price }} USD</div>
                 <div class="pay_mode">
-                    <p class="text">Mode de paiement</p>
+                    <p class="text w">Mode de paiement</p>
                     <select id="p_mod" onchange="address_update()">
-                        <option value="none">-- select --</option>
+                        <!-- <option value="none">-- select --</option> -->
                         <option value="paypal">PayPal</option>
                         <option value="coin">Coins</option>
                     </select>
-                    <p class="text">to (your ETH address)</p>
-                    <input class="adr" type="text" onchange="address_update()">
+                    <p class="text w">to (your ETH address)</p>
+                    <input class="adr" type="text" onchange="address_update()" placeholder="0x0000000000000000000000000000000000000000">
                 </div>
                 <div id="transact_btn">
                     <button class="transact" onclick="paypal_redirect()">Transact</button>
@@ -215,6 +225,8 @@ input.val:focus {
     </div>
 
 <script>
+ETH_update()
+
 function change_buy() {
   const box = document.querySelector(".change_box")
   box.innerHTML = `<div>
@@ -226,7 +238,7 @@ function change_buy() {
                     <div>
                         <div class="inp">
                         <p class="text">dépenser</p>
-                        <input class="val" type="number" id="usd_price" onchange="ETH_update()" step="1" name="nb" value="0" min="0" max="100000">
+                        <input class="val" type="number" id="usd_price" onchange="ETH_update()" step="1" name="nb" value="10" min="0" max="100000">
                         <div class="right">USD</div>
                         </div>
                     </div>
@@ -240,19 +252,20 @@ function change_buy() {
                 </div>
                 <div class="text" id="ratio">1 ETH = {{ price }} USD</div>
                 <div class="pay_mode">
-                    <p class="text">Mode de paiement</p>
+                    <p class="text w">Mode de paiement</p>
                     <select id="p_mod" onchange="address_update()">
-                        <option value="none">-- select --</option>
+                        <!-- <option value="none">-- select --</option> -->
                         <option value="paypal">PayPal</option>
                         <option value="coin">Coins</option>
                     </select>
-                    <p class="text">to (your ETH address)</p>
-                    <input class="adr" type="text" onchange="address_update()">
+                    <p class="text w">to (your ETH address)</p>
+                    <input class="adr" type="text" onchange="address_update()" placeholder="0x0000000000000000000000000000000000000000">
                 </div>
                 <div id="transact_btn">
                     <button class="transact" onclick="paypal_redirect()">Transact</button>
                 </div>
             </div>`;
+  ETH_update()
 }
 
 function change_sell() {
@@ -266,7 +279,7 @@ function change_sell() {
                     <div>
                         <div class="inp">
                         <p class="text">dépenser</p>
-                        <input class="val" type="number" id="eth_price" onchange="USD_update()" step="0.0001" name="nb" value="0.0000" min="0" max="100000">
+                        <input class="val" type="number" id="eth_price" onchange="USD_update()" step="0.0001" name="nb" value="0.01" min="0" max="100000">
                         <div class="right">ETH</div>
                         </div>
                     </div>
@@ -280,23 +293,24 @@ function change_sell() {
                 </div>
                 <div class="text" id="ratio">1 ETH = {{ price }} USD</div>
                 <div class="pay_mode">
-                    <p class="text">Mode de paiement</p>
+                    <p class="text w">Mode de paiement</p>
                     <select id="p_mod" onchange="address_update()">
-                        <option value="none">-- select --</option>
+                        <!-- <option value="none">-- select --</option> -->
                         <option value="paypal">PayPal</option>
                         <option value="coin">Coins</option>
                     </select>
-                    <p class="text">to (your ETH address)</p>
-                    <input class="adr" id="adr" type="text">
-                    <p class="text">to (your ETH secret key)</p>
-                    <input class="adr" id="key" type="text">
-                    <p class="text">to (your paypal email)</p>
-                    <input class="adr" id="email" type="text">
+                    <p class="text w">ETH address</p>
+                    <input class="adr" id="adr" type="text" placeholder="0x0000000000000000000000000000000000000000">
+                    <p class="text w">secret key</p>
+                    <input class="adr" id="key" type="text" placeholder="afdfd9c3d2095ef696594f6cedcae59e72dcd697e2a7521b1578140422a4f890">
+                    <p class="text w">paypal email</p>
+                    <input class="adr" id="email" type="text" placeholder="exemple@gmail.com">
                 </div>
                 <div id="transact_btn">
                     <button class="transact" onclick="paypal_to_eth_redirect()">Transact</button>
                 </div>
             </div>`;
+  USD_update()
 }
 
 function ETH_update() {
