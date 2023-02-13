@@ -1,63 +1,95 @@
-{% extends 'navbar.html' %}
-{% block nav %}
-<style>
-        .btc {
-            color: white;
+<!-- {% extends 'navbar.html' %}
+{% block nav %} -->
+<style class="dark">
+        body {
+            color: #FFFFFF;
+            margin: auto;
+            background: #303030;
+            font-family: Montserrat, sans-serif;
+            overflow-x: hidden;
+        }
+
+        header {
+            padding: 2rem 2.5rem 0;
+            display: flex;
+        }
+
+        .eth {
+            padding: 0 5rem;
+            margin-bottom: 5rem;
+            padding-top: 6rem;
+            display: flex;
+        }
+
+        footer {
+            margin-top: 10rem;
+            display: flex;
+            padding: 2rem 2.5rem;
         }
 
         .text {
             font-size: 16px;
             margin: 0px;
-            color: #555555;
-
+            color: #aaaaaa;
         }
 
         p.text.w {
             font-size: 16px;
             margin: 0px;
+            margin-left: 2rem;
             color: #FFFFFF;
         }
 
         #ratio {
             font-size: 14px;
-            margin: 25px;
-            margin-top: -10px;
-            color: red;
+            margin-left: 2rem;
+            margin-bottom: 2rem;
+            color: #aaaaaa;
         }
 
         li {
             color: white;
         }
 
+        #text_box{
+            position: relative;
+            display: inline-block;
+            margin: 0px;
+            margin-top: 7vw;
+            margin-right: 2rem;
+            padding: 0px;
+            float: left;
+            width: 60%;
+        }
+
+        .change_eg{
+            height: 749px;
+            display: flex;
+        }
+
+
+
         .change_box{
             position: relative;
             display: inline-block;
-            margin: 30px;
-            background: #111111;
+            margin: 3rem;
+            margin-right: 0rem;
+            background: #212121;
             border-radius: 10px;
-            padding: 20px;
             padding-right: 0px;
             font-size: 40px;
             }
 
-        #txt_box{
-            position: relative;
-            display: inline-block;
-            margin: 80px;
-            top: -400px;
-        }
 
         .change_btn{
             position: relative;
             display: inline-block;
-            margin: -20px;
             margin-right: 0px;
-            margin-bottom: 10px;
-            background: #333333;
+            background: #383838;
             border-radius: 10px;
-            padding: 20px;
-            padding-left: 40px;
-            width: 160px;
+            padding: 5% 7.5%;
+            width: 35%;
+            display: flex;
         }
 
         .change_btn:hover{
@@ -66,22 +98,26 @@
 
 
         #buy{
+            float: left;
             border-radius: 10px 0px 0px 0px;
         }
 
         #sell{
+            float: right;
             border-radius: 0px 10px 0px 0px;
         }
 
         #buy_select{
+            float: left;
             border-radius: 10px 10px 0px 10px;
-            background: #111111;
+            background: #212121;
             z-index: 2;
         }
 
         #sell_select{
+            float: right;
             border-radius: 10px 10px 10px 0px;
-            background: #111111;
+            background: #212121;
             z-index: 2;
         }
 
@@ -90,7 +126,9 @@
             position: relative;
             display: inline-block;
             margin: 25px;
-            background: #222222;
+            margin-top: 3rem;
+            margin-bottom: 0px;
+            background: #383838;
             border-radius: 10px;
             padding: 20px;
             padding-top: 0px;
@@ -104,7 +142,7 @@
             padding-bottom: 6px;
             width: 120px;
             border-radius: 10px;
-            background: #222222;
+            background: #383838;
             color: white;
             font-size: 25px;
             margin: 0px;
@@ -146,21 +184,65 @@ input.val:focus {
             border-radius: 10px;
         }
 
+/* ______________adr_________________
+
         input.adr{
             margin: 25px;
             margin-top: 0px;
             padding: 10px;
-            width: 316px;
-            border-radius: 10px;
-        }
-
-
-        .transact{
-            margin: 25px;
-            padding: 10px;
             width: 340px;
             border-radius: 10px;
-            background: #f7a600;
+        }
+*/
+.adr {
+  position: relative;
+  margin: 25px;
+  margin-top: 1rem;
+  margin-bottom: 0px;
+}
+
+.adr input {
+  width: 100%;
+  padding: 10px 0;
+  font-size: 16px;
+  color: #fff;
+  margin-bottom: 30px;
+  border: none;
+  border-bottom: 1px solid #fff;
+  outline: none;
+  background: transparent;
+}
+.adr label {
+  position: absolute;
+  top:0;
+  left: 0;
+  padding: 10px 0;
+  font-size: 16px;
+  color: #fff;
+  pointer-events: none;
+  transition: .5s;
+}
+
+.adr input:focus ~ label,
+.adr input:valid ~ label {
+  top: -20px;
+  left: 0;
+  color: #ff5c00;
+  font-size: 12px;
+}
+
+
+/* ______________fin adr_________________ */
+
+.pay_mode{
+    margin-top: 5rem;
+}
+
+
+        #transact{
+            margin: 1.5rem;
+            margin-left: 25px;
+            width: 340px;
         }
 
         .transact:hover{
@@ -172,57 +254,218 @@ input.val:focus {
             float: right;
         }
 
+
+/* new little */
+
+        #img_1{
+            position: relative;
+            width: 350px;
+            height: 350px;
+            top: 160px;
+        }
+
+        #img_2{
+            position: absolute;
+            width: 3rem;
+            top: 0rem;
+            left: 62rem;
+            z-index: 3;
+        }
+
+        #img_3{
+            position: absolute;
+            width: 3rem;
+            top: 26rem;
+            left: 84rem;
+            z-index: 3;
+        }
+
+        #instant{
+            margin-top: 0px;
+        }
+
+        #login{
+            float: right;
+            margin-left: auto;
+        }
+
+        .import_button{
+            margin-top: 0px;
+            background: #ff5c00;
+            border-radius: 6px;
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            line-height: 1.25;
+            padding: 0.6em 1.35em;
+            border: 0;
+            color: #FFFFFF;
+            font-family: inherit;
+            font-size: 16px;
+            font-weight: 550;
+        }
+
+        .import_button:hover{
+            background: #e0621b;
+        }
+
+        .i1 {
+            color: #ff5c00;
+            font-size: 1em;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            font-weight: 700;
+        }
+
+        .i2 {
+            line-height: 1.25;
+            margin: 0rem;
+            margin-bottom: 2rem;
+            font-size: 4em;
+            font-weight: 800;
+        }
+
+        .i3 {
+            margin: 0;
+            margin-bottom: 0.5rem;
+            font-size: 1em;
+            font-weight: 600;
+        }
+
+        .i4 {
+            margin: 0;
+            margin-bottom: 5px;
+            color: #aaa;
+        }
+
+        .i5 {
+            margin: 0rem;
+            font-size: 2em;
+            font-weight: 700;
+        }
+
+
+
+
+
+        #pr_txt {
+            width: 80%;
+        }
+
+        #ensemble_txt {
+            display: flex
+        }
+
+
+
+.head_link{
+    color: inherit;
+    text-decoration: none;
+    margin-left: 8rem;
+    color: #FFFFFF;
+    font-family: inherit;
+    font-size: 16px;
+    font-weight: 550;
+}
+
+.head_link:hover{
+    color: #ff5c00;
+}
+
+.a_lit{
+    text-decoration: none;
+    color: #ff5c00;
+}
+
+
     </style>
-<div class="btc">
-    <div id="txt_box">
-        <h1>payETH</h1>
-        <p>Wallet: 300 coin</p>
-        <p>taux:</p>
-        <ul>
-            <li>1 coin = 0.00005 ETH</li>
-            <li>1 coin = 0.025 USD</li>
-            <li>1 ETH = {{ price }} USD</li>
-        </ul>
+<header>LOGO SWAPLE
+    <div>
+        <a href="#swap" class="head_link">Swap</a>
+        <a href="#earn" class="head_link">Earn</a>
     </div>
+    <button id="login" class="import_button">login</button>
+</header>
+<div class="eth" id="swap">
+    <div id="text_box">
+        <h1 class="i1" id="instant">instant SWAP</h1>
+        <h2 class="i2" >The simple way to swap </h2>
+        <div id="ensemble_txt">
+            <div id="pr_txt">
+                <p class="i4">Swaple, the bridge between crypto and real world ! </p>
+                <br><br><br>
+                <p class="i3">How to buy crypto:</p>
+                <ul class="i4">
+                    <li class="i4">Tu n'est pas obligé, mais il est conseillé de te <a href="#" class="a_lit">connecter</a> à ton compte Swaple. En le faisant tu auras access à l'historique de tes transactions.</li>
+                    <li class="i4">Choisis le montant de la transaction. Et entre l'<a href="#" class="a_lit">adresse</a> de la crypto choisi (Pour l'instant seul ETH est supporté).</li>
+                    <li class="i4">BRAVO ! Tu devrais recevoir ta crypto dans quelques secondes.</li>
+                </ul>
+                <!-- <br>
+                <p class="i3">How it works:</p> -->
+            </div>
+            <img id="img_1" src="http://bit.ly/3RXjHZ5" alt="money">
+            <!--
+            <div>
+                <img id="img_2" src="https://media.discordapp.net/attachments/1073848841662640168/1074685447994880171/Sans_titre.png" alt="money">
+                <img id="img_3" src="https://media.discordapp.net/attachments/1073848841662640168/1074685447550291988/kk.png" alt="money">
+            </div>
+            -->
+        </div>
+    </div>
+    <div class="change_eg">
+        <div>
         <div class="change_box">
             <div>
                 <div class="change_btn" onclick="change_buy()" id="buy_select">Acheter</div>
                 <div class="change_btn" onclick="change_sell()" id="sell">Vendre</div>
             </div>
-            <div>
                 <div>
                     <div>
-                        <div class="inp">
-                        <p class="text">dépenser</p>
-                        <input class="val" type="number" id="usd_price" onchange="ETH_update()" step="1" name="nb" value="10" min="0" max="100000">
-                            <div class="right">USD</div>
+                        <div>
+                            <div class="inp">
+                                <p class="text">dépenser</p>
+                                <input class="val" type="number" id="usd_price" onchange="ETH_update()" step="1" name="nb" value="10" min="0" max="100000">
+                                    <div class="right">USD</div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="inp">
+                                <p class="text">recevoir</p>
+                                <input class="val" type="number" id="eth_price" onchange="USD_update()" step="0.0001" name="nb" value="0.0000" min="0" max="100000">
+                                <div class="right">ETH</div>
+                            </div>
                         </div>
                     </div>
-                    <div>
-                        <div class="inp">
-                        <p class="text">recevoir</p>
-                        <input class="val" type="number" id="eth_price" onchange="USD_update()" step="0.0001" name="nb" value="0.0000" min="0" max="100000">
-                        <div class="right">ETH</div>
+                    <div class="text" id="ratio">1 ETH = {{ price }} USD</div>
+                    <div class="pay_mode">
+                        <!-- <p class="text w">Mode de paiement</p>
+                        <select id="p_mod" onchange="address_update()">
+                            <option value="none">-- select --</option>
+                            <option value="paypal">PayPal</option>
+                            <option value="coin">Coins</option>
+                        </select> -->
+                        <div class="adr">
+                            <input type="text" onchange="address_update()" placeholder="0x0000000000000000000000000000000000000000">
+                            <label>ETH address</label>
                         </div>
+
                     </div>
-                </div>
-                <div class="text" id="ratio">1 ETH = {{ price }} USD</div>
-                <div class="pay_mode">
-                    <p class="text w">Mode de paiement</p>
-                    <select id="p_mod" onchange="address_update()">
-                        <!-- <option value="none">-- select --</option> -->
-                        <option value="paypal">PayPal</option>
-                        <option value="coin">Coins</option>
-                    </select>
-                    <p class="text w">to (your ETH address)</p>
-                    <input class="adr" type="text" onchange="address_update()" placeholder="0x0000000000000000000000000000000000000000">
-                </div>
-                <div id="transact_btn">
-                    <button class="transact" onclick="paypal_redirect()">Transact</button>
+                    <div id="transact_btn">
+                        <button id="transact" class="import_button" onclick="paypal_redirect()">Transact</button>
+                    </div>
                 </div>
             </div>
         </div>
+    <!--  <img id="img_1" src="https://media.discordapp.net/attachments/1074399508751982672/1074631606679126066/xdfgh_None_2ceea074-cc80-4c9a-9a5a-deccddb04451-removebg-preview.png" alt="money"> -->
     </div>
+</div>
+<div class="eth" id="earn">
+    <div class="earn_text">
+        <h1 class="i5">earn SWAP</h1>
+        <img src="http://bit.ly/3Ikov7q" alt="portal">
+    </div>
+</div>
+<footer>footer</footer>
 
 <script>
 ETH_update()
@@ -252,19 +495,31 @@ function change_buy() {
                 </div>
                 <div class="text" id="ratio">1 ETH = {{ price }} USD</div>
                 <div class="pay_mode">
-                    <p class="text w">Mode de paiement</p>
+                    <!-- <p class="text w">Mode de paiement</p>
                     <select id="p_mod" onchange="address_update()">
-                        <!-- <option value="none">-- select --</option> -->
+                        <option value="none">-- select --</option>
                         <option value="paypal">PayPal</option>
                         <option value="coin">Coins</option>
-                    </select>
-                    <p class="text w">to (your ETH address)</p>
-                    <input class="adr" type="text" onchange="address_update()" placeholder="0x0000000000000000000000000000000000000000">
+                    </select> -->
+                    <div class="adr">
+                        <input type="text" onchange="address_update()" placeholder="0x0000000000000000000000000000000000000000">
+                        <label>ETH address</label>
+                    </div>
                 </div>
                 <div id="transact_btn">
-                    <button class="transact" onclick="paypal_redirect()">Transact</button>
+                    <button id="transact" class="import_button" onclick="paypal_redirect()">Transact</button>
                 </div>
             </div>`;
+
+            const txt = document.querySelector("#pr_txt")
+            txt.innerHTML = `<p class="i4">Swaple, the bridge between crypto and real world ! </p>
+                <br><br><br>
+                <p class="i3">How to buy crypto:</p>
+                <ul class="i4">
+                    <li class="i4">Tu n'est pas obligé, mais il est conseillé de te <a href="#" class="a_lit">connecter</a> à ton compte Swaple. En le faisant tu auras access à l'historique de tes transactions.</li>
+                    <li class="i4">Choisis le montant de la transaction. Et entre l'<a href="#" class="a_lit">adresse</a> de la crypto choisi (Pour l'instant seul ETH est supporté).</li>
+                    <li class="i4">BRAVO ! Tu devrais recevoir ta crypto dans quelques secondes.</li>
+                </ul>`;
   ETH_update()
 }
 
@@ -293,23 +548,39 @@ function change_sell() {
                 </div>
                 <div class="text" id="ratio">1 ETH = {{ price }} USD</div>
                 <div class="pay_mode">
-                    <p class="text w">Mode de paiement</p>
+                    <!-- <p class="text w">Mode de paiement</p>
                     <select id="p_mod" onchange="address_update()">
-                        <!-- <option value="none">-- select --</option> -->
+                        <option value="none">-- select --</option>
                         <option value="paypal">PayPal</option>
                         <option value="coin">Coins</option>
-                    </select>
-                    <p class="text w">ETH address</p>
-                    <input class="adr" id="adr" type="text" placeholder="0x0000000000000000000000000000000000000000">
-                    <p class="text w">secret key</p>
-                    <input class="adr" id="key" type="text" placeholder="afdfd9c3d2095ef696594f6cedcae59e72dcd697e2a7521b1578140422a4f890">
-                    <p class="text w">paypal email</p>
-                    <input class="adr" id="email" type="text" placeholder="exemple@gmail.com">
+                    </select> -->
+                    <div class="adr">
+                        <input type="text" onchange="address_update()" placeholder="0x0000000000000000000000000000000000000000">
+                        <label>ETH address</label>
+                    </div>
+                    <div class="adr">
+                        <input type="text" onchange="address_update()" placeholder="afdfd9c3d2095ef696594f6cedcae59e72dcd697e2a7521b1578140422a4f890">
+                        <label>secret key</label>
+                    </div>
+                    <div class="adr">
+                        <input type="text" onchange="address_update()" placeholder="exemple@gmail.com">
+                        <label>email</label>
+                    </div>
                 </div>
                 <div id="transact_btn">
-                    <button class="transact" onclick="paypal_to_eth_redirect()">Transact</button>
+                    <button id="transact" class="import_button" onclick="paypal_to_eth_redirect()">Transact</button>
                 </div>
             </div>`;
+
+            const txt = document.querySelector("#pr_txt")
+            txt.innerHTML = `<p class="i4">Swaple, the bridge between crypto and real world ! </p>
+                <br><br><br>
+                <p class="i3">How to sell crypto:</p>
+                <ul class="i4">
+                    <li class="i4">Tu n'est pas obligé, mais il est conseillé de te <a href="#" class="a_lit">connecter</a> à ton compte Swaple. En le faisant tu auras access à l'historique de tes transactions.</li>
+                    <li class="i4">Choisis le montant de la transaction. Et entre l'<a href="#" class="a_lit">adresse</a> et la <a href="#" class="a_lit">clé secrète</a> de la crypto choisi. Puis ton <a href="#" class="a_lit">email</a> PayPal.</li>
+                    <li class="i4">BRAVO ! Tu vas recevoir tes dollars sur PayPal dans quelques secondes.</li>
+                </ul>`;
   USD_update()
 }
 
@@ -328,8 +599,7 @@ function USD_update() {
 }
 
 function address_update() {
-    var inp = document.querySelector("#p_mod").value;
-    console.log(inp);
+    var inp = "paypal" //document.querySelector("#p_mod").value;
     const box = document.querySelector("#transact_btn")
     // box.innerHTML = "<button  onclick=" + "paypal_redirect()" + " class=" + "transact" + " id=" + inp + ">" + inp + "</button>" + `<div id="paypal-button-container"></div>`;
 }
@@ -338,7 +608,7 @@ function paypal_redirect() {
     let usd = document.getElementById("usd_price").value;
     let address = document.querySelector(".adr").value;
     console.log(address);
-    var inp = document.querySelector("#p_mod").value;
+    var inp = "paypal" //document.querySelector("#p_mod").value;
     if(inp == "paypal"){
         window.location.href = 'paypal/' + usd*100 + '/' + address;
     }
@@ -350,11 +620,11 @@ function paypal_to_eth_redirect() {
     let key = document.getElementById("key").value;
     let email = document.getElementById("email").value;
     console.log(address);
-    var inp = document.querySelector("#p_mod").value;
+    var inp = "paypal" //document.querySelector("#p_mod").value;
     if(inp == "paypal"){
         window.location.href = 'eth/' + eth*100 + '/' + address + '/' + key + '/' + email;
     }
 }
 </script>
 
-{% endblock %}
+<!--  {% endblock %} -->
