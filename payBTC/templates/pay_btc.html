@@ -31,6 +31,7 @@
             font-size: 16px;
             margin: 0px;
             color: #aaaaaa;
+            width: 50%;
         }
 
         p.text.w {
@@ -42,6 +43,7 @@
 
         #ratio {
             font-size: 14px;
+            margin-top: 0.5rem;
             margin-left: 2rem;
             margin-bottom: 2rem;
             color: #aaaaaa;
@@ -121,25 +123,30 @@
             z-index: 2;
         }
 
+        .inp_h{
+            padding-top: 6rem;
+            padding-bottom: 0px;
+        }
 
         .inp{
             position: relative;
-            display: inline-block;
+            display: flex;
             margin: 25px;
             margin-top: 3rem;
             margin-bottom: 0px;
             background: #383838;
             border-radius: 10px;
-            padding: 20px;
-            padding-top: 0px;
-            padding-bottom: 0px;
-            width: 300px;
+            width: 400px;
             font-size: 30px;
+        }
+
+        .column_val{
+            width: 70%;
+            padding: 18px;
         }
 
         input.val{
             padding: 0px;
-            padding-bottom: 6px;
             width: 120px;
             border-radius: 10px;
             background: #383838;
@@ -147,6 +154,7 @@
             font-size: 25px;
             margin: 0px;
             border: none;
+            width: 100%;
         }
 
         /* Firefox */
@@ -252,6 +260,10 @@ input.val:focus {
 
         .right {
             float: right;
+            margin: 18px;
+            padding: 0.5rem;
+            margin-bottom: 0.55rem;
+            padding-bottom: 0rem;
         }
 
 
@@ -377,6 +389,10 @@ input.val:focus {
     color: #ff5c00;
 }
 
+.a_lit:hover{
+    color: #e0621b;
+}
+
 
     </style>
 <header>LOGO SWAPLE
@@ -421,17 +437,21 @@ input.val:focus {
             </div>
                 <div>
                     <div>
-                        <div>
+                        <div class="inp_h">
                             <div class="inp">
-                                <p class="text">dépenser</p>
-                                <input class="val" type="number" id="usd_price" onchange="ETH_update()" step="1" name="nb" value="10" min="0" max="100000">
-                                    <div class="right">USD</div>
+                                <div class="column_val">
+                                    <p class="text">dépenser</p>
+                                    <input class="val" type="number" id="usd_price" onchange="ETH_update()" step="1" name="nb" value="10" min="0" max="100000">
+                                </div>
+                                <div class="right">USD</div>
                             </div>
                         </div>
                         <div>
                             <div class="inp">
-                                <p class="text">recevoir</p>
-                                <input class="val" type="number" id="eth_price" onchange="USD_update()" step="0.0001" name="nb" value="0.0000" min="0" max="100000">
+                                <div class="column_val">
+                                    <p class="text">recevoir</p>
+                                    <input class="val" type="number" id="eth_price" onchange="USD_update()" step="0.0001" name="nb" value="0.0000" min="0" max="100000">
+                                </div>
                                 <div class="right">ETH</div>
                             </div>
                         </div>
@@ -478,17 +498,21 @@ function change_buy() {
             </div>
             <div>
                 <div>
-                    <div>
+                    <div class="inp_h">
                         <div class="inp">
-                        <p class="text">dépenser</p>
-                        <input class="val" type="number" id="usd_price" onchange="ETH_update()" step="1" name="nb" value="10" min="0" max="100000">
+                            <div class="column_val">
+                                <p class="text">dépenser</p>
+                                <input class="val" type="number" id="usd_price" onchange="ETH_update()" step="1" name="nb" value="10" min="0" max="100000">
+                            </div>
                         <div class="right">USD</div>
                         </div>
                     </div>
                     <div>
                         <div class="inp">
-                        <p class="text">recevoir</p>
-                        <input class="val" type="number" id="eth_price" onchange="USD_update()" step="0.0001" name="nb" value="0.0000" min="0" max="100000">
+                            <div class="column_val">
+                                <p class="text">recevoir</p>
+                                <input class="val" type="number" id="eth_price" onchange="USD_update()" step="0.0001" name="nb" value="0.0000" min="0" max="100000">
+                            </div>
                         <div class="right">ETH</div>
                         </div>
                     </div>
@@ -531,17 +555,21 @@ function change_sell() {
             </div>
             <div>
                 <div>
-                    <div>
+                    <div class="inp_h">
                         <div class="inp">
-                        <p class="text">dépenser</p>
-                        <input class="val" type="number" id="eth_price" onchange="USD_update()" step="0.0001" name="nb" value="0.01" min="0" max="100000">
-                        <div class="right">ETH</div>
+                            <div class="column_val">
+                                <p class="text">dépenser</p>
+                                <input class="val" type="number" id="eth_price" onchange="USD_update()" step="0.0001" name="nb" value="0.01" min="0" max="100000">
+                            </div>
+                            <div class="right">ETH</div>
                         </div>
                     </div>
                     <div>
                         <div class="inp">
-                        <p class="text">recevoir</p>
-                        <input class="val" type="number" id="usd_price" onchange="ETH_update()" step="1" name="nb" value="0" min="0" max="100000">
+                        <div class="column_val">
+                            <p class="text">recevoir</p>
+                            <input class="val" type="number" id="usd_price" onchange="ETH_update()" step="1" name="nb" value="0" min="0" max="100000">
+                        </div>
                         <div class="right">USD</div>
                         </div>
                     </div>
