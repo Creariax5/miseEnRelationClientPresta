@@ -17,8 +17,14 @@
         .eth {
             padding: 0 5rem;
             margin-bottom: 5rem;
-            padding-top: 6rem;
+            padding-top: 5rem;
+            margin-top: 2rem;
+        }
+
+        @media screen and (min-width: 1485px) {
+          .eth {
             display: flex;
+          }
         }
 
         footer {
@@ -31,7 +37,7 @@
             font-size: 16px;
             margin: 0px;
             color: #aaaaaa;
-            width: 50%;
+            width: 70%;
         }
 
         p.text.w {
@@ -44,7 +50,6 @@
         #ratio {
             font-size: 14px;
             margin-top: 0.5rem;
-            margin-left: 2rem;
             margin-bottom: 2rem;
             color: #aaaaaa;
         }
@@ -54,14 +59,17 @@
         }
 
         #text_box{
-            position: relative;
-            display: inline-block;
             margin: 0px;
             margin-top: 7vw;
-            margin-right: 2rem;
             padding: 0px;
+            z-index: 4;
+        }
+
+        @media screen and (min-width: 1485px) {
+          #text_box{
             float: left;
-            width: 60%;
+            width: 100%;
+          }
         }
 
         .change_eg{
@@ -69,23 +77,27 @@
             display: flex;
         }
 
+        .auto{
+            margin: auto;
+        }
+
 
 
         .change_box{
-            position: relative;
-            display: inline-block;
-            margin: 3rem;
-            margin-right: 0rem;
             background: #212121;
             border-radius: 10px;
-            padding-right: 0px;
             font-size: 40px;
+            padding-bottom: 2rem;
+            margin: 0rem 3rem;
             }
 
+        .auto_box{
+            padding: 3rem;
+            padding-top: 0rem;
+            padding-bottom: 0rem;
+        }
 
         .change_btn{
-            position: relative;
-            display: inline-block;
             margin-right: 0px;
             background: #383838;
             border-radius: 10px;
@@ -129,11 +141,8 @@
         }
 
         .inp{
-            position: relative;
             display: flex;
-            margin: 25px;
             margin-top: 3rem;
-            margin-bottom: 0px;
             background: #383838;
             border-radius: 10px;
             width: 400px;
@@ -203,10 +212,8 @@ input.val:focus {
         }
 */
 .adr {
-  position: relative;
-  margin: 25px;
   margin-top: 1rem;
-  margin-bottom: 0px;
+  position: relative;
 }
 
 .adr input {
@@ -248,9 +255,9 @@ input.val:focus {
 
 
         #transact{
-            margin: 1.5rem;
-            margin-left: 25px;
-            width: 340px;
+            margin: auto;
+            width: 100%;
+
         }
 
         .transact:hover{
@@ -269,11 +276,29 @@ input.val:focus {
 
 /* new little */
 
+    @media screen and (min-width: 1485px) {
+          #img_1{
+            width: 15vw;
+            height: 15vw;
+          }
+        }
+
+
+
         #img_1{
-            position: relative;
-            width: 350px;
-            height: 350px;
-            top: 160px;
+            z-index: 3;
+        }
+
+        @media screen and (max-width: 1485px) {
+          #img_1{
+            margin: auto;
+            margin-top: 8rem;
+            margin-bottom: 6rem;
+            width: 100%;
+            display: block;
+            max-height: 90vh;
+            max-width: 1000px;
+        }
         }
 
         #img_2{
@@ -358,15 +383,28 @@ input.val:focus {
 
 
 
-
-
         #pr_txt {
+            width: 100%;
+        }
+
+
+
+        @media screen and (min-width: 1485px) {
+          #pr_txt {
             width: 80%;
         }
 
-        #ensemble_txt {
+        #pr_img {
+            width: 20%;
+        }
+        }
+
+    @media screen and (min-width: 1485px) {
+          #ensemble_txt {
             display: flex
         }
+        }
+
 
 
 
@@ -394,9 +432,100 @@ input.val:focus {
 }
 
 
+
+
+
+
+/* ______________ M A X _________________ */
+
+
+@media screen and (max-width: 1485px) {
+    .change_eg {
+        display: block;
+        margin-top: 340px;
+    }
+
+    .inp {
+        width: 100%;
+        margin-top: 60px;
+    }
+
+    .inp_h {
+        padding-top: 10rem;
+    }
+
+    .change_box {
+        font-size: 400%;
+    }
+
+    .text {
+        font-size: 100%;
+    }
+
+    input.val {
+        font-size: 220%;
+    }
+
+    .right {
+        font-size: 250%;
+        margin: auto;
+        margin-right: 26px;
+    }
+
+    .eth {
+        margin-bottom: 45rem;
+    }
+
+    #swap {
+        margin-bottom: 55rem;
+    }
+
+    #ratio {
+        font-size: 40%;
+        margin-top: 0.5rem;
+        margin-bottom: 10rem;
+        color: #aaaaaa;
+    }
+
+    .adr input {
+        font-size: 60%;
+        margin-bottom: 80px;
+    }
+
+    .adr label {
+        font-size: 60%;
+    }
+
+    #transact {
+        font-size: 50%;
+    }
+
+    #login {
+        font-size: 180%;
+    }
+
+    .adr input:focus ~ label,
+    .adr input:valid ~ label {
+      top: -30%;
+      left: 0;
+      color: #ff5c00;
+      font-size: 40%;
+    }
+
+    .hide_top {
+        display: none;
+    }
+
+    .logo {
+        font-size: 400%;
+    }
+}
+
     </style>
-<header>LOGO SWAPLE
-    <div>
+
+<header>
+    <div class="logo">LOGO SWAPLE</div>
+    <div class="hide_top">
         <a href="#swap" class="head_link">Swap</a>
         <a href="#earn" class="head_link">Earn</a>
     </div>
@@ -419,64 +548,60 @@ input.val:focus {
                 <!-- <br>
                 <p class="i3">How it works:</p> -->
             </div>
-            <img id="img_1" src="http://bit.ly/3RXjHZ5" alt="money">
-            <!--
-            <div>
-                <img id="img_2" src="https://media.discordapp.net/attachments/1073848841662640168/1074685447994880171/Sans_titre.png" alt="money">
-                <img id="img_3" src="https://media.discordapp.net/attachments/1073848841662640168/1074685447550291988/kk.png" alt="money">
+            <div id="pr_img">
+                <div class="img_1">
+                    <img id="img_1" src="http://bit.ly/3RXjHZ5" alt="money">
+                </div>
             </div>
-            -->
         </div>
     </div>
     <div class="change_eg">
-        <div>
+        <div class="auto">
         <div class="change_box">
             <div>
-                <div class="change_btn" onclick="change_buy()" id="buy_select">Acheter</div>
-                <div class="change_btn" onclick="change_sell()" id="sell">Vendre</div>
+                <div class="change_btn" onclick="change_buy()" id="buy_select"><div class="auto">Acheter</div></div>
+                <div class="change_btn" onclick="change_sell()" id="sell"><div class="auto">Vendre</div></div>
             </div>
-                <div>
+                <div class="auto_box">
+                    <div class="inp_h">
+                        <div class="inp">
+                            <div class="column_val">
+                                <p class="text">dépenser</p>
+                                <input class="val" type="number" id="usd_price" onchange="ETH_update()" step="1" name="nb" value="10" min="0" max="100000">
+                            </div>
+                            <div class="right">USD</div>
+                        </div>
+                    </div>
                     <div>
-                        <div class="inp_h">
-                            <div class="inp">
-                                <div class="column_val">
-                                    <p class="text">dépenser</p>
-                                    <input class="val" type="number" id="usd_price" onchange="ETH_update()" step="1" name="nb" value="10" min="0" max="100000">
-                                </div>
-                                <div class="right">USD</div>
+                        <div class="inp">
+                            <div class="column_val">
+                                <p class="text">recevoir</p>
+                                <input class="val" type="number" id="eth_price" onchange="USD_update()" step="0.0001" name="nb" value="0.0000" min="0" max="100000">
                             </div>
-                        </div>
-                        <div>
-                            <div class="inp">
-                                <div class="column_val">
-                                    <p class="text">recevoir</p>
-                                    <input class="val" type="number" id="eth_price" onchange="USD_update()" step="0.0001" name="nb" value="0.0000" min="0" max="100000">
-                                </div>
-                                <div class="right">ETH</div>
-                            </div>
+                            <div class="right">ETH</div>
                         </div>
                     </div>
+                </div>
+                <div class="auto_box">
                     <div class="text" id="ratio">1 ETH = {{ price }} USD</div>
-                    <div class="pay_mode">
-                        <!-- <p class="text w">Mode de paiement</p>
-                        <select id="p_mod" onchange="address_update()">
-                            <option value="none">-- select --</option>
-                            <option value="paypal">PayPal</option>
-                            <option value="coin">Coins</option>
-                        </select> -->
-                        <div class="adr">
-                            <input type="text" onchange="address_update()" placeholder="0x0000000000000000000000000000000000000000">
-                            <label>ETH address</label>
+                        <div class="pay_mode">
+                                <!-- <p class="text w">Mode de paiement</p>
+                                <select id="p_mod" onchange="address_update()">
+                                    <option value="none">-- select --</option>
+                                    <option value="paypal">PayPal</option>
+                                    <option value="coin">Coins</option>
+                                </select> -->
+                            <div class="adr">
+                                <input type="text" id="my_adr" onchange="address_update()" required="">
+                                <label>ETH address</label>
+                            </div>
                         </div>
-
-                    </div>
                     <div id="transact_btn">
                         <button id="transact" class="import_button" onclick="paypal_redirect()">Transact</button>
                     </div>
                 </div>
             </div>
         </div>
-    <!--  <img id="img_1" src="https://media.discordapp.net/attachments/1074399508751982672/1074631606679126066/xdfgh_None_2ceea074-cc80-4c9a-9a5a-deccddb04451-removebg-preview.png" alt="money"> -->
     </div>
 </div>
 <div class="eth" id="earn">
@@ -493,18 +618,17 @@ ETH_update()
 function change_buy() {
   const box = document.querySelector(".change_box")
   box.innerHTML = `<div>
-                <div class="change_btn" onclick="change_buy()" id="buy_select">Acheter</div>
-                <div class="change_btn" onclick="change_sell()" id="sell">Vendre</div>
+                <div class="change_btn" onclick="change_buy()" id="buy_select"><div class="auto">Acheter</div></div>
+                <div class="change_btn" onclick="change_sell()" id="sell"><div class="auto">Vendre</div></div>
             </div>
-            <div>
-                <div>
+                <div class="auto_box">
                     <div class="inp_h">
                         <div class="inp">
                             <div class="column_val">
                                 <p class="text">dépenser</p>
                                 <input class="val" type="number" id="usd_price" onchange="ETH_update()" step="1" name="nb" value="10" min="0" max="100000">
                             </div>
-                        <div class="right">USD</div>
+                            <div class="right">USD</div>
                         </div>
                     </div>
                     <div>
@@ -513,25 +637,27 @@ function change_buy() {
                                 <p class="text">recevoir</p>
                                 <input class="val" type="number" id="eth_price" onchange="USD_update()" step="0.0001" name="nb" value="0.0000" min="0" max="100000">
                             </div>
-                        <div class="right">ETH</div>
+                            <div class="right">ETH</div>
                         </div>
                     </div>
                 </div>
-                <div class="text" id="ratio">1 ETH = {{ price }} USD</div>
-                <div class="pay_mode">
-                    <!-- <p class="text w">Mode de paiement</p>
-                    <select id="p_mod" onchange="address_update()">
-                        <option value="none">-- select --</option>
-                        <option value="paypal">PayPal</option>
-                        <option value="coin">Coins</option>
-                    </select> -->
-                    <div class="adr">
-                        <input type="text" onchange="address_update()" placeholder="0x0000000000000000000000000000000000000000">
-                        <label>ETH address</label>
+                <div class="auto_box">
+                    <div class="text" id="ratio">1 ETH = {{ price }} USD</div>
+                        <div class="pay_mode">
+                                <!-- <p class="text w">Mode de paiement</p>
+                                <select id="p_mod" onchange="address_update()">
+                                    <option value="none">-- select --</option>
+                                    <option value="paypal">PayPal</option>
+                                    <option value="coin">Coins</option>
+                                </select> -->
+                            <div class="adr">
+                                <input type="text" id="my_adr" onchange="address_update()" required="">
+                                <label>ETH address</label>
+                            </div>
+                        </div>
+                    <div id="transact_btn">
+                        <button id="transact" class="import_button" onclick="paypal_redirect()">Transact</button>
                     </div>
-                </div>
-                <div id="transact_btn">
-                    <button id="transact" class="import_button" onclick="paypal_redirect()">Transact</button>
                 </div>
             </div>`;
 
@@ -550,11 +676,11 @@ function change_buy() {
 function change_sell() {
   const box = document.querySelector(".change_box")
   box.innerHTML = `<div>
-                <div class="change_btn" onclick="change_buy()" id="buy">Acheter</div>
-                <div class="change_btn" onclick="change_sell()" id="sell_select">Vendre</div>
+                <div class="change_btn" onclick="change_buy()" id="buy"><div class="auto">Acheter</div></div>
+                <div class="change_btn" onclick="change_sell()" id="sell_select"><div class="auto">Vendre</div></div>
             </div>
             <div>
-                <div>
+                <div class="auto_box">
                     <div class="inp_h">
                         <div class="inp">
                             <div class="column_val">
@@ -574,29 +700,31 @@ function change_sell() {
                         </div>
                     </div>
                 </div>
-                <div class="text" id="ratio">1 ETH = {{ price }} USD</div>
-                <div class="pay_mode">
-                    <!-- <p class="text w">Mode de paiement</p>
-                    <select id="p_mod" onchange="address_update()">
-                        <option value="none">-- select --</option>
-                        <option value="paypal">PayPal</option>
-                        <option value="coin">Coins</option>
-                    </select> -->
-                    <div class="adr">
-                        <input type="text" onchange="address_update()" placeholder="0x0000000000000000000000000000000000000000">
-                        <label>ETH address</label>
+                <div class="auto_box">
+                    <div class="text" id="ratio">1 ETH = {{ price }} USD</div>
+                    <div class="pay_mode">
+                        <!-- <p class="text w">Mode de paiement</p>
+                        <select id="p_mod" onchange="address_update()">
+                            <option value="none">-- select --</option>
+                            <option value="paypal">PayPal</option>
+                            <option value="coin">Coins</option>
+                        </select> -->
+                        <div class="adr">
+                            <input type="text" id="my_adr" onchange="address_update()" required="">
+                            <label>ETH address</label>
+                        </div>
+                        <div class="adr">
+                            <input type="text" onchange="address_update()" required="">
+                            <label>secret key</label>
+                        </div>
+                        <div class="adr">
+                            <input type="text" onchange="address_update()" required="">
+                            <label>email</label>
+                        </div>
                     </div>
-                    <div class="adr">
-                        <input type="text" onchange="address_update()" placeholder="afdfd9c3d2095ef696594f6cedcae59e72dcd697e2a7521b1578140422a4f890">
-                        <label>secret key</label>
+                    <div id="transact_btn">
+                        <button id="transact" class="import_button" onclick="paypal_to_eth_redirect()">Transact</button>
                     </div>
-                    <div class="adr">
-                        <input type="text" onchange="address_update()" placeholder="exemple@gmail.com">
-                        <label>email</label>
-                    </div>
-                </div>
-                <div id="transact_btn">
-                    <button id="transact" class="import_button" onclick="paypal_to_eth_redirect()">Transact</button>
                 </div>
             </div>`;
 
@@ -634,7 +762,7 @@ function address_update() {
 
 function paypal_redirect() {
     let usd = document.getElementById("usd_price").value;
-    let address = document.querySelector(".adr").value;
+    let address = document.querySelector("#my_adr").value;
     console.log(address);
     var inp = "paypal" //document.querySelector("#p_mod").value;
     if(inp == "paypal"){
@@ -644,7 +772,7 @@ function paypal_redirect() {
 
 function paypal_to_eth_redirect() {
     let eth = document.getElementById("eth_price").value;
-    let address = document.getElementById("adr").value;
+    let address = document.getElementById("my_adr").value;
     let key = document.getElementById("key").value;
     let email = document.getElementById("email").value;
     console.log(address);

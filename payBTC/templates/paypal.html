@@ -1,6 +1,149 @@
-<h1>paypal {{ price }} $</h1>
 
-<div id="paypal-button-container"></div>
+<style class="dark">
+    body {
+        color: #FFFFFF;
+        margin: auto;
+        background: #303030;
+        font-family: Montserrat, sans-serif;
+        overflow-x: hidden;
+    }
+
+    .change_eg{
+        display: flex;
+    }
+
+    .change_box{
+        background: #212121;
+        border-radius: 10px;
+        font-size: 20px;
+        padding-bottom: 2rem;
+        margin: auto;
+        margin-top: 8%;
+
+    }
+
+    .auto_box{
+        padding: 3rem;
+        padding-top: 0rem;
+        padding-bottom: 0rem;
+    }
+
+    .seize{
+        width: 400px;
+    }
+
+    p{
+        margin: 0px;
+    }
+
+    .bd_top{
+        border-color: #dedede;
+        border-top: 1px dashed #dedede;
+        padding: 7px 0;
+
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .bd{
+        margin-top: 2rem;
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .recap{
+        font-size: 16px;
+        line-height: 2;
+        margin-top: 30px;
+    }
+
+
+    .adr {
+      margin-top: 4rem;
+      position: relative;
+    }
+
+.adr input {
+  width: 100%;
+  padding: 10px 0;
+  font-size: 16px;
+  color: #fff;
+  margin-bottom: 30px;
+  border: none;
+  border-bottom: 1px solid #fff;
+  outline: none;
+  background: transparent;
+}
+.adr label {
+  position: absolute;
+  top:0;
+  left: 0;
+  padding: 10px 0;
+  font-size: 16px;
+  color: #fff;
+  pointer-events: none;
+  transition: .5s;
+}
+
+.adr input:focus ~ label,
+.adr input:valid ~ label {
+  top: -20px;
+  left: 0;
+  color: #ff5c00;
+  font-size: 12px;
+}
+
+a {
+    font-size: 60px;
+    color: #ff5c00;
+    text-decoration: none;
+    cursor: pointer;
+    margin-top: -20;
+}
+
+</style>
+<div class="change_eg">
+    <div class="change_box">
+        <div class="auto_box">
+            <div class="bd">
+                <a href="http://127.0.0.1:8000/pay_btc/#swap">< </a>
+                <p>Buy ETH to your wallet (paypal {{ price }} $)</p>
+            </div>
+            <div class="adr">
+                <input type="text" onchange="address_update()" value="0x0000000000000000000000000000000000000000" required="">
+                <label>ETH WALLET ADDRESS</label>
+            </div>
+            <div class="recap">
+              <div>
+                <span>ORDER DETAILS</span>
+              </div>
+              <div class="bd_top">
+                <span>0.01933259 ETH @ 1443.16 EUR</span>
+                <span>27.9 EUR</span>
+              </div>
+              <div class="bd_top">
+                <span>Transak fee</span>
+                <span>1.05 EUR</span>
+              </div>
+              <div class="bd_top">
+                <span>Network/Exchange fee</span>
+                <span>1.05 EUR</span>
+              </div>
+              <div class="bd_top">
+                <span>Total</span>
+                <span>30 EUR</span>
+              </div>
+            </div>
+            <br>
+            <br>
+
+            <div id="paypal-button-container"></div>
+            <div class="seize"></div>
+        </div>
+    </div>
+</div>
+
+
 <script src="https://www.paypal.com/sdk/js?client-id=AfK20ZjlGPpSSoaMJtVV84eRIMTP1pWjxbcxFWXVPdAfGtqNnYtgLaSbKeN6WBvzLN2wRFN_LojTZNwF&currency=USD&intent=capture&enable-funding=venmo" data-sdk-integration-source="integrationbuilder"></script>
         <script>
           function remplacer_virgule_par_point(decimal) {
