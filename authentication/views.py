@@ -13,9 +13,15 @@ def register_user(request):
             username = form.cleaned_data["username"]
             password = form.cleaned_data["password1"]
             user = authenticate(request, username=username, password=password)
-            login(request, user)
-            return render(request, "register.html", context={"form": form,
-                                                             "login": my_login})
+            if user is not None:
+                login(request, user)
+                # Redirect to a success page.
+                return redirect('/pay_btc/')
+            else:
+                # Return an 'invalid login' error message.
+                messages.success(request, "Try again")
+                return render(request, "register.html", context={"form": form,
+                                                                 "login": my_login})
     else:
         form = UserCreationForm()
     return render(request, "register.html", context={"form": form,

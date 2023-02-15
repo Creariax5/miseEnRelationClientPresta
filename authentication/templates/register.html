@@ -18,7 +18,7 @@
         font-size: 20px;
         padding-bottom: 2rem;
         margin: auto;
-        margin-top: 5%;
+        margin-top: 8%;
 
     }
 
@@ -171,6 +171,15 @@ a.i4 {
     text-decoration-color: #ff5c00;
 }
 
+.errorlist{
+    margin: 0;
+    margin-top: -20px;
+    margin-bottom: 15px;
+    padding-left: 20px;
+    color: #aaa;
+    font-size: 16px;
+}
+
 </style>
 
 <div class="change_eg">
@@ -184,14 +193,23 @@ a.i4 {
             <form method="POST" class="post_form">
                 {% csrf_token %}
 
-                <p class="bl">{{ form.as_p }}</p>
+                {% for field in form %}
+                    <div class="fieldWrapper">
+                        {{ field.errors }}
 
-                <button type="submit" class="save_btn">
-                    Enregistrer
-                </button>
+
+                        <div class="adr">
+                            {{ field }}
+                            {{ field.label_tag }}
+                        </div>
+                    </div>
+                {% endfor %}
+                <div id="home_btn">
+                    <button type="submit" id="home" class="import_button">Register</button>
+                </div>
             </form>
-            <br>
-            <p>if you already have an account: <a href="/login">login</a></p>
+            <div class="seize"></div>
+            <p class="i4">If you already have an account: <a href="/login" id="auto" class="i4">login</a></p>
             </div>
         </div>
     </div>
