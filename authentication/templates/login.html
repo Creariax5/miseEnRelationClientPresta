@@ -1,25 +1,210 @@
-{% extends 'navbar.html' %}
-{% block nav %}
-<p>login</p>
 
-<div class="login">
-<form method="POST" class="post_form">
-    {% csrf_token %}
+<style class="dark">
+    body {
+        color: #FFFFFF;
+        margin: auto;
+        background: #303030;
+        font-family: Montserrat, sans-serif;
+        overflow-x: hidden;
+    }
 
-    <div class="form-example">
-        <h2><label for="username">username: </label>
-        <input type="text" name="username" id="username" required></h2>
+    .change_eg{
+        display: flex;
+    }
+
+    .change_box{
+        background: #212121;
+        border-radius: 10px;
+        font-size: 20px;
+        padding-bottom: 2rem;
+        margin: auto;
+        margin-top: 10%;
+
+    }
+
+    .auto_box{
+        padding: 3rem;
+        padding-top: 0rem;
+        padding-bottom: 0rem;
+    }
+
+    .auto{
+        margin: auto;
+    }
+
+    .seize{
+        width: 400px;
+    }
+
+    p{
+        margin: 0px;
+    }
+
+    .bd_top{
+        border-color: #dedede;
+        border-top: 1px dashed #dedede;
+        padding: 7px 0;
+
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .bd{
+        margin-top: 1.5rem;
+        margin-right: 3rem;
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .recap{
+        font-size: 16px;
+        line-height: 2;
+        margin-top: 10px;
+        margin-bottom: 90px;
+    }
+
+
+    .adr {
+      margin-top: 0rem;
+      position: relative;
+    }
+
+    .post_form {
+      margin-top: 4rem;
+    }
+
+.adr input {
+  width: 100%;
+  padding: 10px 0;
+  font-size: 16px;
+  color: #fff;
+  margin-bottom: 30px;
+  border: none;
+  border-bottom: 1px solid #fff;
+  outline: none;
+  background: transparent;
+}
+.adr label {
+  position: absolute;
+  top:0;
+  left: 0;
+  padding: 10px 0;
+  font-size: 16px;
+  color: #fff;
+  pointer-events: none;
+  transition: .5s;
+}
+
+.adr input:focus ~ label,
+.adr input:valid ~ label {
+  top: -20px;
+  left: 0;
+  color: #ff5c00;
+  font-size: 12px;
+}
+
+a.r {
+    font-size: 60px;
+    color: #ff5c00;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.r{
+
+}
+
+
+/* Change Autocomplete styles in Chrome*/
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover,
+textarea:-webkit-autofill:focus,
+select:-webkit-autofill,
+select:-webkit-autofill:hover,
+select:-webkit-autofill:focus {
+  -webkit-text-fill-color: #FFFFFF;
+  -webkit-box-shadow: 0 0 0px 0px #000 #212121;
+  transition: background-color 5000s ease-in-out 0s;
+}
+
+
+.import_button{
+            margin-top: 0px;
+            background: #ff5c00;
+            border-radius: 6px;
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            line-height: 1.25;
+            padding: 0.6em 1.35em;
+            border: 0;
+            color: #FFFFFF;
+            font-family: inherit;
+            font-size: 16px;
+            font-weight: 550;
+        }
+
+        #home{
+            margin: auto;
+            margin-top: 50px;
+            margin-bottom: 5px;
+            width: 100%;
+
+        }
+
+        #home:hover{
+            background: #f9b833;
+        }
+
+        .i4 {
+            margin: 0;
+            margin-bottom: 5px;
+            color: #aaa;
+            font-size: 16px;
+        }
+
+a.i4 {
+    cursor: pointer;
+    text-decoration-color: #ff5c00;
+}
+
+</style>
+<div class="change_eg">
+    <div class="change_box">
+        <div class="auto_box">
+            <div class="bd">
+                <a class="r" href="/pay_btc">< </a>
+                <p class="auto">ELC login</p>
+            </div>
+
+            <div class="login">
+            <form method="POST" class="post_form">
+                {% csrf_token %}
+
+                <div class="form-example">
+                    <div class="adr">
+                        <input type="text" name="username" id="username" value="" required="">
+                        <label for="username">username</label>
+                    </div>
+                </div>
+                <div class="form-example">
+                    <div class="adr">
+                        <input type="password" name="password" id="password" value="" required="">
+                        <label for="password">password</label>
+                    </div>
+                </div>
+
+                <div id="home_btn">
+                    <button type="submit" id="home" class="import_button">Login</button>
+                </div>
+            </form>
+
+            <div class="seize"></div>
+            <p class="i4">if you don't have an account yet: <a href="/register" id="auto" class="i4">register</a></p>
+            </div>
+        </div>
     </div>
-    <div class="form-example">
-        <h2><label for="password">password: </label>
-        <input type="password" name="password" id="password" required></h2>
-    </div>
-
-    <button type="submit" class="save_btn">
-        Enregistrer
-    </button>
-</form>
-<br>
-<p>if you don't have an account yet: <a href="/register">register</a></p>
 </div>
-{% endblock %}

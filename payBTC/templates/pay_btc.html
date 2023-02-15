@@ -529,7 +529,7 @@ input.val:focus {
         <a href="#swap" class="head_link">Swap</a>
         <a href="#earn" class="head_link">Earn</a>
     </div>
-    <button id="login" class="import_button">login</button>
+    <button id="login" class="import_button"  onclick="login_redirect()">login</button>
 </header>
 <div class="eth" id="swap">
     <div id="text_box">
@@ -768,6 +768,10 @@ function paypal_redirect() {
     if(inp == "paypal"){
         window.location.href = 'paypal/' + usd*100 + '/' + address;
     }
+}
+
+function login_redirect() {
+    window.location.href = '/login/';
 }
 
 function paypal_to_eth_redirect() {
