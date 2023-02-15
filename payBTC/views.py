@@ -1,7 +1,7 @@
 import json
 
-from django.http import JsonResponse
-from django.shortcuts import render
+from django.http import JsonResponse, HttpResponseRedirect
+from django.shortcuts import render, redirect
 import requests
 from .models import Trade
 from .tests import give_eth, take_eth, eth_price
@@ -22,11 +22,15 @@ def pay_eth(request):
 def paypal(request, usd, address):
     usd = usd / 100
     print(usd)
+    eth = round(float(eth_price()), 2)
+    my_eth = round(float(usd) / float(eth), 6)
     return render(request, 'paypal.html', context={"price": usd,
+                                                   "eth": eth,
+                                                   "my_eth": my_eth,
                                                    "address": address})
 
 
-def compal(request):
+def paypal_success(request):
     current_user = request.user
     body = json.loads(request.body)
     nb = body['nb']
@@ -39,8 +43,10 @@ def compal(request):
     )
 
     give_eth(nb, address)
+    value = round(nb / float(eth_price()), 6)
+    url = '/pay_btc/complete_buy/' + str(nb) + "/" + str(value) + "/"
 
-    return JsonResponse('Payment completed!', safe=False)
+    return JsonResponse({"url": url})
 
 
 def eth(request, eth, address, key, email):
@@ -60,5 +66,14 @@ def eth(request, eth, address, key, email):
     value = nb * round(float(eth_price()))
     payout(email, value)
 
-    return render(request, 'eth.html', context={"nb": nb,
-                                                "usd": value})
+    return redirect('/pay_btc/complete_sell/' + str(nb) + "/" + str(value) + "/")
+
+
+def complete_buy(request, nb, value):
+    ph = "Congrats ! " + str(nb) + " USD was converted in " + str(value) + " ETH and sent to your ETH address !"
+    return render(request, 'eth.html', context={"phrase": ph})
+
+
+def complete_sell(request, nb, value):
+    ph = "Congrats ! " + str(nb) + " ETH was converted in " + str(value) + " dollars and added to your paypal account !"
+    return render(request, 'eth.html', context={"phrase": ph})

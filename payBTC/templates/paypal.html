@@ -18,7 +18,7 @@
         font-size: 20px;
         padding-bottom: 2rem;
         margin: auto;
-        margin-top: 8%;
+        margin-top: 5%;
 
     }
 
@@ -26,6 +26,10 @@
         padding: 3rem;
         padding-top: 0rem;
         padding-bottom: 0rem;
+    }
+
+    .auto{
+        margin: auto;
     }
 
     .seize{
@@ -46,7 +50,8 @@
     }
 
     .bd{
-        margin-top: 2rem;
+        margin-top: 1.5rem;
+        margin-right: 3rem;
         display: flex;
         justify-content: space-between;
     }
@@ -54,7 +59,8 @@
     .recap{
         font-size: 16px;
         line-height: 2;
-        margin-top: 30px;
+        margin-top: 10px;
+        margin-bottom: 90px;
     }
 
 
@@ -98,7 +104,10 @@ a {
     color: #ff5c00;
     text-decoration: none;
     cursor: pointer;
-    margin-top: -20;
+}
+
+.r{
+
 }
 
 </style>
@@ -106,11 +115,11 @@ a {
     <div class="change_box">
         <div class="auto_box">
             <div class="bd">
-                <a href="http://127.0.0.1:8000/pay_btc/#swap">< </a>
-                <p>Buy ETH to your wallet (paypal {{ price }} $)</p>
+                <a class="r" href="http://127.0.0.1:8000/pay_btc/#swap">< </a>
+                <p class="auto">Buy ETH to your wallet</p>
             </div>
             <div class="adr">
-                <input type="text" onchange="address_update()" value="0x0000000000000000000000000000000000000000" required="">
+                <input type="text" onchange="address_update()" value="{{ address }}" required="">
                 <label>ETH WALLET ADDRESS</label>
             </div>
             <div class="recap">
@@ -118,20 +127,20 @@ a {
                 <span>ORDER DETAILS</span>
               </div>
               <div class="bd_top">
-                <span>0.01933259 ETH @ 1443.16 EUR</span>
-                <span>27.9 EUR</span>
+                <span>{{my_eth}} ETH @ {{eth}} EUR</span>
+                <span>{{price}} EUR</span>
               </div>
               <div class="bd_top">
                 <span>Transak fee</span>
-                <span>1.05 EUR</span>
+                <span>0 EUR</span>
               </div>
               <div class="bd_top">
                 <span>Network/Exchange fee</span>
-                <span>1.05 EUR</span>
+                <span>0 EUR</span>
               </div>
               <div class="bd_top">
                 <span>Total</span>
-                <span>30 EUR</span>
+                <span>{{price}} EUR</span>
               </div>
             </div>
             <br>
@@ -178,14 +187,22 @@ a {
 	 		var url = "{% url 'compal' %}"
 	 		console.log(url);
 
-	 		fetch(url, {
-	 			method:'POST',
-	 			headers:{
-	 				'Content-type':'application/json',
-	 				'X-CSRFToken':csrftoken,
-	 			},
-	 			body:JSON.stringify({'nb':total, 'address':address})
-	 		})
+            const request = new Request(url, {
+                    method:'POST',
+                    headers:{
+                        'Content-type':'application/json',
+                        'X-CSRFToken':csrftoken,
+                    },
+                    body:JSON.stringify({'nb':total, 'address':address})
+                });
+
+	 		fetch(request)
+	 		    .then(response => response.json())
+	 		    .then(result => {
+                    console.log(result);
+                    console.log(result["url"]);
+                    window.location.href = result["url"];
+                })
 	 	}
 
 
@@ -208,7 +225,7 @@ a {
                 return actions.order.capture().then(function(details) {
                     // Show a success message to the buyer
                     completeOrder()
-                    alert('Transaction completed by ' + details.payer.name.given_name + '!');
+                    //window.location.href = '/pay_btc/complete_buy/' + "str(nb)" + "/" + "str(value)" + "/";
                 });
             }
 

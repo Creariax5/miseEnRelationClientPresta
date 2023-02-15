@@ -1,6 +1,138 @@
-{% extends 'navbar.html' %}
-{% block nav %}
-<br>
-<h1> {{ nb }} ETH was converted in {{ usd }} dollars and added to your paypal account</h1>
 
-{% endblock %}
+<style class="dark">
+    body {
+        color: #FFFFFF;
+        margin: auto;
+        background: #303030;
+        font-family: Montserrat, sans-serif;
+        overflow-x: hidden;
+    }
+
+    .change_eg{
+        display: flex;
+    }
+
+    .change_box{
+        background: #212121;
+        border-radius: 10px;
+        font-size: 20px;
+        padding-bottom: 2rem;
+        margin: auto;
+        margin-top: 5%;
+
+    }
+
+    .auto_box{
+        padding: 3rem;
+        padding-top: 0rem;
+        padding-bottom: 0rem;
+    }
+
+    #auto{
+        margin: 38%;
+        margin-top: 20px;
+    }
+
+    .seize{
+        width: 400px;
+    }
+
+    p{
+        margin: auto;
+        max-width: 400px;
+    }
+
+    .bd_top{
+        border-color: #dedede;
+        border-top: 1px dashed #dedede;
+        padding: 7px 0;
+
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .bd{
+        margin-top: 2rem;
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .recap{
+        font-size: 16px;
+        line-height: 2;
+        margin-top: 10px;
+        margin-bottom: 90px;
+    }
+
+
+img {
+    width: 300px;
+    margin: 50px;
+}
+
+        .import_button{
+            margin-top: 0px;
+            background: #ff5c00;
+            border-radius: 6px;
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            line-height: 1.25;
+            padding: 0.6em 1.35em;
+            border: 0;
+            color: #FFFFFF;
+            font-family: inherit;
+            font-size: 16px;
+            font-weight: 550;
+        }
+
+        #home{
+            margin: auto;
+            margin-top: 50px;
+            margin-bottom: 5px;
+            width: 100%;
+
+        }
+
+        #home:hover{
+            background: #f9b833;
+        }
+
+        .i4 {
+            margin: 0;
+            margin-bottom: 5px;
+            color: #aaa;
+            font-size: 16px;
+        }
+
+a {
+    cursor: pointer;
+    text-decoration-color: #ff5c00;
+}
+
+
+</style>
+
+
+<div class="change_eg">
+    <div class="change_box">
+        <div class="auto_box">
+            <img src="https://media.discordapp.net/attachments/1074399508751982672/1075117966632423495/tick-check-mark-icon-sign-symbol-design-free-png.png?width=759&height=676" alt="complete">
+            <div class="bd">
+                <p>Payment Complete</p>
+            </div>
+            <p class="i4"> {{ phrase }}</p>
+            <div id="home_btn">
+                <button id="home" class="import_button" onclick="home_redirect()">home</button>
+            </div>
+            <a href="#" id="auto" class="i4">Transfer logs</a>
+            <div class="seize"></div>
+        </div>
+    </div>
+</div>
+
+<script>
+    function home_redirect() {
+        window.location.href = 'http://127.0.0.1:8000/pay_btc/';
+    }
+</script>
