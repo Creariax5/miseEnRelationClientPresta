@@ -15,9 +15,9 @@
         }
 
         .eth {
-            padding: 0 5rem;
-            margin-bottom: 5rem;
-            padding-top: 5rem;
+            padding: 0 20rem;
+            margin-bottom: 0rem;
+            padding-top: 6rem;
             margin-top: 2rem;
         }
 
@@ -60,7 +60,7 @@
 
         #text_box{
             margin: 0px;
-            margin-top: 7vw;
+            margin-top: 5vw;
             padding: 0px;
             z-index: 4;
         }
@@ -73,7 +73,6 @@
         }
 
         .change_eg{
-            height: 749px;
             display: flex;
         }
 
@@ -88,7 +87,7 @@
             border-radius: 10px;
             font-size: 40px;
             padding-bottom: 2rem;
-            margin: 0rem 3rem;
+            margin: 0.5rem 0rem;
             }
 
         .auto_box{
@@ -278,8 +277,7 @@ input.val:focus {
 
     @media screen and (min-width: 1485px) {
           #img_1{
-            width: 15vw;
-            height: 15vw;
+              width: 400px;
           }
         }
 
@@ -322,7 +320,6 @@ input.val:focus {
         }
 
         #login{
-            float: right;
             margin-left: auto;
         }
 
@@ -365,7 +362,7 @@ input.val:focus {
         .i3 {
             margin: 0;
             margin-bottom: 0.5rem;
-            font-size: 1em;
+            font-size: 20px;
             font-weight: 600;
         }
 
@@ -373,11 +370,12 @@ input.val:focus {
             margin: 0;
             margin-bottom: 5px;
             color: #aaa;
+            font-size: 18px;
         }
 
         .i5 {
-            margin: 0rem;
-            font-size: 2em;
+            margin-bottom: 16px;
+            font-size: 26px;
             font-weight: 700;
         }
 
@@ -391,18 +389,16 @@ input.val:focus {
 
         @media screen and (min-width: 1485px) {
           #pr_txt {
-            width: 80%;
-        }
+            width: 90%;
+            }
 
-        #pr_img {
-            width: 20%;
-        }
-        }
-
-    @media screen and (min-width: 1485px) {
           #ensemble_txt {
             display: flex
-        }
+            }
+
+            .text_right{
+                margin-left: 120px;
+            }
         }
 
 
@@ -442,7 +438,7 @@ input.val:focus {
 @media screen and (max-width: 1485px) {
     .change_eg {
         display: block;
-        margin-top: 340px;
+        margin-top: 70px;
     }
 
     .inp {
@@ -474,10 +470,14 @@ input.val:focus {
 
     .eth {
         margin-bottom: 45rem;
+        padding: 0 3rem;
+        margin-bottom: 0rem;
+        padding-top: 6rem;
+        margin-top: 2rem;
     }
 
     #swap {
-        margin-bottom: 55rem;
+        margin-bottom: 70px;
     }
 
     #ratio {
@@ -502,6 +502,7 @@ input.val:focus {
 
     #login {
         font-size: 180%;
+        display: none;
     }
 
     .adr input:focus ~ label,
@@ -521,6 +522,10 @@ input.val:focus {
     }
 }
 
+.text_right{
+    margin-top: 75px;
+}
+
     </style>
 
 <header>
@@ -529,12 +534,17 @@ input.val:focus {
         <a href="#swap" class="head_link">Swap</a>
         <a href="#earn" class="head_link">Earn</a>
     </div>
-    <button id="login" class="import_button"  onclick="login_redirect()">login</button>
+    {% if user.is_authenticated %}
+        <button id="login" class="import_button"  onclick="my_profile_redirect()">My profile</button>
+    {% else %}
+        <button id="login" class="import_button"  onclick="login_redirect()">login</button>
+    {% endif %}
 </header>
 <div class="eth" id="swap">
     <div id="text_box">
         <h1 class="i1" id="instant">instant SWAP</h1>
-        <h2 class="i2" >The simple way to swap </h2>
+        <h2 class="i2" >Swap now ! </h2>
+        <!--<h2 class="i2" >The more simple way to swap </h2>-->
         <div id="ensemble_txt">
             <div id="pr_txt">
                 <p class="i4">Swaple, the bridge between crypto and real world ! </p>
@@ -548,11 +558,11 @@ input.val:focus {
                 <!-- <br>
                 <p class="i3">How it works:</p> -->
             </div>
-            <div id="pr_img">
-                <div class="img_1">
+            <!--<div id="pr_img">
+                 <div class="img_1">
                     <img id="img_1" src="http://bit.ly/3RXjHZ5" alt="money">
                 </div>
-            </div>
+            </div>-->
         </div>
     </div>
     <div class="change_eg">
@@ -604,12 +614,25 @@ input.val:focus {
         </div>
     </div>
 </div>
-<div class="eth" id="earn">
+<div class="eth" id="">
+    <div id="pr_img">
+        <div class="img_1">
+            <img id="img_1" src="http://bit.ly/3RXjHZ5" alt="money">
+        </div>
+    </div>
+    <div class="text_right">
+        <p class="i5">Votre nouveau wallet crypto</p>
+        <p class="i4">Nous avons développé Bridge Wallet, l'appli ultime pour investir dans le Bitcoin et les actifs
+            Ethereum facilement. Achetez les cryptos de votre choix, échangez-les contre des milliers de
+            cryptoactifs et gérez votre portefeuille depuis votre mobile</p>
+    </div>
+</div>
+<!--<div class="eth" id="earn">
     <div class="earn_text">
         <h1 class="i5">earn SWAP</h1>
         <img src="http://bit.ly/3Ikov7q" alt="portal">
     </div>
-</div>
+</div>-->
 <footer>footer</footer>
 
 <script>
@@ -709,17 +732,17 @@ function change_sell() {
                             <option value="paypal">PayPal</option>
                             <option value="coin">Coins</option>
                         </select> -->
-                        <div class="adr">
+                        <!-- <div class="adr">
                             <input type="text" id="my_adr" onchange="address_update()" required="">
                             <label>ETH address</label>
                         </div>
                         <div class="adr">
                             <input type="text" id="key" onchange="address_update()" required="">
                             <label>secret key</label>
-                        </div>
+                        </div> -->
                         <div class="adr">
                             <input type="text" id="email" onchange="address_update()" required="">
-                            <label>email</label>
+                            <label>PayPal email</label>
                         </div>
                     </div>
                     <div id="transact_btn">
@@ -772,6 +795,10 @@ function paypal_redirect() {
 
 function login_redirect() {
     window.location.href = '/login/';
+}
+
+function my_profile_redirect() {
+    window.location.href = '/profile/';
 }
 
 function paypal_to_eth_redirect() {

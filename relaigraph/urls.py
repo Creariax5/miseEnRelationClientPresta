@@ -15,6 +15,7 @@ urlpatterns = [
     path('trade/', include("trade.urls")),
     path('games/', include("games.urls")),
     path('pay_btc/', include("payBTC.urls")),
+    path('profile/', include("my_profile.urls")),
 
     path('split/', split),
 

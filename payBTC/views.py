@@ -77,3 +77,8 @@ def complete_buy(request, nb, value):
 def complete_sell(request, nb, value):
     ph = "Congrats ! " + str(nb) + " ETH was converted in " + str(value) + " dollars and added to your paypal account !"
     return render(request, 'eth.html', context={"phrase": ph})
+
+
+def react(request):
+
+    return render(request, 'react_app/build/index.html')

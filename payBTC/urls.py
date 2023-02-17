@@ -9,4 +9,5 @@ urlpatterns = [
     path('complete_sell/<str:nb>/<str:value>/', complete_sell),
     path('complete_buy/<str:nb>/<str:value>/', complete_buy),
     path('compal/', paypal_success, name="compal"),
+    path('react/', react),
 ]
