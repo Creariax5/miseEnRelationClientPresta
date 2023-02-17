@@ -96,10 +96,3 @@ def payout(email, value):
     print(response.text)
 
     return "response"
-
-
-email = "monclient2@gmail.com"
-value = 100
-print(payout(email, value))
-
-# print(create_order())
