@@ -51,6 +51,7 @@ INSTALLED_APPS = [
     'my_profile',
 ]
 
+
 ASGI_APPLICATION = 'relaigraph.asgi.application'
 
 

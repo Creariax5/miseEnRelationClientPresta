@@ -81,4 +81,14 @@ def complete_sell(request, nb, value):
 
 def react(request):
 
-    return render(request, 'react_app/build/index.html')
+    return render(request, 'react_app/build/index.html', context={"qui": "django"})
+
+
+def is_authenticated(request):
+    authenticated = False
+    if request.user.is_authenticated:
+        authenticated = True
+    data = {
+        'authenticated': authenticated
+    }
+    return JsonResponse(data)
