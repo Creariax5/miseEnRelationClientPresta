@@ -90,6 +90,8 @@ chatSocket.onmessage = function(e){
                                         <p>${data.message}</p>
                                         </div>`)
         }
+    const mess = document.getElementById('messages');
+    mess.scrollTo(20, mess.scrollHeight);
     }
 }
 
