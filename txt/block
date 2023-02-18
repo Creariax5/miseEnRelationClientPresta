@@ -1,0 +1,4 @@
+{% extends 'pay_btc.html' %}
+{% block react %}
+
+{% endblock %}

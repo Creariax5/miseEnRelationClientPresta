@@ -16,7 +16,7 @@ def pay_eth(request):
     data = data.json()
     print(f"{data['symbol']} price is {data['price']}")
     price = data['price']
-    return render(request, 'pay_btc.html', context={"price": price})
+    return render(request, 'react_app/build/index.html', context={"price": price})
 
 
 def paypal(request, usd, address):
